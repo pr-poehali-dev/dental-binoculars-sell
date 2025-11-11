@@ -99,7 +99,7 @@ const Index = () => {
               <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-32" />
             </div>
             <div className="hidden md:flex space-x-6">
-              {['about', 'catalog', 'testdrive', 'purchase', 'contacts', 'jobs', 'partnership'].map((section) => (
+              {['about', 'catalog', 'testdrive', 'contacts', 'jobs', 'partnership'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
