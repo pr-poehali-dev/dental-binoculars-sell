@@ -59,6 +59,13 @@ const Index = () => {
     productId: ''
   });
 
+  const [testDriveForm, setTestDriveForm] = useState({
+    fullName: '',
+    phone: '',
+    specialty: '',
+    city: ''
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -66,6 +73,15 @@ const Index = () => {
       description: "Мы свяжемся с вами в ближайшее время.",
     });
     setFormData({ name: '', email: '', phone: '', message: '', productId: '' });
+  };
+
+  const handleTestDriveSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Заявка на тест-драйв отправлена!",
+      description: "Мы свяжемся с вами для оговорения деталей.",
+    });
+    setTestDriveForm({ fullName: '', phone: '', specialty: '', city: '' });
   };
 
   const scrollToSection = (section: string) => {
@@ -83,7 +99,7 @@ const Index = () => {
               <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-32" />
             </div>
             <div className="hidden md:flex space-x-6">
-              {['about', 'catalog', 'purchase', 'contacts', 'jobs', 'partnership'].map((section) => (
+              {['about', 'catalog', 'testdrive', 'purchase', 'contacts', 'jobs', 'partnership'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -93,6 +109,7 @@ const Index = () => {
                 >
                   {section === 'about' && 'О нас'}
                   {section === 'catalog' && 'Каталог'}
+                  {section === 'testdrive' && 'Тест-драйв'}
                   {section === 'purchase' && 'Заказать'}
                   {section === 'contacts' && 'Контакты'}
                   {section === 'jobs' && 'Вакансии'}
@@ -214,6 +231,98 @@ const Index = () => {
                 </CardFooter>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="testdrive" className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12 animate-fade-in">
+              <Badge className="mb-6 bg-accent text-white">Бесплатно</Badge>
+              <h2 className="text-4xl font-display font-bold mb-4">Тест-драйв</h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Мы проведем презентацию в вашей клинике в удобное для вас время и проведем обучение по эргономике, чтобы вы смогли оценить все преимущества осветителей и бинокуляров.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <Card className="text-center p-6">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Presentation" size={32} className="text-primary" />
+                </div>
+                <h3 className="font-bold mb-2">Презентация</h3>
+                <p className="text-sm text-gray-400">Покажем все возможности оборудования</p>
+              </Card>
+              <Card className="text-center p-6">
+                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="GraduationCap" size={32} className="text-secondary" />
+                </div>
+                <h3 className="font-bold mb-2">Обучение</h3>
+                <p className="text-sm text-gray-400">Проведем тренинг по эргономике</p>
+              </Card>
+              <Card className="text-center p-6">
+                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="CheckCircle" size={32} className="text-accent" />
+                </div>
+                <h3 className="font-bold mb-2">Тестирование</h3>
+                <p className="text-sm text-gray-400">Опробуйте в реальных условиях</p>
+              </Card>
+            </div>
+            <Card className="shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl font-display">Записаться на тест-драйв</CardTitle>
+                <CardDescription>Заполните форму, и мы свяжемся с вами для согласования времени</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleTestDriveSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="fullName">ФИО *</Label>
+                    <Input
+                      id="fullName"
+                      required
+                      value={testDriveForm.fullName}
+                      onChange={(e) => setTestDriveForm({...testDriveForm, fullName: e.target.value})}
+                      placeholder="Иванов Иван Иванович"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="testDrivePhone">Номер телефона *</Label>
+                    <Input
+                      id="testDrivePhone"
+                      type="tel"
+                      required
+                      value={testDriveForm.phone}
+                      onChange={(e) => setTestDriveForm({...testDriveForm, phone: e.target.value})}
+                      placeholder="+7 (999) 123-45-67"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="specialty">Специальность *</Label>
+                    <Input
+                      id="specialty"
+                      required
+                      value={testDriveForm.specialty}
+                      onChange={(e) => setTestDriveForm({...testDriveForm, specialty: e.target.value})}
+                      placeholder="Стоматолог-терапевт"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="city">Город *</Label>
+                    <Input
+                      id="city"
+                      required
+                      value={testDriveForm.city}
+                      onChange={(e) => setTestDriveForm({...testDriveForm, city: e.target.value})}
+                      placeholder="Москва"
+                    />
+                  </div>
+                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
+                    <Icon name="Calendar" size={20} className="mr-2" />
+                    Отправить заявку
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
