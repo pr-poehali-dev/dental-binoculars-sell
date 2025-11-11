@@ -80,7 +80,7 @@ const Index = () => {
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV Dental" className="h-64" />
+              <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-32" />
             </div>
             <div className="hidden md:flex space-x-6">
               {['catalog', 'purchase', 'contacts', 'jobs', 'partnership'].map((section) => (
@@ -352,9 +352,9 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV Dental" className="h-40" />
+                <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-20" />
               </div>
-              <p className="text-gray-400">Профессиональное стоматологическое оборудование</p>
+              <p className="text-gray-400">VAV DENTAL — Профессиональное стоматологическое оборудование</p>
             </div>
             <div>
               <h4 className="font-bold mb-4">Навигация</h4>
@@ -380,7 +380,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 DentalOptics. Все права защищены.</p>
+            <p>&copy; 2024 VAV DENTAL. Все права защищены.</p>
           </div>
         </div>
       </footer>
