@@ -80,7 +80,7 @@ const Index = () => {
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img src="https://cdn.poehali.dev/files/6fbecb7a-8f5f-4784-a804-3e10b6489258.jpg" alt="VAV Dental" className="h-32" />
+              <img src="https://cdn.poehali.dev/files/6fbecb7a-8f5f-4784-a804-3e10b6489258.jpg" alt="VAV Dental" className="h-64" />
             </div>
             <div className="hidden md:flex space-x-6">
               {['catalog', 'purchase', 'contacts', 'jobs', 'partnership'].map((section) => (
@@ -352,7 +352,7 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <img src="https://cdn.poehali.dev/files/6fbecb7a-8f5f-4784-a804-3e10b6489258.jpg" alt="VAV Dental" className="h-20" />
+                <img src="https://cdn.poehali.dev/files/6fbecb7a-8f5f-4784-a804-3e10b6489258.jpg" alt="VAV Dental" className="h-40" />
               </div>
               <p className="text-gray-400">Профессиональное стоматологическое оборудование</p>
             </div>
