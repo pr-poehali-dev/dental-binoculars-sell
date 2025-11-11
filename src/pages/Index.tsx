@@ -79,9 +79,8 @@ const Index = () => {
       <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-border">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Icon name="Microscope" size={32} className="text-primary" />
-              <span className="text-2xl font-display font-bold text-foreground">DentalOptics</span>
+            <div className="flex items-center space-x-3">
+              <img src="https://cdn.poehali.dev/files/6fbecb7a-8f5f-4784-a804-3e10b6489258.jpg" alt="VAV Dental" className="h-10" />
             </div>
             <div className="hidden md:flex space-x-6">
               {['catalog', 'purchase', 'contacts', 'jobs', 'partnership'].map((section) => (
@@ -353,8 +352,7 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Icon name="Microscope" size={28} className="text-primary" />
-                <span className="text-xl font-display font-bold">DentalOptics</span>
+                <img src="https://cdn.poehali.dev/files/6fbecb7a-8f5f-4784-a804-3e10b6489258.jpg" alt="VAV Dental" className="h-8" />
               </div>
               <p className="text-gray-400">Профессиональное стоматологическое оборудование</p>
             </div>
