@@ -83,7 +83,7 @@ const Index = () => {
               <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-32" />
             </div>
             <div className="hidden md:flex space-x-6">
-              {['catalog', 'purchase', 'contacts', 'jobs', 'partnership'].map((section) => (
+              {['about', 'catalog', 'purchase', 'contacts', 'jobs', 'partnership'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -91,6 +91,7 @@ const Index = () => {
                     activeSection === section ? 'text-primary' : 'text-gray-400'
                   }`}
                 >
+                  {section === 'about' && 'О нас'}
                   {section === 'catalog' && 'Каталог'}
                   {section === 'purchase' && 'Заказать'}
                   {section === 'contacts' && 'Контакты'}
@@ -118,6 +119,53 @@ const Index = () => {
               <Icon name="Eye" size={20} className="mr-2" />
               Смотреть каталог
             </Button>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-4xl font-display font-bold mb-4">О нас</h2>
+              <p className="text-xl text-gray-400">Эксперты в области стоматологической оптики</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="p-6">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <Icon name="Award" size={32} className="text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Опыт и качество</h3>
+                <p className="text-gray-400">Более 15 лет на рынке профессионального стоматологического оборудования. Мы работаем с ведущими производителями и предлагаем только проверенные решения.</p>
+              </Card>
+              <Card className="p-6">
+                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+                  <Icon name="Shield" size={32} className="text-secondary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Гарантия качества</h3>
+                <p className="text-gray-400">Все наши бинокуляры сертифицированы и имеют расширенную гарантию. Полная техническая поддержка и сервисное обслуживание по всей России.</p>
+              </Card>
+              <Card className="p-6">
+                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                  <Icon name="Users" size={32} className="text-accent" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Индивидуальный подход</h3>
+                <p className="text-gray-400">Помогаем подобрать оптимальное решение под ваши задачи. Консультируем, обучаем, настраиваем оборудование под каждого специалиста.</p>
+              </Card>
+              <Card className="p-6">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <Icon name="TrendingUp" size={32} className="text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Инновации</h3>
+                <p className="text-gray-400">Следим за новейшими разработками в области оптики и первыми предлагаем инновационные решения российским специалистам.</p>
+              </Card>
+            </div>
+            <div className="mt-12 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-lg p-8 text-center">
+              <h3 className="text-2xl font-bold mb-4">Наша миссия</h3>
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                Предоставить стоматологам лучшие инструменты для точной и комфортной работы, чтобы каждый пациент получал высококлассное лечение. Мы верим, что качественная оптика — это инвестиция в здоровье и успех вашей практики.
+              </p>
+            </div>
           </div>
         </div>
       </section>
