@@ -75,8 +75,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-border">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -89,7 +89,7 @@ const Index = () => {
                   key={section}
                   onClick={() => scrollToSection(section)}
                   className={`font-medium transition-colors hover:text-primary ${
-                    activeSection === section ? 'text-primary' : 'text-gray-600'
+                    activeSection === section ? 'text-primary' : 'text-gray-400'
                   }`}
                 >
                   {section === 'catalog' && 'Каталог'}
@@ -105,14 +105,14 @@ const Index = () => {
       </header>
 
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <Badge className="mb-6 bg-secondary text-white">Профессиональное оборудование</Badge>
             <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               Стоматологические бинокуляры нового поколения
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-400 mb-8">
               Высокоточная оптика для профессионалов. Комфорт и точность в каждой процедуре.
             </p>
             <Button size="lg" onClick={() => scrollToSection('catalog')} className="bg-primary hover:bg-primary/90">
@@ -123,11 +123,11 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="catalog" className="py-16 bg-white">
+      <section id="catalog" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-4xl font-display font-bold mb-4">Каталог бинокуляров</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Профессиональное оборудование с гарантией качества и технической поддержкой
             </p>
           </div>
@@ -171,7 +171,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="purchase" className="py-16 bg-gradient-to-b from-gray-50 to-white">
+      <section id="purchase" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <Card className="shadow-lg animate-fade-in">
@@ -234,7 +234,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contacts" className="py-16 bg-white">
+      <section id="contacts" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-display font-bold mb-12 text-center">Контакты</h2>
@@ -243,7 +243,7 @@ const Index = () => {
                 <CardContent className="pt-6">
                   <Icon name="Phone" size={40} className="mx-auto mb-4 text-primary" />
                   <h3 className="font-bold mb-2">Телефон</h3>
-                  <p className="text-gray-600">+7 (495) 123-45-67</p>
+                  <p className="text-gray-300">+7 (495) 123-45-67</p>
                   <p className="text-sm text-gray-500 mt-2">Пн-Пт: 9:00-18:00</p>
                 </CardContent>
               </Card>
@@ -251,7 +251,7 @@ const Index = () => {
                 <CardContent className="pt-6">
                   <Icon name="Mail" size={40} className="mx-auto mb-4 text-secondary" />
                   <h3 className="font-bold mb-2">Email</h3>
-                  <p className="text-gray-600">info@dentaloptics.ru</p>
+                  <p className="text-gray-300">info@dentaloptics.ru</p>
                   <p className="text-sm text-gray-500 mt-2">Ответим в течение часа</p>
                 </CardContent>
               </Card>
@@ -259,7 +259,7 @@ const Index = () => {
                 <CardContent className="pt-6">
                   <Icon name="MapPin" size={40} className="mx-auto mb-4 text-accent" />
                   <h3 className="font-bold mb-2">Адрес</h3>
-                  <p className="text-gray-600">Москва, ул. Ленина, 10</p>
+                  <p className="text-gray-300">Москва, ул. Ленина, 10</p>
                   <p className="text-sm text-gray-500 mt-2">Офис и шоурум</p>
                 </CardContent>
               </Card>
@@ -268,7 +268,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="jobs" className="py-16 bg-gray-50">
+      <section id="jobs" className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-display font-bold mb-12 text-center">Вакансии</h2>
@@ -282,7 +282,7 @@ const Index = () => {
                   <CardDescription>Полная занятость • Офис в Москве</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 mb-4">Ищем активного менеджера для работы с клиниками. Опыт в медицинском оборудовании приветствуется.</p>
+                  <p className="text-gray-400 mb-4">Ищем активного менеджера для работы с клиниками. Опыт в медицинском оборудовании приветствуется.</p>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">От 80 000 ₽</Badge>
                     <Badge variant="outline">Премия</Badge>
@@ -299,7 +299,7 @@ const Index = () => {
                   <CardDescription>Полная занятость • Возможна удаленка</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 mb-4">Требуется специалист для технической поддержки клиентов и настройки оборудования.</p>
+                  <p className="text-gray-400 mb-4">Требуется специалист для технической поддержки клиентов и настройки оборудования.</p>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">От 70 000 ₽</Badge>
                     <Badge variant="outline">Обучение</Badge>
@@ -312,32 +312,32 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="partnership" className="py-16 bg-white">
+      <section id="partnership" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-display font-bold mb-6">Сотрудничество</h2>
-            <p className="text-xl text-gray-600 mb-12">Предлагаем выгодные условия для партнерства</p>
+            <p className="text-xl text-gray-400 mb-12">Предлагаем выгодные условия для партнерства</p>
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="p-6">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Icon name="Users" size={32} className="text-primary" />
                 </div>
                 <h3 className="font-bold mb-2">Дилерам</h3>
-                <p className="text-gray-600">Специальные цены и маркетинговая поддержка</p>
+                <p className="text-gray-400">Специальные цены и маркетинговая поддержка</p>
               </div>
               <div className="p-6">
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Icon name="Building" size={32} className="text-secondary" />
                 </div>
                 <h3 className="font-bold mb-2">Клиникам</h3>
-                <p className="text-gray-600">Корпоративные скидки и лизинговые программы</p>
+                <p className="text-gray-400">Корпоративные скидки и лизинговые программы</p>
               </div>
               <div className="p-6">
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Icon name="GraduationCap" size={32} className="text-accent" />
                 </div>
                 <h3 className="font-bold mb-2">Учебным центрам</h3>
-                <p className="text-gray-600">Образовательные скидки и демо-оборудование</p>
+                <p className="text-gray-400">Образовательные скидки и демо-оборудование</p>
               </div>
             </div>
             <Button size="lg" onClick={() => scrollToSection('purchase')} className="bg-secondary hover:bg-secondary/90">
