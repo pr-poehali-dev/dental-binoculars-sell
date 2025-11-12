@@ -478,7 +478,6 @@ const Index = () => {
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">От 70 000 ₽</Badge>
                     <Badge variant="outline">Обучение</Badge>
-                    <Badge variant="outline">ДМС</Badge>
                   </div>
                 </CardContent>
               </Card>
