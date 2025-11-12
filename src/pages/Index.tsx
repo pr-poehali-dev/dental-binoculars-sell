@@ -476,7 +476,7 @@ const Index = () => {
                 <CardContent>
                   <p className="text-gray-400 mb-4"></p>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline">От 70 000 ₽</Badge>
+                    <Badge variant="outline">От 120 000 ₽</Badge>
                     <Badge variant="outline">Обучение</Badge>
                   </div>
                 </CardContent>
