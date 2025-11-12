@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -10,7 +11,7 @@ interface ProductDetails {
   name: string;
   description: string;
   price: number;
-  image: string;
+  images: string[];
   magnification: string;
   weight: string;
   fullDescription: string;
@@ -27,7 +28,11 @@ const productsData: ProductDetails[] = [
     name: 'ProVision X3',
     description: 'Профессиональные бинокуляры с увеличением 3.5x и LED подсветкой',
     price: 89900,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/04e000fb-3d6f-472a-a8e7-258bf89f49dd.jpg',
+    images: [
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/04e000fb-3d6f-472a-a8e7-258bf89f49dd.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/15c078bd-817b-4e48-8e88-7225f499093b.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/ff5e5d35-bc58-4373-abb8-5856e0b4feba.jpg'
+    ],
     magnification: '3.5x',
     weight: '280г',
     fullDescription: 'ProVision X3 — это профессиональные стоматологические бинокуляры, разработанные для врачей, которые ценят точность и комфорт. Оптическая система высокого разрешения обеспечивает четкое изображение, а встроенная LED подсветка позволяет работать в любых условиях освещения. Эргономичная конструкция снижает нагрузку на шею и спину при длительной работе.',
@@ -55,7 +60,11 @@ const productsData: ProductDetails[] = [
     name: 'MasterView Elite',
     description: 'Премиум бинокуляры с регулируемым углом и титановой оправой',
     price: 124900,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/15c078bd-817b-4e48-8e88-7225f499093b.jpg',
+    images: [
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/15c078bd-817b-4e48-8e88-7225f499093b.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/ff5e5d35-bc58-4373-abb8-5856e0b4feba.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/04e000fb-3d6f-472a-a8e7-258bf89f49dd.jpg'
+    ],
     magnification: '4.5x',
     weight: '245г',
     fullDescription: 'MasterView Elite — премиальное решение для взыскательных профессионалов. Титановая оправа обеспечивает минимальный вес при максимальной прочности. Уникальная система регулировки угла наклона позволяет найти идеальное положение для любого врача. Многослойное просветляющее покрытие линз гарантирует максимальную четкость и контрастность изображения.',
@@ -85,7 +94,11 @@ const productsData: ProductDetails[] = [
     name: 'UltraZoom Pro',
     description: 'Инновационная оптика с расширенным полем зрения',
     price: 149900,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/ff5e5d35-bc58-4373-abb8-5856e0b4feba.jpg',
+    images: [
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/ff5e5d35-bc58-4373-abb8-5856e0b4feba.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/04e000fb-3d6f-472a-a8e7-258bf89f49dd.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/15c078bd-817b-4e48-8e88-7225f499093b.jpg'
+    ],
     magnification: '5.5x',
     weight: '265г',
     fullDescription: 'UltraZoom Pro — топовая модель с максимальным увеличением и расширенным полем зрения. Инновационная оптическая схема обеспечивает непревзойденную четкость даже при работе с мельчайшими деталями. Интеллектуальная система подсветки автоматически адаптируется к условиям освещения. Идеальный выбор для сложных процедур, требующих максимальной точности.',
@@ -117,6 +130,7 @@ const productsData: ProductDetails[] = [
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   
   const product = productsData.find(p => p.id === Number(id));
 
@@ -149,13 +163,54 @@ export default function ProductDetail() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
           <div className="space-y-4">
-            <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
+            <div className="aspect-square overflow-hidden rounded-lg bg-gray-100 relative group">
               <img 
-                src={product.image} 
+                src={product.images[selectedImageIndex]} 
                 alt={product.name} 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300"
               />
+              {product.images.length > 1 && (
+                <>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-background/80 backdrop-blur-sm"
+                    onClick={() => setSelectedImageIndex(prev => prev === 0 ? product.images.length - 1 : prev - 1)}
+                  >
+                    <Icon name="ChevronLeft" size={24} />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-background/80 backdrop-blur-sm"
+                    onClick={() => setSelectedImageIndex(prev => prev === product.images.length - 1 ? 0 : prev + 1)}
+                  >
+                    <Icon name="ChevronRight" size={24} />
+                  </Button>
+                </>
+              )}
             </div>
+            {product.images.length > 1 && (
+              <div className="grid grid-cols-3 gap-4">
+                {product.images.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`aspect-square overflow-hidden rounded-lg border-2 transition-all ${
+                      selectedImageIndex === index 
+                        ? 'border-primary shadow-lg scale-105' 
+                        : 'border-transparent hover:border-gray-300'
+                    }`}
+                  >
+                    <img 
+                      src={img} 
+                      alt={`${product.name} ${index + 1}`} 
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="space-y-6">
