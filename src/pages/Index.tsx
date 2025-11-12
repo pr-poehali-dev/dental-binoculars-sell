@@ -455,7 +455,7 @@ const Index = () => {
                     <span>Менеджер по продажам</span>
                     <Badge className="bg-primary text-white">Активна</Badge>
                   </CardTitle>
-                  <CardDescription>Полная занятость • Офис в Москве</CardDescription>
+                  <CardDescription>Полная занятость / Частичная занятость</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-400 mb-4">Ищем активного менеджера для работы с клиниками. Опыт в медицинском оборудовании приветствуется.</p>
