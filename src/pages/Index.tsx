@@ -504,7 +504,7 @@ const Index = () => {
                   <Icon name="Building" size={32} className="text-secondary" />
                 </div>
                 <h3 className="font-bold mb-2">Клиникам</h3>
-                <p className="text-gray-400">Корпоративные скидки и лизинговые программы</p>
+                <p className="text-gray-400">Корпоративные скидки и проведение обучения</p>
               </div>
               <div className="p-6">
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
