@@ -458,7 +458,7 @@ const Index = () => {
                   <CardDescription>Полная занятость / Частичная занятость</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4">Ищем активного менеджера для работы с клиниками. Опыт в медицинском оборудовании приветствуется.</p>
+                  <p className="text-gray-400 mb-4">Ищем активного менеджера с грамотной речью. Опыт в медицинской сфере не обязателен.</p>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">От 120 000 ₽</Badge>
                     <Badge variant="outline">Премия</Badge>
