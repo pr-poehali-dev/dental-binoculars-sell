@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -15,7 +16,6 @@ interface Product {
   price: number;
   image: string;
   magnification: string;
-  weight: string;
 }
 
 const products: Product[] = [
@@ -25,8 +25,7 @@ const products: Product[] = [
     description: 'Профессиональные бинокуляры с увеличением 3.5x и LED подсветкой',
     price: 89900,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/04e000fb-3d6f-472a-a8e7-258bf89f49dd.jpg',
-    magnification: '3.5x',
-    weight: '280г'
+    magnification: '3.5x'
   },
   {
     id: 2,
@@ -34,8 +33,7 @@ const products: Product[] = [
     description: 'Премиум бинокуляры с регулируемым углом и титановой оправой',
     price: 124900,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/15c078bd-817b-4e48-8e88-7225f499093b.jpg',
-    magnification: '4.5x',
-    weight: '245г'
+    magnification: '4.5x'
   },
   {
     id: 3,
@@ -43,14 +41,15 @@ const products: Product[] = [
     description: 'Инновационная оптика с расширенным полем зрения',
     price: 149900,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/ff5e5d35-bc58-4373-abb8-5856e0b4feba.jpg',
-    magnification: '5.5x',
-    weight: '265г'
+    magnification: '5.5x'
   }
 ];
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('catalog');
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -83,6 +82,21 @@ const Index = () => {
     });
     setTestDriveForm({ fullName: '', phone: '', specialty: '', city: '' });
   };
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const section = location.state.scrollTo;
+      const productId = location.state.productId;
+      
+      setActiveSection(section);
+      const element = document.getElementById(section);
+      element?.scrollIntoView({ behavior: 'smooth' });
+      
+      if (productId) {
+        setFormData(prev => ({...prev, productId: productId.toString()}));
+      }
+    }
+  }, [location.state]);
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
@@ -211,22 +225,28 @@ const Index = () => {
                       <span className="text-sm text-gray-600">Увеличение:</span>
                       <Badge variant="secondary">{product.magnification}</Badge>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Вес:</span>
-                      <Badge variant="outline">{product.weight}</Badge>
-                    </div>
                     <div className="pt-4 border-t">
                       <div className="text-3xl font-bold text-primary">{product.price.toLocaleString('ru-RU')} ₽</div>
                     </div>
                   </div>
                 </CardContent>
-                <CardFooter>
-                  <Button className="w-full bg-primary hover:bg-primary/90" onClick={() => {
-                    setFormData({...formData, productId: product.id.toString()});
-                    scrollToSection('purchase');
-                  }}>
+                <CardFooter className="flex gap-2">
+                  <Button 
+                    variant="outline" 
+                    className="flex-1"
+                    onClick={() => navigate(`/product/${product.id}`)}
+                  >
+                    Подробнее
+                  </Button>
+                  <Button 
+                    className="flex-1 bg-primary hover:bg-primary/90" 
+                    onClick={() => {
+                      setFormData({...formData, productId: product.id.toString()});
+                      scrollToSection('purchase');
+                    }}
+                  >
                     <Icon name="ShoppingCart" size={18} className="mr-2" />
-                    Оставить заявку
+                    Заказать
                   </Button>
                 </CardFooter>
               </Card>
