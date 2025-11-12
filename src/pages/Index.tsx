@@ -460,7 +460,7 @@ const Index = () => {
                 <CardContent>
                   <p className="text-gray-400 mb-4">Ищем активного менеджера для работы с клиниками. Опыт в медицинском оборудовании приветствуется.</p>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline">От 80 000 ₽</Badge>
+                    <Badge variant="outline">От 120 000 ₽</Badge>
                     <Badge variant="outline">Премия</Badge>
                   </div>
                 </CardContent>
@@ -468,8 +468,8 @@ const Index = () => {
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
-                    <span>Технический специалист</span>
-                    <Badge className="bg-primary text-white">Активна</Badge>
+                    <span>Региональный менеджер</span>
+                    <Badge className="bg-primary text-white"></Badge>
                   </CardTitle>
                   <CardDescription>Полная занятость • Возможна удаленка</CardDescription>
                 </CardHeader>
