@@ -474,7 +474,7 @@ const Index = () => {
                   <CardDescription>Полная занятость • Возможна удаленка</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4">Требуется специалист для технической поддержки клиентов и настройки оборудования.</p>
+                  <p className="text-gray-400 mb-4"></p>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">От 70 000 ₽</Badge>
                     <Badge variant="outline">Обучение</Badge>
