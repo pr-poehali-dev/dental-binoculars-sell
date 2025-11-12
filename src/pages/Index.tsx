@@ -353,7 +353,7 @@ const Index = () => {
             <Card className="shadow-lg animate-fade-in">
               <CardHeader>
                 <CardTitle className="text-3xl font-display">Заявка на покупку</CardTitle>
-                <CardDescription>Заполните форму, и наш менеджер свяжется с вами в течение часа</CardDescription>
+                <CardDescription>Заполните форму, и наш менеджер свяжется с вами </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
