@@ -511,7 +511,7 @@ const Index = () => {
                   <Icon name="GraduationCap" size={32} className="text-accent" />
                 </div>
                 <h3 className="font-bold mb-2">Учебным центрам</h3>
-                <p className="text-gray-400">Образовательные скидки и демо-оборудование</p>
+                <p className="text-gray-400">Специальные цены для оснащения учебного класса</p>
               </div>
             </div>
             <Button size="lg" onClick={() => scrollToSection('purchase')} className="bg-secondary hover:bg-secondary/90">
