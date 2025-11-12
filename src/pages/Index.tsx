@@ -135,18 +135,18 @@ const Index = () => {
         </nav>
       </header>
 
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20"></div>
+      <section className="relative py-20 overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <Badge className="mb-6 bg-secondary text-white">Профессиональное оборудование</Badge>
-            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <Badge className="mb-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0">Профессиональное оборудование</Badge>
+            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
               Стоматологические бинокуляры нового поколения
             </h1>
-            <p className="text-xl text-gray-400 mb-8">
+            <p className="text-xl text-gray-300 mb-8">
               Высокоточная оптика для профессионалов. Комфорт и точность в каждой процедуре.
             </p>
-            <Button size="lg" onClick={() => scrollToSection('catalog')} className="bg-primary hover:bg-primary/90">
+            <Button size="lg" onClick={() => scrollToSection('catalog')} className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0">
               <Icon name="Eye" size={20} className="mr-2" />
               Смотреть каталог
             </Button>
