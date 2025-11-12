@@ -167,7 +167,7 @@ const Index = () => {
                   <Icon name="Award" size={32} className="text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Опыт и качество</h3>
-                <p className="text-gray-400">Более 15 лет на рынке профессионального стоматологического оборудования. Мы работаем с ведущими производителями и предлагаем только проверенные решения.</p>
+                <p className="text-gray-400">Более 15 лет в стоматологической сфере. Мы разрабатываем и производим продукт используя высококачественные линзы Schott (Германия), Glance (Корея), HOYA (Япония) и предлагаем только проверенные решения.</p>
               </Card>
               <Card className="p-6">
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
