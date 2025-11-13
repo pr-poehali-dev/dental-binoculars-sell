@@ -471,7 +471,7 @@ const Index = () => {
                     <span>Региональный менеджер</span>
                     <Badge className="bg-primary text-white"></Badge>
                   </CardTitle>
-                  <CardDescription>Полная занятость • Возможна удаленка</CardDescription>
+                  <CardDescription>Тип занятости-Полная занятость / Частичная занятость. Формат работы- Удаленно / Разъездной</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-400 mb-4"></p>
