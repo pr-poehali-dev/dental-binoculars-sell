@@ -83,6 +83,58 @@ const Index = () => {
     setTestDriveForm({ fullName: '', phone: '', specialty: '', city: '' });
   };
 
+  const handleDownloadPDF = async () => {
+    const vacancies = [
+      {
+        title: 'Менеджер по продажам (г.Москва)',
+        salary: 'От 120 000 ₽',
+        location: 'Москва',
+        type: 'Полная занятость / Частичная занятость',
+        description: 'Ищем активного менеджера с грамотной речью. Опыт в медицинской сфере не обязателен.',
+        requirements: ['Грамотная речь', 'Активность', 'Ответственность'],
+        benefits: ['Премия', 'Обучение']
+      },
+      {
+        title: 'Региональный менеджер',
+        salary: 'От 120 000 ₽',
+        location: 'Удаленно / Разъездной',
+        type: 'Полная занятость / Частичная занятость',
+        description: 'Развитие регионального представительства компании.',
+        requirements: ['Опыт продаж', 'Коммуникабельность', 'Готовность к командировкам'],
+        benefits: ['Обучение', 'Корпоративный транспорт']
+      }
+    ];
+
+    try {
+      const response = await fetch('https://functions.poehali.dev/14385140-d03c-4787-8637-b0a99957dfb3', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ vacancies })
+      });
+
+      const data = await response.json();
+      
+      const linkSource = `data:application/pdf;base64,${data.pdf}`;
+      const downloadLink = document.createElement('a');
+      downloadLink.href = linkSource;
+      downloadLink.download = data.filename;
+      downloadLink.click();
+
+      toast({
+        title: "PDF успешно сгенерирован!",
+        description: "Файл загружен на ваше устройство.",
+      });
+    } catch (error) {
+      toast({
+        title: "Ошибка",
+        description: "Не удалось сгенерировать PDF. Попробуйте еще раз.",
+        variant: "destructive"
+      });
+    }
+  };
+
   useEffect(() => {
     if (location.state?.scrollTo) {
       const section = location.state.scrollTo;
@@ -447,7 +499,17 @@ const Index = () => {
       <section id="jobs" className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-display font-bold mb-12 text-center">Вакансии</h2>
+            <div className="flex items-center justify-between mb-12">
+              <h2 className="text-4xl font-display font-bold text-center flex-1">Вакансии</h2>
+              <Button 
+                onClick={handleDownloadPDF}
+                className="bg-primary hover:bg-primary/90"
+                size="lg"
+              >
+                <Icon name="Download" size={20} className="mr-2" />
+                Скачать PDF
+              </Button>
+            </div>
             <div className="space-y-6">
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
