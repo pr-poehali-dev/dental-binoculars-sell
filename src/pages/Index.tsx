@@ -452,7 +452,7 @@ const Index = () => {
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
-                    <span>Менеджер по продажам</span>
+                    <span>Менеджер по продажам (г.Москва)</span>
                     <Badge className="bg-primary text-white">Активна</Badge>
                   </CardTitle>
                   <CardDescription>Москва
