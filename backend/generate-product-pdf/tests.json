@@ -1,0 +1,26 @@
+{
+  "tests": [
+    {
+      "name": "Generate product catalog PDF",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "products": [
+          {
+            "name": "ProVision X3",
+            "description": "Профессиональные бинокуляры",
+            "price": 89900,
+            "magnification": "3.5x",
+            "image": "https://example.com/image.jpg"
+          }
+        ]
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "pdf": "string",
+        "filename": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
