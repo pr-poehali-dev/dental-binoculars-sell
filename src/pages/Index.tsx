@@ -135,37 +135,6 @@ const Index = () => {
     }
   };
 
-  const handleDownloadProductPDF = async () => {
-    try {
-      const response = await fetch('https://functions.poehali.dev/b6b1b640-cbfc-4bbd-b23e-801608792b39', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ products })
-      });
-
-      const data = await response.json();
-      
-      const linkSource = `data:application/pdf;base64,${data.pdf}`;
-      const downloadLink = document.createElement('a');
-      downloadLink.href = linkSource;
-      downloadLink.download = data.filename;
-      downloadLink.click();
-
-      toast({
-        title: "PDF успешно сгенерирован!",
-        description: "Каталог товаров загружен на ваше устройство.",
-      });
-    } catch (error) {
-      toast({
-        title: "Ошибка",
-        description: "Не удалось сгенерировать PDF. Попробуйте еще раз.",
-        variant: "destructive"
-      });
-    }
-  };
-
   useEffect(() => {
     if (location.state?.scrollTo) {
       const section = location.state.scrollTo;
@@ -287,17 +256,7 @@ const Index = () => {
       <section id="catalog" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <h2 className="text-4xl font-display font-bold">Каталог бинокуляров</h2>
-              <Button 
-                onClick={handleDownloadProductPDF}
-                variant="outline"
-                size="lg"
-              >
-                <Icon name="Download" size={20} className="mr-2" />
-                Скачать PDF
-              </Button>
-            </div>
+            <h2 className="text-4xl font-display font-bold mb-4">Каталог бинокуляров</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
               Профессиональное оборудование с гарантией качества и технической поддержкой
             </p>
