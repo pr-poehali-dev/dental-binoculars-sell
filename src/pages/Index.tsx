@@ -540,16 +540,8 @@ const Index = () => {
       <section id="jobs" className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center justify-between mb-12">
-              <h2 className="text-4xl font-display font-bold text-center flex-1">Вакансии</h2>
-              <Button 
-                onClick={handleDownloadPDF}
-                className="bg-primary hover:bg-primary/90"
-                size="lg"
-              >
-                <Icon name="Download" size={20} className="mr-2" />
-                Скачать PDF
-              </Button>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-display font-bold">Вакансии</h2>
             </div>
             <div className="space-y-6">
               <Card className="hover:shadow-lg transition-shadow">
