@@ -459,7 +459,8 @@ const Index = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Город*</Label>
+                    <Label htmlFor="email">Город*
+</Label>
                     <Input
                       id="email"
                       type="email"
