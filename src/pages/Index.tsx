@@ -354,9 +354,7 @@ const Index = () => {
             <div className="text-center mb-12 animate-fade-in">
               <Badge className="mb-6 bg-accent text-white">Бесплатно</Badge>
               <h2 className="text-4xl font-display font-bold mb-4">Тест-драйв</h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Мы проведем презентацию и обучение по эргономике в вашей клинике в удобное для вас время, чтобы вы смогли оценить все преимущества осветителей и бинокуляров.
-              </p>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">Проведем презентацию и обучение по эргономике в вашей клинике, в удобное для вас время, чтобы вы смогли оценить все преимущества бинокуляров и осветителей .</p>
             </div>
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               <Card className="text-center p-6">
