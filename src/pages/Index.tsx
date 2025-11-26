@@ -382,7 +382,7 @@ const Index = () => {
             <Card className="shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl font-display">Записаться на тест-драйв</CardTitle>
-                <CardDescription>Заполните форму, и мы свяжемся с вами для согласования времени</CardDescription>
+                <CardDescription>Заполните форму, и мы свяжемся с вами для согласования дня и времени</CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleTestDriveSubmit} className="space-y-6">
