@@ -450,7 +450,7 @@ const Index = () => {
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Имя *</Label>
+                    <Label htmlFor="name">ФИО *</Label>
                     <Input
                       id="name"
                       required
