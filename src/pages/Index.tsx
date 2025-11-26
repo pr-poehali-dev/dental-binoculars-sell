@@ -53,6 +53,7 @@ const Index = () => {
   const [formData, setFormData] = useState({
     name: '',
     city: '',
+    specialty: '',
     phone: '',
     message: '',
     productId: ''
@@ -71,7 +72,7 @@ const Index = () => {
       title: "Заявка отправлена!",
       description: "Мы свяжемся с вами в ближайшее время.",
     });
-    setFormData({ name: '', city: '', phone: '', message: '', productId: '' });
+    setFormData({ name: '', city: '', specialty: '', phone: '', message: '', productId: '' });
   };
 
   const handleTestDriveSubmit = (e: React.FormEvent) => {
@@ -467,6 +468,17 @@ const Index = () => {
                       value={formData.city}
                       onChange={(e) => setFormData({...formData, city: e.target.value})}
                       placeholder="Москва"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="specialty">Специальность *</Label>
+                    <Input
+                      id="specialty"
+                      type="text"
+                      required
+                      value={formData.specialty}
+                      onChange={(e) => setFormData({...formData, specialty: e.target.value})}
+                      placeholder="Стоматолог-терапевт"
                     />
                   </div>
                   <div className="space-y-2">
