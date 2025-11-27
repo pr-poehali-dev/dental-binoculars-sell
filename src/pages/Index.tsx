@@ -636,7 +636,7 @@ const Index = () => {
               <div className="flex items-center space-x-2 mb-4">
                 <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-20" />
               </div>
-              <p className="text-gray-400">VAV DENTAL — Профессиональное стоматологическое оборудование</p>
+
             </div>
             <div>
               <h4 className="font-bold mb-4">Навигация</h4>
