@@ -29,9 +29,7 @@ const productsData: ProductDetails[] = [
     description: 'Профессиональные бинокуляры с увеличением 3.5x и LED подсветкой',
     price: 89900,
     images: [
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/04e000fb-3d6f-472a-a8e7-258bf89f49dd.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/15c078bd-817b-4e48-8e88-7225f499093b.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/ff5e5d35-bc58-4373-abb8-5856e0b4feba.jpg'
+      'https://cdn.poehali.dev/files/IMG_5018.png'
     ],
     magnification: '3.5x',
     weight: '280г',
