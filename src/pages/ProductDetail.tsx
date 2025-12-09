@@ -166,7 +166,7 @@ export default function ProductDetail() {
               <img 
                 src={product.images[selectedImageIndex]} 
                 alt={product.name} 
-                className="w-full h-full object-cover transition-transform duration-300"
+                className="w-full h-full transition-transform duration-300 object-contain"
               />
               {product.images.length > 1 && (
                 <>
