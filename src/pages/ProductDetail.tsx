@@ -309,9 +309,6 @@ export default function ProductDetail() {
           <TabsContent value="description" className="mt-6">
             <Card>
               <CardContent className="pt-6">
-                <p className="text-lg leading-relaxed text-gray-300">
-                  {product.fullDescription}
-                </p>
               </CardContent>
             </Card>
           </TabsContent>
