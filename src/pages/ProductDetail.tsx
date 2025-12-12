@@ -309,6 +309,40 @@ export default function ProductDetail() {
           <TabsContent value="description" className="mt-6">
             <Card>
               <CardContent className="pt-6">
+                <ul className="space-y-3 text-lg text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <span>Апохроматические линзы из оптического стекла. Немецкая оптика Schott</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <span>Многослойное покрытие с антибликовым эффектом и защитой от запотевания и царапин</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <span>Конструкция бинокуляров, расположенная под углом, позволяет держать голову прямо, благодаря чему снижается нагрузка на спину</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <span>Асинхронная настройка межзрачкового расстояния</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <span>Высокая прочность и легкость за счет материала аэрокосмического класса</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <span>Высокое разрешение, чистое и четкое поле обзора без размытия и виньетирования</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <span>Возможность крепления осветительного прибора</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <span>Рекомендуем использовать в паре с «Беспроводной головной осветитель Pro Max»</span>
+                  </li>
+                </ul>
               </CardContent>
             </Card>
           </TabsContent>
