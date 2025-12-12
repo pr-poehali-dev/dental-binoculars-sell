@@ -42,6 +42,14 @@ const products: Product[] = [
     price: 149900,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/ff5e5d35-bc58-4373-abb8-5856e0b4feba.jpg',
     magnification: '5.5x'
+  },
+  {
+    id: 4,
+    name: 'Бинокулярные лупы Ergo Pro Max',
+    description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
+    price: 120000,
+    image: 'https://cdn.poehali.dev/files/IMG_5018.png',
+    magnification: '3.0х / 4.0х / 5.0х'
   }
 ];
 
