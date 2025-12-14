@@ -560,7 +560,7 @@ const Index = () => {
                 <CardContent className="pt-6">
                   <Icon name="Phone" size={40} className="mx-auto mb-4 text-primary" />
                   <h3 className="font-bold mb-2">Телефон</h3>
-                  <p className="text-gray-300">+7 (495) 123-45-67</p>
+                  <p className="text-gray-300">+7 (925) 411-61-83</p>
                   <p className="text-sm text-gray-500 mt-2">Пн-Пт: 9:00-18:00</p>
                 </CardContent>
               </Card>
@@ -568,7 +568,7 @@ const Index = () => {
                 <CardContent className="pt-6">
                   <Icon name="Mail" size={40} className="mx-auto mb-4 text-secondary" />
                   <h3 className="font-bold mb-2">Email</h3>
-                  <p className="text-gray-300">info@dentaloptics.ru</p>
+                  <p className="text-gray-300">vavdental@yandex.ru</p>
                   <p className="text-sm text-gray-500 mt-2">Ответим в течение часа</p>
                 </CardContent>
               </Card>
@@ -576,7 +576,7 @@ const Index = () => {
                 <CardContent className="pt-6">
                   <Icon name="MapPin" size={40} className="mx-auto mb-4 text-accent" />
                   <h3 className="font-bold mb-2">Адрес</h3>
-                  <p className="text-gray-300">Москва, ул. Ленина, 10</p>
+                  <p className="text-gray-300">Московская область, г.Королёв, пр-т Королёва 5д</p>
                   <p className="text-sm text-gray-500 mt-2">Офис и шоурум</p>
                 </CardContent>
               </Card>
