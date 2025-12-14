@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface Product {
   id: number;
@@ -72,6 +73,21 @@ const Index = () => {
     phone: '',
     specialty: '',
     city: ''
+  });
+
+  const [sortBy, setSortBy] = useState<'default' | 'price-asc' | 'price-desc' | 'magnification'>('default');
+
+  const sortedProducts = [...products].sort((a, b) => {
+    switch (sortBy) {
+      case 'price-asc':
+        return a.price - b.price;
+      case 'price-desc':
+        return b.price - a.price;
+      case 'magnification':
+        return parseFloat(a.magnification) - parseFloat(b.magnification);
+      default:
+        return 0;
+    }
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -295,7 +311,7 @@ const Index = () => {
 
       <section id="catalog" className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className="text-center mb-8 animate-fade-in">
             <div className="flex items-center justify-center gap-4 mb-4">
               <h2 className="text-4xl font-display font-bold">Каталог бинокуляров</h2>
               <Button 
@@ -307,12 +323,26 @@ const Index = () => {
                 Скачать PDF
               </Button>
             </div>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-400 max-w-2xl mx-auto mb-6">
               Профессиональное оборудование с гарантией качества и технической поддержкой
             </p>
+            <div className="flex items-center justify-center gap-3">
+              <Label className="text-sm text-gray-400">Сортировать:</Label>
+              <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="default">По умолчанию</SelectItem>
+                  <SelectItem value="price-asc">Цена: по возрастанию</SelectItem>
+                  <SelectItem value="price-desc">Цена: по убыванию</SelectItem>
+                  <SelectItem value="magnification">Увеличение</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {products.map((product, index) => (
+            {sortedProducts.map((product, index) => (
               <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-scale-in product-card-hover" style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="aspect-square overflow-hidden bg-gray-100" onClick={() => navigate(`/product/${product.id}`)}>
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
