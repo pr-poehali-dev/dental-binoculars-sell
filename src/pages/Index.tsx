@@ -313,8 +313,8 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {products.map((product, index) => (
-              <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-scale-in" style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="aspect-square overflow-hidden bg-gray-100 cursor-pointer" onClick={() => navigate(`/product/${product.id}`)}>
+              <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-scale-in product-card-hover" style={{ animationDelay: `${index * 100}ms` }}>
+                <div className="aspect-square overflow-hidden bg-gray-100" onClick={() => navigate(`/product/${product.id}`)}>
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                 </div>
                 <CardHeader>
