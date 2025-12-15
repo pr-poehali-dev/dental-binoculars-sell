@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import CatalogQRCode from '@/components/CatalogQRCode';
 
 interface Product {
   id: number;
@@ -580,6 +581,9 @@ const Index = () => {
                   <p className="text-sm text-gray-500 mt-2">Офис и шоурум</p>
                 </CardContent>
               </Card>
+            </div>
+            <div className="mt-12 flex justify-center">
+              <CatalogQRCode />
             </div>
           </div>
         </div>
