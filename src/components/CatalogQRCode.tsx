@@ -7,7 +7,7 @@ export default function CatalogQRCode() {
 
   useEffect(() => {
     if (canvasRef.current) {
-      const catalogUrl = `${window.location.origin}#catalog`;
+      const catalogUrl = `${window.location.origin}#catalog?mobile=true`;
       QRCode.toCanvas(canvasRef.current, catalogUrl, {
         width: 200,
         margin: 2,
