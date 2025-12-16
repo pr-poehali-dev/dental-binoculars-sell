@@ -293,7 +293,6 @@ export default function ProductDetail() {
             <div>
               <Badge className="mb-4 bg-primary text-white">В наличии</Badge>
               <h1 className="text-4xl font-display font-bold mb-4">{product.name}</h1>
-              <p className="text-xl text-gray-400 mb-6">{product.description}</p>
               <div className="text-4xl font-bold text-primary mb-6">
                 {product.price.toLocaleString('ru-RU')} ₽
               </div>
