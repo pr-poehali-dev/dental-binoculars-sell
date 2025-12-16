@@ -367,7 +367,6 @@ const Index = () => {
                 </div>
                 <CardHeader>
                   <CardTitle className="font-display">{product.name}</CardTitle>
-                  <CardDescription>{product.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
