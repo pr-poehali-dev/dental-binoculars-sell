@@ -23,15 +23,6 @@ interface Product {
 
 const products: Product[] = [
   {
-    id: 3,
-    name: 'UltraZoom Pro',
-    description: 'Инновационная оптика с расширенным полем зрения',
-    price: 149900,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/ff5e5d35-bc58-4373-abb8-5856e0b4feba.jpg',
-    magnification: '5.5x',
-    category: 'loupes'
-  },
-  {
     id: 4,
     name: 'Бинокулярные лупы Ergo Pro Max',
     description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
