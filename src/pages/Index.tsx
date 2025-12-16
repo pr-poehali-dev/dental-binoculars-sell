@@ -22,22 +22,6 @@ interface Product {
 
 const products: Product[] = [
   {
-    id: 1,
-    name: 'ProVision X3',
-    description: 'Профессиональные бинокуляры с увеличением 3.5x и LED подсветкой',
-    price: 89900,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/04e000fb-3d6f-472a-a8e7-258bf89f49dd.jpg',
-    magnification: '3.5x'
-  },
-  {
-    id: 2,
-    name: 'MasterView Elite',
-    description: 'Премиум бинокуляры с регулируемым углом и титановой оправой',
-    price: 124900,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/15c078bd-817b-4e48-8e88-7225f499093b.jpg',
-    magnification: '4.5x'
-  },
-  {
     id: 3,
     name: 'UltraZoom Pro',
     description: 'Инновационная оптика с расширенным полем зрения',
