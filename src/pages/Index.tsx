@@ -18,6 +18,7 @@ interface Product {
   price: number;
   image: string;
   magnification: string;
+  category: 'loupes' | 'lights' | 'accessories';
 }
 
 const products: Product[] = [
@@ -27,7 +28,8 @@ const products: Product[] = [
     description: 'Инновационная оптика с расширенным полем зрения',
     price: 149900,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/files/ff5e5d35-bc58-4373-abb8-5856e0b4feba.jpg',
-    magnification: '5.5x'
+    magnification: '5.5x',
+    category: 'loupes'
   },
   {
     id: 4,
@@ -35,7 +37,8 @@ const products: Product[] = [
     description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
     price: 120000,
     image: 'https://cdn.poehali.dev/files/IMG_5018.png',
-    magnification: '3.0х / 4.0х / 5.0х / 6.0х'
+    magnification: '3.0х / 4.0х / 5.0х / 6.0х',
+    category: 'loupes'
   },
   {
     id: 5,
@@ -43,7 +46,8 @@ const products: Product[] = [
     description: 'Беспроводной головной осветитель Pro Max обеспечивает непрерывную работу без необходимости подключения к кабелю. Высокое качество света, имеются два уровня яркости, переключаемые сенсорным нажатием',
     price: 60000,
     image: 'https://cdn.poehali.dev/files/624.JPG',
-    magnification: 'N/A'
+    magnification: 'N/A',
+    category: 'lights'
   }
 ];
 
@@ -69,8 +73,13 @@ const Index = () => {
   });
 
   const [sortBy, setSortBy] = useState<'default' | 'price-asc' | 'price-desc' | 'magnification'>('default');
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'loupes' | 'lights' | 'accessories'>('all');
 
-  const sortedProducts = [...products].sort((a, b) => {
+  const filteredProducts = categoryFilter === 'all' 
+    ? products 
+    : products.filter(p => p.category === categoryFilter);
+
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sortBy) {
       case 'price-asc':
         return a.price - b.price;
@@ -319,19 +328,35 @@ const Index = () => {
             <p className="text-gray-400 max-w-2xl mx-auto mb-6">
               Профессиональное оборудование с гарантией качества и технической поддержкой
             </p>
-            <div className="flex items-center justify-center gap-3">
-              <Label className="text-sm text-gray-400">Сортировать:</Label>
-              <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
-                <SelectTrigger className="w-[200px]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="default">По умолчанию</SelectItem>
-                  <SelectItem value="price-asc">Цена: по возрастанию</SelectItem>
-                  <SelectItem value="price-desc">Цена: по убыванию</SelectItem>
-                  <SelectItem value="magnification">Увеличение</SelectItem>
-                </SelectContent>
-              </Select>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+              <div className="flex items-center gap-3">
+                <Label className="text-sm text-gray-400">Категория:</Label>
+                <Select value={categoryFilter} onValueChange={(value: any) => setCategoryFilter(value)}>
+                  <SelectTrigger className="w-[200px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Все товары</SelectItem>
+                    <SelectItem value="loupes">Бинокулярные лупы</SelectItem>
+                    <SelectItem value="lights">Осветители</SelectItem>
+                    <SelectItem value="accessories">Аксессуары</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex items-center gap-3">
+                <Label className="text-sm text-gray-400">Сортировать:</Label>
+                <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
+                  <SelectTrigger className="w-[200px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="default">По умолчанию</SelectItem>
+                    <SelectItem value="price-asc">Цена: по возрастанию</SelectItem>
+                    <SelectItem value="price-desc">Цена: по убыванию</SelectItem>
+                    <SelectItem value="magnification">Увеличение</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
