@@ -163,6 +163,7 @@ export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   
   const product = productsData.find(p => p.id === Number(id));
 
@@ -182,6 +183,7 @@ export default function ProductDetail() {
   };
 
   return (
+    <>
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-4">
@@ -195,12 +197,18 @@ export default function ProductDetail() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
           <div className="space-y-4">
-            <div className="aspect-square overflow-hidden rounded-lg bg-gray-100 relative group">
+            <div 
+              className="aspect-square overflow-hidden rounded-lg bg-gray-100 relative group cursor-pointer"
+              onClick={() => setIsFullscreen(true)}
+            >
               <img 
                 src={product.images[selectedImageIndex]} 
                 alt={product.name} 
                 className="w-full h-full object-cover transition-transform duration-300"
               />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                <Icon name="Maximize2" size={48} className="text-white opacity-0 group-hover:opacity-70 transition-opacity" />
+              </div>
               {product.images.length > 1 && (
                 <>
                   <Button
@@ -382,5 +390,51 @@ export default function ProductDetail() {
         </Tabs>
       </div>
     </div>
+
+    {isFullscreen && (
+      <div 
+        className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+        onClick={() => setIsFullscreen(false)}
+      >
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute top-4 right-4 text-white hover:bg-white/20"
+          onClick={() => setIsFullscreen(false)}
+        >
+          <Icon name="X" size={32} />
+        </Button>
+        
+        <div className="relative max-w-7xl max-h-full" onClick={(e) => e.stopPropagation()}>
+          <img 
+            src={product.images[selectedImageIndex]} 
+            alt={product.name} 
+            className="max-w-full max-h-[90vh] object-contain"
+          />
+          
+          {product.images.length > 1 && (
+            <>
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm"
+                onClick={() => setSelectedImageIndex(prev => prev === 0 ? product.images.length - 1 : prev - 1)}
+              >
+                <Icon name="ChevronLeft" size={24} />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm"
+                onClick={() => setSelectedImageIndex(prev => prev === product.images.length - 1 ? 0 : prev + 1)}
+              >
+                <Icon name="ChevronRight" size={24} />
+              </Button>
+            </>
+          )}
+        </div>
+      </div>
+    )}
+    </>
   );
 }
