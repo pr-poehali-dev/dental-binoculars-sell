@@ -155,7 +155,7 @@ const Index = () => {
 
   const handleDownloadProductPDF = async () => {
     try {
-      const response = await fetch('https://functions.poehali.dev/b6b1b640-cbfc-4bbd-b23e-801608792b39', {
+      const response = await fetch('https://functions.poehali.dev/52445cab-ac30-4ec2-a01d-b249eea14ff9', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

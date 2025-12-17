@@ -142,6 +142,6 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         'isBase64Encoded': False,
         'body': json.dumps({
             'pdf': pdf_base64,
-            'filename': 'product-catalog.pdf'
+            'filename': 'catalog.pdf'
         })
     }

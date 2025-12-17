@@ -1,16 +1,16 @@
 {
   "tests": [
     {
-      "name": "Generate product catalog PDF",
+      "name": "Generate catalog PDF",
       "method": "POST",
       "path": "/",
       "body": {
         "products": [
           {
-            "name": "ProVision X3",
-            "description": "Профессиональные бинокуляры",
-            "price": 89900,
-            "magnification": "3.5x",
+            "name": "Test Product",
+            "description": "Test description",
+            "price": 50000,
+            "magnification": "3.0x",
             "image": "https://cdn.poehali.dev/files/IMG_5018.png"
           }
         ]
