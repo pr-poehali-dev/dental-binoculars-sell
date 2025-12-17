@@ -306,7 +306,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 animate-fade-in">
             <div className="flex items-center justify-center gap-4 mb-4">
-              <h2 className="text-4xl font-display font-bold">Каталог бинокуляров</h2>
+              <h2 className="text-4xl font-display font-bold">Каталог</h2>
               <Button 
                 onClick={handleDownloadProductPDF}
                 variant="outline"
