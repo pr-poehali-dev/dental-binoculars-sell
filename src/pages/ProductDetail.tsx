@@ -167,10 +167,10 @@ const productsData: ProductDetails[] = [
     pricePrefix: 'от',
     images: [
       'https://cdn.poehali.dev/files/ges.jpg',
-      'https://cdn.poehali.dev/files/koo.jpg',
       'https://cdn.poehali.dev/files/4.jpg',
       'https://cdn.poehali.dev/files/8.jpg',
-      'https://cdn.poehali.dev/files/3.jpg'
+      'https://cdn.poehali.dev/files/3.jpg',
+      'https://cdn.poehali.dev/files/6.jpg'
     ],
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     weight: 'Зависит от конфигурации',
