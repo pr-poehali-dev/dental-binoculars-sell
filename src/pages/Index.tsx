@@ -39,6 +39,15 @@ const products: Product[] = [
     image: 'https://cdn.poehali.dev/files/624.JPG',
     magnification: 'N/A',
     category: 'lights'
+  },
+  {
+    id: 6,
+    name: 'Бинокулярные лупы Individual Ergo Pro Max',
+    description: '5 цветов оправы (на выбор). Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
+    price: 120000,
+    image: 'https://cdn.poehali.dev/files/ges.jpg',
+    magnification: '3.0х / 4.0х / 5.0х / 6.0х',
+    category: 'loupes'
   }
 ];
 
