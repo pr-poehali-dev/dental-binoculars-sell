@@ -11,6 +11,7 @@ interface ProductDetails {
   name: string;
   description: string;
   price: number;
+  pricePrefix?: string;
   images: string[];
   magnification: string;
   weight: string;
@@ -163,9 +164,13 @@ const productsData: ProductDetails[] = [
     name: 'Бинокулярные лупы Individual Ergo Pro Max',
     description: '5 цветов оправы (на выбор). Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
     price: 120000,
+    pricePrefix: 'от',
     images: [
       'https://cdn.poehali.dev/files/ges.jpg',
-      'https://cdn.poehali.dev/files/koo.jpg'
+      'https://cdn.poehali.dev/files/koo.jpg',
+      'https://cdn.poehali.dev/files/4.jpg',
+      'https://cdn.poehali.dev/files/8.jpg',
+      'https://cdn.poehali.dev/files/3.jpg'
     ],
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     weight: 'Зависит от конфигурации',
@@ -290,6 +295,7 @@ export default function ProductDetail() {
               <Badge className="mb-4 bg-primary text-white">В наличии</Badge>
               <h1 className="text-4xl font-display font-bold mb-4">{product.name}</h1>
               <div className="text-4xl font-bold text-primary mb-6">
+                {product.pricePrefix && <span className="text-2xl mr-2">{product.pricePrefix}</span>}
                 {product.price.toLocaleString('ru-RU')} ₽
               </div>
             </div>

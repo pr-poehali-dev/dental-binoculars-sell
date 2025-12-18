@@ -16,6 +16,7 @@ interface Product {
   name: string;
   description: string;
   price: number;
+  pricePrefix?: string;
   image: string;
   magnification: string;
   category: 'loupes' | 'lights' | 'accessories';
@@ -45,6 +46,7 @@ const products: Product[] = [
     name: 'Бинокулярные лупы Individual Ergo Pro Max',
     description: '5 цветов оправы (на выбор). Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
     price: 120000,
+    pricePrefix: 'от',
     image: 'https://cdn.poehali.dev/files/ges.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
@@ -375,7 +377,10 @@ const Index = () => {
                       <Badge variant="secondary">{product.magnification}</Badge>
                     </div>
                     <div className="pt-4 border-t">
-                      <div className="text-3xl font-bold text-primary">{product.price.toLocaleString('ru-RU')} ₽</div>
+                      <div className="text-3xl font-bold text-primary">
+                        {product.pricePrefix && <span className="text-xl mr-1">{product.pricePrefix} </span>}
+                        {product.price.toLocaleString('ru-RU')} ₽
+                      </div>
                     </div>
                   </div>
                 </CardContent>
