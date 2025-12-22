@@ -168,7 +168,9 @@ const productsData: ProductDetails[] = [
     images: [
       'https://cdn.poehali.dev/files/ges.jpg',
       'https://cdn.poehali.dev/files/8.jpg',
-      'https://cdn.poehali.dev/files/koo.jpg'
+      'https://cdn.poehali.dev/files/koo.jpg',
+      'https://cdn.poehali.dev/files/нов.jpg',
+      'https://cdn.poehali.dev/files/зол.jpg'
     ],
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     weight: 'Зависит от конфигурации',
