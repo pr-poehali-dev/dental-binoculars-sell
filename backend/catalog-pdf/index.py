@@ -5,6 +5,8 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import cm
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Image
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 import io
 import base64
 import requests
@@ -51,6 +53,15 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                             rightMargin=2*cm, leftMargin=2*cm,
                             topMargin=2*cm, bottomMargin=2*cm)
     
+    try:
+        pdfmetrics.registerFont(TTFont('DejaVuSans', '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'))
+        pdfmetrics.registerFont(TTFont('DejaVuSans-Bold', '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
+        font_name = 'DejaVuSans'
+        font_name_bold = 'DejaVuSans-Bold'
+    except:
+        font_name = 'Helvetica'
+        font_name_bold = 'Helvetica-Bold'
+    
     styles = getSampleStyleSheet()
     title_style = ParagraphStyle(
         'CustomTitle',
@@ -58,7 +69,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         fontSize=24,
         textColor='#1a1a1a',
         spaceAfter=30,
-        alignment=TA_CENTER
+        alignment=TA_CENTER,
+        fontName=font_name_bold
     )
     
     heading_style = ParagraphStyle(
@@ -67,7 +79,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         fontSize=18,
         textColor='#2563eb',
         spaceAfter=12,
-        spaceBefore=20
+        spaceBefore=20,
+        fontName=font_name_bold
     )
     
     body_style = ParagraphStyle(
@@ -76,7 +89,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         fontSize=11,
         textColor='#4b5563',
         spaceAfter=8,
-        alignment=TA_LEFT
+        alignment=TA_LEFT,
+        fontName=font_name
     )
     
     price_style = ParagraphStyle(
@@ -85,7 +99,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         fontSize=16,
         textColor='#16a34a',
         spaceAfter=8,
-        alignment=TA_LEFT
+        alignment=TA_LEFT,
+        fontName=font_name_bold
     )
     
     story = []
@@ -123,8 +138,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         
         story.append(Spacer(1, 0.5*cm))
         story.append(Paragraph("<b>Контакты для заказа:</b>", body_style))
-        story.append(Paragraph("Телефон: +7 (495) 123-45-67", body_style))
-        story.append(Paragraph("Email: info@dentaloptics.ru", body_style))
+        story.append(Paragraph("Телефон: +7 (915) 165-75-75", body_style))
+        story.append(Paragraph("Email: VAVDENTAL@MAIL.RU", body_style))
     
     doc.build(story)
     
