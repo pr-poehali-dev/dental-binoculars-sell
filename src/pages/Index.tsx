@@ -316,17 +316,7 @@ const Index = () => {
       <section id="catalog" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 animate-fade-in">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <h2 className="text-4xl font-display font-bold">Каталог</h2>
-              <Button 
-                onClick={handleDownloadProductPDF}
-                variant="outline"
-                size="lg"
-              >
-                <Icon name="Download" size={20} className="mr-2" />
-                Скачать PDF
-              </Button>
-            </div>
+            <h2 className="text-4xl font-display font-bold mb-4">Каталог</h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-6">
               Профессиональное оборудование с гарантией качества и технической поддержкой
             </p>
