@@ -48,19 +48,41 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     body_data = json.loads(event.get('body', '{}'))
     products = body_data.get('products', [])
     
+    font_urls = {
+        'regular': 'https://cdn.jsdelivr.net/npm/dejavu-fonts-ttf@2.37.3/ttf/DejaVuSans.ttf',
+        'bold': 'https://cdn.jsdelivr.net/npm/dejavu-fonts-ttf@2.37.3/ttf/DejaVuSans-Bold.ttf'
+    }
+    
+    font_paths = {
+        'regular': '/tmp/DejaVuSans.ttf',
+        'bold': '/tmp/DejaVuSans-Bold.ttf'
+    }
+    
+    try:
+        for key in ['regular', 'bold']:
+            response = requests.get(font_urls[key], timeout=10)
+            response.raise_for_status()
+            with open(font_paths[key], 'wb') as f:
+                f.write(response.content)
+        
+        pdfmetrics.registerFont(TTFont('DejaVuSans', font_paths['regular']))
+        pdfmetrics.registerFont(TTFont('DejaVuSans-Bold', font_paths['bold']))
+        pdfmetrics.registerFontFamily('DejaVuSans', normal='DejaVuSans', bold='DejaVuSans-Bold')
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({'error': f'Font loading error: {str(e)}'}),
+            'isBase64Encoded': False
+        }
+    
     buffer = io.BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=A4,
                             rightMargin=2*cm, leftMargin=2*cm,
                             topMargin=2*cm, bottomMargin=2*cm)
-    
-    try:
-        pdfmetrics.registerFont(TTFont('DejaVuSans', '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'))
-        pdfmetrics.registerFont(TTFont('DejaVuSans-Bold', '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
-        font_name = 'DejaVuSans'
-        font_name_bold = 'DejaVuSans-Bold'
-    except:
-        font_name = 'Helvetica'
-        font_name_bold = 'Helvetica-Bold'
     
     styles = getSampleStyleSheet()
     title_style = ParagraphStyle(
@@ -70,7 +92,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         textColor='#1a1a1a',
         spaceAfter=30,
         alignment=TA_CENTER,
-        fontName=font_name_bold
+        fontName='DejaVuSans'
     )
     
     heading_style = ParagraphStyle(
@@ -80,7 +102,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         textColor='#2563eb',
         spaceAfter=12,
         spaceBefore=20,
-        fontName=font_name_bold
+        fontName='DejaVuSans'
     )
     
     body_style = ParagraphStyle(
@@ -90,7 +112,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         textColor='#4b5563',
         spaceAfter=8,
         alignment=TA_LEFT,
-        fontName=font_name
+        fontName='DejaVuSans'
     )
     
     price_style = ParagraphStyle(
@@ -100,20 +122,20 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         textColor='#16a34a',
         spaceAfter=8,
         alignment=TA_LEFT,
-        fontName=font_name_bold
+        fontName='DejaVuSans'
     )
     
     story = []
     
-    story.append(Paragraph("Каталог продуктов", title_style))
-    story.append(Paragraph("VAV DENTAL — Профессиональное стоматологическое оборудование", body_style))
+    story.append(Paragraph('<b>Каталог продуктов</b>', title_style))
+    story.append(Paragraph('VAV DENTAL — Профессиональное стоматологическое оборудование', body_style))
     story.append(Spacer(1, 0.5*cm))
     
     for idx, product in enumerate(products):
         if idx > 0:
             story.append(PageBreak())
         
-        story.append(Paragraph(product.get('name', 'Без названия'), heading_style))
+        story.append(Paragraph(f'<b>{product.get("name", "Без названия")}</b>', heading_style))
         
         if product.get('image'):
             try:
@@ -131,15 +153,16 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             story.append(Spacer(1, 0.3*cm))
         
         if product.get('magnification') and product['magnification'] != 'N/A':
-            story.append(Paragraph(f"<b>Увеличение:</b> {product['magnification']}", body_style))
+            story.append(Paragraph(f'<b>Увеличение:</b> {product["magnification"]}', body_style))
         
         if product.get('price'):
-            story.append(Paragraph(f"<b>Цена:</b> {product['price']:,} ₽".replace(',', ' '), price_style))
+            price_formatted = f'{product["price"]:,}'.replace(',', ' ')
+            story.append(Paragraph(f'<b>Цена: {price_formatted} ₽</b>', price_style))
         
         story.append(Spacer(1, 0.5*cm))
-        story.append(Paragraph("<b>Контакты для заказа:</b>", body_style))
-        story.append(Paragraph("Телефон: +7 (915) 165-75-75", body_style))
-        story.append(Paragraph("Email: VAVDENTAL@MAIL.RU", body_style))
+        story.append(Paragraph('<b>Контакты для заказа:</b>', body_style))
+        story.append(Paragraph('Телефон: +7 (915) 165-75-75', body_style))
+        story.append(Paragraph('Email: VAVDENTAL@MAIL.RU', body_style))
     
     doc.build(story)
     
