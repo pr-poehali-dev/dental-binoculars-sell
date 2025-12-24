@@ -302,7 +302,9 @@ export default function ProductDetail() {
 
             <div className="space-y-3">
               <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                <span className="text-gray-600">Увеличение:</span>
+                <span className="text-gray-600">
+                  {product.id === 5 ? 'Цветовая температура:' : 'Увеличение:'}
+                </span>
                 <Badge variant="secondary" className="text-lg">{product.magnification}</Badge>
               </div>
             </div>
