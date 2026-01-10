@@ -38,7 +38,7 @@ const products: Product[] = [
     description: 'Беспроводной головной осветитель Pro Max обеспечивает непрерывную работу без необходимости подключения к кабелю. Высокое качество света, имеются два уровня яркости, переключаемые сенсорным нажатием',
     price: 60000,
     image: 'https://cdn.poehali.dev/files/624.JPG',
-    magnification: '5700 K',
+    magnification: '35000 ЛК',
     category: 'lights'
   },
   {
