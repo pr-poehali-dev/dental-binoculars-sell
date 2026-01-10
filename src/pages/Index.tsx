@@ -50,6 +50,15 @@ const products: Product[] = [
     image: 'https://cdn.poehali.dev/files/ges.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
+  },
+  {
+    id: 7,
+    name: 'Универсальный Осветитель Беспроводной',
+    description: 'Быстросъемные аккумуляторы на магнитном креплении. Универсальное крепление с прищепкой для бинокуляров и очков',
+    price: 40000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/snapedit_1768035650133.jpeg',
+    magnification: '20 000-60 000 Люкс',
+    category: 'lights'
   }
 ];
 
