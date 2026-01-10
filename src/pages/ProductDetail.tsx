@@ -338,7 +338,7 @@ export default function ProductDetail() {
             <div className="space-y-3">
               <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                 <span className="text-gray-600">
-                  {product.id === 5 ? 'Цветовая температура:' : 'Увеличение:'}
+                  {(product.id === 5 || product.id === 7) ? 'Интенсивность света:' : 'Увеличение:'}
                 </span>
                 <Badge variant="secondary" className="text-lg">{product.magnification}</Badge>
               </div>
