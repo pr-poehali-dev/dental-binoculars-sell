@@ -373,7 +373,7 @@ const Index = () => {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-600">
-                        {product.category === 'lights' ? 'Цветовая температура:' : 'Увеличение:'}
+                        {product.category === 'lights' ? 'Интенсивность света:' : 'Увеличение:'}
                       </span>
                       <Badge variant="secondary">{product.magnification}</Badge>
                     </div>
