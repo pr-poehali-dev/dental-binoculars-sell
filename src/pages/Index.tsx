@@ -128,18 +128,32 @@ const Index = () => {
         salary: 'От 120 000 ₽',
         location: 'Москва',
         type: 'Полная занятость / Частичная занятость',
+        format: 'Удаленно / Разъездной',
         description: 'Ищем активного менеджера с грамотной речью. Опыт в медицинской сфере не обязателен.',
-        requirements: ['Грамотная речь', 'Активность', 'Ответственность'],
-        benefits: ['Премия', 'Обучение']
+        requirements: ['Грамотная речь', 'Активность'],
+        benefits: ['Ежемесячная Премия', 'Обучение'],
+        payments: 'Выплаты два раза в месяц',
+        contacts: {
+          phone: '+7 (925) 411-61-83',
+          email: 'vavdental@yandex.ru',
+          messenger: 'WhatsApp, Telegram'
+        }
       },
       {
-        title: 'Региональный менеджер',
+        title: 'Региональный Менеджер по продажам (Все регионы)',
         salary: 'От 120 000 ₽',
-        location: 'Удаленно / Разъездной',
+        location: 'Все регионы',
         type: 'Полная занятость / Частичная занятость',
-        description: 'Развитие регионального представительства компании.',
-        requirements: ['Опыт продаж', 'Коммуникабельность', 'Готовность к командировкам'],
-        benefits: ['Обучение', 'Корпоративный транспорт']
+        format: 'Удаленно / Разъездной',
+        description: 'Ищем активного менеджера с грамотной речью. Опыт в медицинской сфере не обязателен.',
+        requirements: ['Грамотная речь', 'Активность'],
+        benefits: ['Премия', 'Обучение'],
+        payments: 'Выплаты два раза в месяц',
+        contacts: {
+          phone: '+7 (925) 411-61-83',
+          email: 'vavdental@yandex.ru',
+          messenger: 'WhatsApp, Telegram'
+        }
       }
     ];
 
@@ -624,31 +638,49 @@ const Index = () => {
                     <span>Менеджер по продажам (г.Москва)</span>
                     <Badge className="bg-primary text-white">Активна</Badge>
                   </CardTitle>
-                  <CardDescription>Тип занятости-Полная занятость / Частичная занятость. 
-
-Формат работы- Удаленно / Разъездной</CardDescription>
+                  <CardDescription>
+                    Тип занятости: Полная занятость / Частичная занятость<br/>
+                    Формат работы: Удаленно / Разъездной<br/>
+                    Выплаты: два раза в месяц
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-400 mb-4">Ищем активного менеджера с грамотной речью. Опыт в медицинской сфере не обязателен.</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     <Badge variant="outline">От 120 000 ₽</Badge>
-                    <Badge variant="outline">Премия</Badge>
+                    <Badge variant="outline">Ежемесячная Премия</Badge>
+                    <Badge variant="outline">Обучение</Badge>
+                  </div>
+                  <div className="border-t border-gray-700 pt-4 mt-4">
+                    <p className="text-sm text-gray-400 mb-2 font-semibold">Отправить резюме:</p>
+                    <p className="text-sm text-gray-300">WhatsApp, Telegram, MAX: +7 (925) 411-61-83</p>
+                    <p className="text-sm text-gray-300">E-mail: vavdental@yandex.ru</p>
                   </div>
                 </CardContent>
               </Card>
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
-                    <span>Региональный менеджер</span>
-                    <Badge className="bg-primary text-white"></Badge>
+                    <span>Региональный Менеджер по продажам (Все регионы)</span>
+                    <Badge className="bg-primary text-white">Активна</Badge>
                   </CardTitle>
-                  <CardDescription>Тип занятости-Полная занятость / Частичная занятость. Формат работы- Удаленно / Разъездной</CardDescription>
+                  <CardDescription>
+                    Тип занятости: Полная занятость / Частичная занятость<br/>
+                    Формат работы: Удаленно / Разъездной<br/>
+                    Выплаты: два раза в месяц
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4"></p>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="text-gray-400 mb-4">Ищем активного менеджера с грамотной речью. Опыт в медицинской сфере не обязателен.</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
                     <Badge variant="outline">От 120 000 ₽</Badge>
+                    <Badge variant="outline">Премия</Badge>
                     <Badge variant="outline">Обучение</Badge>
+                  </div>
+                  <div className="border-t border-gray-700 pt-4 mt-4">
+                    <p className="text-sm text-gray-400 mb-2 font-semibold">Отправить резюме:</p>
+                    <p className="text-sm text-gray-300">WhatsApp, Telegram, MAX: +7 (925) 411-61-83</p>
+                    <p className="text-sm text-gray-300">E-mail: vavdental@yandex.ru</p>
                   </div>
                 </CardContent>
               </Card>
