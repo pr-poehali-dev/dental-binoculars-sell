@@ -271,10 +271,12 @@ const Index = () => {
         </nav>
       </header>
 
-      <section className="relative overflow-hidden bg-black min-h-screen flex items-center justify-center">
+      <section className="relative py-20 overflow-hidden bg-black">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
-        <div className="relative z-10 w-full">
-          <ProductMarquee products={products} />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <ProductMarquee products={products} />
+          </div>
         </div>
       </section>
 

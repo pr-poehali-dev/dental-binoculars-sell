@@ -49,25 +49,25 @@ const ProductMarquee = ({ products }: ProductMarqueeProps) => {
   const tripleProducts = [...products, ...products, ...products];
 
   return (
-    <div className="overflow-hidden w-full py-20">
+    <div className="overflow-hidden w-full h-[400px] flex items-center">
       <div 
         ref={marqueeRef}
-        className="flex gap-8"
+        className="flex gap-6"
         style={{ width: 'max-content' }}
       >
         {tripleProducts.map((product, index) => (
           <div
             key={`${product.id}-${index}`}
-            className="flex-shrink-0 w-[400px] h-[500px] relative group"
+            className="flex-shrink-0 w-[300px] h-[350px] relative group"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-full object-cover rounded-2xl shadow-2xl"
+              className="w-full h-full object-cover rounded-xl shadow-2xl"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent p-6 rounded-b-2xl z-20">
-              <p className="text-white text-lg font-bold line-clamp-2">{product.name}</p>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 rounded-b-xl z-20">
+              <p className="text-white text-sm font-semibold line-clamp-2">{product.name}</p>
             </div>
           </div>
         ))}
