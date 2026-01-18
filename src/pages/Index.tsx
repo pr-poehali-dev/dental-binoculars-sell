@@ -10,6 +10,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import CatalogQRCode from '@/components/CatalogQRCode';
+import ProductMarquee from '@/components/ProductMarquee';
 
 interface Product {
   id: number;
@@ -270,9 +271,9 @@ const Index = () => {
         </nav>
       </header>
 
-      <section className="relative py-20 overflow-hidden bg-black">
+      <section className="relative overflow-hidden bg-black">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 py-20">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <Badge className="mb-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0">Профессиональное оборудование</Badge>
             <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-white via-gray-400 to-gray-800 bg-clip-text text-transparent animate-gradient">
@@ -287,6 +288,7 @@ const Index = () => {
             </Button>
           </div>
         </div>
+        <ProductMarquee products={products} />
       </section>
 
       <section id="about" className="py-16 bg-muted/30">
