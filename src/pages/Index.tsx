@@ -271,24 +271,9 @@ const Index = () => {
         </nav>
       </header>
 
-      <section className="relative overflow-hidden bg-black">
+      <section className="relative overflow-hidden bg-black min-h-screen flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
-        <div className="container mx-auto px-4 relative z-10 py-20">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <Badge className="mb-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0">Профессиональное оборудование</Badge>
-            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-white via-gray-400 to-gray-800 bg-clip-text text-transparent animate-gradient">
-              Стоматологические бинокуляры нового поколения
-            </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Высокоточная оптика для профессионалов. Комфорт и точность в каждой процедуре.
-            </p>
-            <Button size="lg" onClick={() => scrollToSection('catalog')} className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0">
-              <Icon name="Eye" size={20} className="mr-2" />
-              Смотреть каталог
-            </Button>
-          </div>
-        </div>
-        <div className="relative z-10">
+        <div className="relative z-10 w-full">
           <ProductMarquee products={products} />
         </div>
       </section>
