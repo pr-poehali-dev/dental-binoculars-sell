@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react';
-
 interface Product {
   id: number;
   name: string;
@@ -11,67 +9,16 @@ interface ProductMarqueeProps {
 }
 
 const ProductMarquee = ({ products }: ProductMarqueeProps) => {
-  const marqueeRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const marquee = marqueeRef.current;
-    if (!marquee) return;
-
-    let animationId: number;
-    let position = 0;
-    const speed = 1;
-
-    const animate = () => {
-      position -= speed;
-      const itemWidth = 320;
-      const totalWidth = itemWidth * products.length;
-
-      if (Math.abs(position) >= totalWidth) {
-        position = 0;
-      }
-
-      if (marquee) {
-        marquee.style.transform = `translateX(${position}px)`;
-      }
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [products.length]);
-
-  const tripleProducts = [...products, ...products, ...products];
-
   return (
-    <div className="overflow-hidden w-full h-[400px] flex items-center">
-      <div 
-        ref={marqueeRef}
-        className="flex gap-6"
-        style={{ width: 'max-content' }}
-      >
-        {tripleProducts.map((product, index) => (
-          <div
-            key={`${product.id}-${index}`}
-            className="flex-shrink-0 w-[300px] h-[350px] relative group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-full object-cover rounded-xl shadow-2xl"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 rounded-b-xl z-20">
-              <p className="text-white text-sm font-semibold line-clamp-2">{product.name}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="overflow-hidden w-full h-[400px] flex items-center justify-center">
+      <video
+        src="https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/2737c763-21d1-410f-8467-9fa446827028.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover rounded-xl shadow-2xl"
+      />
     </div>
   );
 };
