@@ -69,6 +69,15 @@ const products: Product[] = [
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/bf90173f-3608-4e00-8398-b1d89b4e4cec.jpg',
     magnification: '4.0х / 5.0х / 6.0х',
     category: 'loupes'
+  },
+  {
+    id: 9,
+    name: 'Осветитель Pro',
+    description: 'Светодиодный стоматологический осветитель с цветовой температурой 5000 К и индексом цветопередачи CRI>90%',
+    price: 30000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/52f5eee2-fd60-43b8-a6e9-854b318031fb.jpeg',
+    magnification: '90 000 лк',
+    category: 'lights'
   }
 ];
 
