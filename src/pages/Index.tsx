@@ -78,6 +78,15 @@ const products: Product[] = [
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/52f5eee2-fd60-43b8-a6e9-854b318031fb.jpeg',
     magnification: '90 000 лк',
     category: 'lights'
+  },
+  {
+    id: 10,
+    name: 'Комплект Бинокулярные лупы Ergo + Осветитель',
+    description: 'Эрго линзы из оптического стекла Glance (Корея). Конструкция бинокуляров, расположенная под углом, позволяет держать голову прямо',
+    price: 60000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/69e2b1b6-cc8f-4aba-b3ff-e52b655e9806.jpg',
+    magnification: '5.0х',
+    category: 'loupes'
   }
 ];
 
