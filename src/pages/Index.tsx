@@ -399,14 +399,7 @@ const Index = () => {
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                 </div>
                 <CardHeader>
-                  <div className="flex items-start justify-between gap-2">
-                    <CardTitle className="font-display">{product.name}</CardTitle>
-                    {product.id === 10 && (
-                      <Badge variant="default" className="bg-green-600 hover:bg-green-700 text-white">
-                        Комплект
-                      </Badge>
-                    )}
-                  </div>
+                  <CardTitle className="font-display">{product.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
