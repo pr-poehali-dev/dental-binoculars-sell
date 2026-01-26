@@ -87,6 +87,15 @@ const products: Product[] = [
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/69e2b1b6-cc8f-4aba-b3ff-e52b655e9806.jpg',
     magnification: '5.0х',
     category: 'loupes'
+  },
+  {
+    id: 11,
+    name: 'Комплект Бинокулярные лупы Basic + Осветитель',
+    description: 'Отличный комплект для начинающих специалистов, которые хотят начать работать с увеличением',
+    price: 40000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/13abc5a6-583f-4b68-a114-9fcb6ec844fa.JPG',
+    magnification: '3.5х',
+    category: 'loupes'
   }
 ];
 
