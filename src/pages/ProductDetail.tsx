@@ -486,6 +486,51 @@ export default function ProductDetail() {
             </Card>
           </TabsContent>
         </Tabs>
+
+        <div className="mt-16">
+          <h2 className="text-3xl font-bold mb-8">Рекомендуемые товары</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {productsData
+              .filter(p => p.id !== product.id)
+              .slice(0, 3)
+              .map((recommendedProduct) => (
+                <Card 
+                  key={recommendedProduct.id}
+                  className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                  onClick={() => {
+                    navigate(`/product/${recommendedProduct.id}`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <img 
+                      src={recommendedProduct.images[0]} 
+                      alt={recommendedProduct.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {recommendedProduct.name}
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                      {recommendedProduct.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl font-bold text-primary">
+                        {recommendedProduct.pricePrefix && `${recommendedProduct.pricePrefix} `}
+                        {recommendedProduct.price.toLocaleString('ru-RU')} ₽
+                      </span>
+                      <Button variant="ghost" size="sm">
+                        Подробнее
+                        <Icon name="ArrowRight" size={16} className="ml-2" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
 
