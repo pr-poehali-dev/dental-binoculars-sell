@@ -367,9 +367,6 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 animate-fade-in">
             <h2 className="text-4xl font-display font-bold mb-4">Каталог</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mb-6">
-              Профессиональное оборудование с гарантией качества и технической поддержкой
-            </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
               <div className="flex items-center gap-3">
                 <Label className="text-sm text-gray-400">Категория:</Label>
