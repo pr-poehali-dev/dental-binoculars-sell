@@ -17,6 +17,7 @@ interface Product {
   name: string;
   description: string;
   price: number;
+  oldPrice?: number;
   pricePrefix?: string;
   image: string;
   magnification: string;
@@ -28,7 +29,8 @@ const products: Product[] = [
     id: 4,
     name: 'Бинокулярные лупы Ergo Pro Max',
     description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
-    price: 120000,
+    price: 119000,
+    oldPrice: 140000,
     image: 'https://cdn.poehali.dev/files/IMG_5018.png',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
@@ -37,7 +39,8 @@ const products: Product[] = [
     id: 5,
     name: 'Беспроводной головной осветитель Pro Max',
     description: 'Беспроводной головной осветитель Pro Max обеспечивает непрерывную работу без необходимости подключения к кабелю. Высокое качество света, имеются два уровня яркости, переключаемые сенсорным нажатием',
-    price: 60000,
+    price: 59000,
+    oldPrice: 65000,
     image: 'https://cdn.poehali.dev/files/624.JPG',
     magnification: '35000 ЛК',
     category: 'lights'
@@ -56,7 +59,8 @@ const products: Product[] = [
     id: 7,
     name: 'Универсальный Осветитель Беспроводной',
     description: 'Быстросъемные аккумуляторы на магнитном креплении. Универсальное крепление с прищепкой для бинокуляров и очков',
-    price: 40000,
+    price: 39000,
+    oldPrice: 45000,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/snapedit_1768035650133.jpeg',
     magnification: '20 000-60 000 Люкс',
     category: 'lights'
@@ -65,7 +69,8 @@ const products: Product[] = [
     id: 8,
     name: 'Бинокулярные лупы Ergo Pro',
     description: 'Апохроматические линзы из оптического стекла HOYA (Япония). Многослойное покрытие с антибликовым эффектом и защитой от запотевания и царапин',
-    price: 90000,
+    price: 91000,
+    oldPrice: 120000,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/bf90173f-3608-4e00-8398-b1d89b4e4cec.jpg',
     magnification: '4.0х / 5.0х / 6.0х',
     category: 'loupes'
@@ -74,7 +79,8 @@ const products: Product[] = [
     id: 9,
     name: 'Осветитель Pro',
     description: 'Светодиодный стоматологический осветитель с цветовой температурой 5000 К и индексом цветопередачи CRI>90%',
-    price: 30000,
+    price: 29000,
+    oldPrice: 40000,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/52f5eee2-fd60-43b8-a6e9-854b318031fb.jpeg',
     magnification: '90 000 лк',
     category: 'lights'
@@ -83,7 +89,8 @@ const products: Product[] = [
     id: 10,
     name: 'Комплект Бинокулярные лупы Ergo + Осветитель',
     description: 'Эрго линзы из оптического стекла Glance (Корея). Конструкция бинокуляров, расположенная под углом, позволяет держать голову прямо',
-    price: 60000,
+    price: 64000,
+    oldPrice: 80000,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/69e2b1b6-cc8f-4aba-b3ff-e52b655e9806.jpg',
     magnification: '5.0х',
     category: 'loupes'
@@ -92,7 +99,8 @@ const products: Product[] = [
     id: 11,
     name: 'Комплект Бинокулярные лупы Basic + Осветитель',
     description: 'Отличный комплект для начинающих специалистов, которые хотят начать работать с увеличением',
-    price: 40000,
+    price: 44000,
+    oldPrice: 60000,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/13abc5a6-583f-4b68-a114-9fcb6ec844fa.JPG',
     magnification: '3.5х',
     category: 'loupes'
@@ -416,9 +424,16 @@ const Index = () => {
                       <Badge variant="secondary">{product.magnification}</Badge>
                     </div>
                     <div className="pt-4 border-t">
-                      <div className="text-3xl font-bold text-primary">
-                        {product.pricePrefix && <span className="text-xl mr-1">{product.pricePrefix} </span>}
-                        {product.price.toLocaleString('ru-RU')} ₽
+                      <div className="flex items-center gap-3">
+                        <div className="text-3xl font-bold text-primary">
+                          {product.pricePrefix && <span className="text-xl mr-1">{product.pricePrefix} </span>}
+                          {product.price.toLocaleString('ru-RU')} ₽
+                        </div>
+                        {product.oldPrice && (
+                          <div className="text-xl text-gray-400 line-through">
+                            {product.oldPrice.toLocaleString('ru-RU')} ₽
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
