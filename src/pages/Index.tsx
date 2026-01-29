@@ -622,7 +622,7 @@ const Index = () => {
                   <Icon name="Phone" size={40} className="mx-auto mb-4 text-primary" />
                   <h3 className="font-bold mb-2">Телефон</h3>
                   <p className="text-gray-300">+7 (925) 411-61-83</p>
-                  <p className="text-sm text-gray-500 mt-2">Пн-Пт: 9:00-18:00</p>
+                  <p className="text-sm text-gray-500 mt-2">Пн-Пт: 10:00-19:00</p>
                 </CardContent>
               </Card>
               <Card className="text-center hover:shadow-lg transition-shadow">
