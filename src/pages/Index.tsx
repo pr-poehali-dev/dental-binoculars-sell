@@ -19,6 +19,7 @@ interface Product {
   price: number;
   oldPrice?: number;
   pricePrefix?: string;
+  forcePrimaryColor?: boolean;
   image: string;
   magnification: string;
   category: 'loupes' | 'lights' | 'accessories';
@@ -51,6 +52,7 @@ const products: Product[] = [
     description: '5 цветов оправы (на выбор). Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
     price: 120000,
     pricePrefix: 'от',
+    forcePrimaryColor: true,
     image: 'https://cdn.poehali.dev/files/ges.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
@@ -430,7 +432,7 @@ const Index = () => {
                     </div>
                     <div className="pt-4 border-t">
                       <div className="flex items-center gap-3">
-                        <div className={`text-3xl font-bold ${product.oldPrice ? 'text-red-600' : 'text-primary'}`}>
+                        <div className={`text-3xl font-bold ${product.forcePrimaryColor ? 'text-primary' : product.oldPrice ? 'text-red-600' : 'text-primary'}`}>
                           {product.pricePrefix && <span className="text-xl mr-1">{product.pricePrefix} </span>}
                           {product.price.toLocaleString('ru-RU')} ₽
                         </div>
