@@ -294,13 +294,15 @@ const Index = () => {
             <div className="flex items-center space-x-3">
               <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-32" />
             </div>
-            <div className="hidden md:flex space-x-6">
+            <div className="hidden md:flex space-x-3">
               {['about', 'catalog', 'testdrive', 'contacts', 'jobs', 'partnership'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`font-medium transition-colors hover:text-primary ${
-                    activeSection === section ? 'text-primary' : 'text-gray-400'
+                  className={`px-3 py-1.5 rounded-md font-medium transition-all ${
+                    activeSection === section 
+                      ? 'bg-primary/20 text-primary border border-primary/50' 
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {section === 'about' && 'О нас'}
