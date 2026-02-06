@@ -299,10 +299,10 @@ const Index = () => {
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`px-3 py-1.5 rounded-md font-medium transition-all ${
+                  className={`px-3 py-1.5 rounded-md font-medium transition-all border ${
                     activeSection === section 
-                      ? 'bg-primary/20 text-primary border border-primary/50' 
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      ? 'bg-primary/20 text-primary border-primary/50' 
+                      : 'text-gray-400 border-gray-700 hover:text-white hover:bg-white/5 hover:border-gray-500'
                   }`}
                 >
                   {section === 'about' && 'О нас'}
