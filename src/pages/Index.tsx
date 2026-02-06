@@ -111,6 +111,7 @@ const products: Product[] = [
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('catalog');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
@@ -315,7 +316,40 @@ const Index = () => {
                 </button>
               ))}
             </div>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+              aria-label="Toggle menu"
+            >
+              <Icon name={mobileMenuOpen ? "X" : "Menu"} size={28} />
+            </button>
           </div>
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-4 flex flex-col space-y-2">
+              {['about', 'catalog', 'testdrive', 'contacts', 'jobs', 'partnership'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => {
+                    scrollToSection(section);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`px-4 py-3 rounded-md font-medium transition-all border text-left ${
+                    activeSection === section 
+                      ? 'bg-primary/20 text-primary border-primary/50' 
+                      : 'text-gray-400 border-gray-700 hover:text-white hover:bg-white/5 hover:border-gray-500'
+                  }`}
+                >
+                  {section === 'about' && 'О нас'}
+                  {section === 'catalog' && 'Каталог'}
+                  {section === 'testdrive' && 'Тест-драйв'}
+                  {section === 'purchase' && 'Заказать'}
+                  {section === 'contacts' && 'Контакты'}
+                  {section === 'jobs' && 'Вакансии'}
+                  {section === 'partnership' && 'Сотрудничество'}
+                </button>
+              ))}
+            </div>
+          )}
         </nav>
       </header>
 
