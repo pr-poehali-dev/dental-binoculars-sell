@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import CatalogQRCode from '@/components/CatalogQRCode';
 import ProductMarquee from '@/components/ProductMarquee';
+import { addToCart, getCartCount, getCart } from '@/lib/cart';
 
 interface Product {
   id: number;
@@ -115,6 +116,18 @@ const Index = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    setCartCount(getCartCount(getCart()));
+    
+    const handleStorageChange = () => {
+      setCartCount(getCartCount(getCart()));
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
   const [formData, setFormData] = useState({
     name: '',
     city: '',
@@ -309,7 +322,7 @@ const Index = () => {
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>
-            <div className="hidden md:flex space-x-3">
+            <div className="hidden md:flex items-center space-x-3">
               {['about', 'catalog', 'testdrive', 'contacts', 'partnership', 'jobs'].map((section) => (
                 <button
                   key={section}
@@ -329,6 +342,19 @@ const Index = () => {
                   {section === 'partnership' && 'Сотрудничество'}
                 </button>
               ))}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="relative"
+                onClick={() => navigate('/cart')}
+              >
+                <Icon name="ShoppingCart" size={24} />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
+              </Button>
             </div>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -506,6 +532,13 @@ const Index = () => {
                   <Button 
                     className="flex-1 bg-primary hover:bg-primary/90" 
                     onClick={() => {
+                      addToCart({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image
+                      });
+                      setCartCount(getCartCount(getCart()));
                       toast({
                         title: "Добавлено в корзину",
                         description: `${product.name} добавлен в корзину`,

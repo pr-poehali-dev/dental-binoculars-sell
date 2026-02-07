@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import { addToCart } from '@/lib/cart';
 
 interface ProductDetails {
   id: number;
@@ -491,6 +492,12 @@ export default function ProductDetail() {
                 size="lg" 
                 className="w-full bg-primary hover:bg-primary/90"
                 onClick={() => {
+                  addToCart({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.images[0]
+                  });
                   toast({
                     title: "Добавлено в корзину",
                     description: `${product.name} добавлен в корзину`,
