@@ -506,12 +506,14 @@ const Index = () => {
                   <Button 
                     className="flex-1 bg-primary hover:bg-primary/90" 
                     onClick={() => {
-                      setFormData({...formData, productId: product.id.toString()});
-                      scrollToSection('purchase');
+                      toast({
+                        title: "Добавлено в корзину",
+                        description: `${product.name} добавлен в корзину`,
+                      });
                     }}
                   >
                     <Icon name="ShoppingCart" size={18} className="mr-2" />
-                    Заказать
+                    В корзину
                   </Button>
                 </CardFooter>
               </Card>

@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
+import { useToast } from '@/hooks/use-toast';
 
 interface ProductDetails {
   id: number;
@@ -364,6 +365,7 @@ const productsData: ProductDetails[] = [
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   
@@ -488,10 +490,15 @@ export default function ProductDetail() {
               <Button 
                 size="lg" 
                 className="w-full bg-primary hover:bg-primary/90"
-                onClick={handleOrder}
+                onClick={() => {
+                  toast({
+                    title: "Добавлено в корзину",
+                    description: `${product.name} добавлен в корзину`,
+                  });
+                }}
               >
                 <Icon name="ShoppingCart" size={20} className="mr-2" />
-                Оставить заявку
+                Добавить в корзину
               </Button>
               <Button 
                 size="lg" 
