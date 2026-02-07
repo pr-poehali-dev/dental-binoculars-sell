@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
-import { addToCart } from '@/lib/cart';
+import { addToCart, getCart, getCartCount } from '@/lib/cart';
 
 interface ProductDetails {
   id: number;
@@ -369,6 +369,11 @@ export default function ProductDetail() {
   const { toast } = useToast();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    setCartCount(getCartCount(getCart()));
+  }, []);
   
   const product = productsData.find(p => p.id === Number(id));
 
@@ -392,10 +397,25 @@ export default function ProductDetail() {
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-4">
-          <Button variant="ghost" onClick={() => navigate('/', { state: { scrollTo: 'catalog' } })}>
-            <Icon name="ArrowLeft" size={20} className="mr-2" />
-            Назад в каталог
-          </Button>
+          <div className="flex items-center justify-between">
+            <Button variant="ghost" onClick={() => navigate('/', { state: { scrollTo: 'catalog' } })}>
+              <Icon name="ArrowLeft" size={20} className="mr-2" />
+              Назад в каталог
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative"
+              onClick={() => navigate('/cart')}
+            >
+              <Icon name="ShoppingCart" size={24} />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -498,6 +518,7 @@ export default function ProductDetail() {
                     price: product.price,
                     image: product.images[0]
                   });
+                  setCartCount(getCartCount(getCart()));
                   toast({
                     title: "Добавлено в корзину",
                     description: `${product.name} добавлен в корзину`,
