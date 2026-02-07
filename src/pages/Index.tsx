@@ -721,6 +721,42 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="partnership" className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-display font-bold mb-6">Сотрудничество</h2>
+            <p className="text-xl text-gray-400 mb-12">Предлагаем выгодные условия для партнерства</p>
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <div className="p-6">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Users" size={32} className="text-primary" />
+                </div>
+                <h3 className="font-bold mb-2">Дилерам</h3>
+                <p className="text-gray-400">Специальные цены и маркетинговая поддержка</p>
+              </div>
+              <div className="p-6">
+                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Building" size={32} className="text-secondary" />
+                </div>
+                <h3 className="font-bold mb-2">Клиникам</h3>
+                <p className="text-gray-400">Корпоративные скидки и проведение обучения</p>
+              </div>
+              <div className="p-6">
+                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="GraduationCap" size={32} className="text-accent" />
+                </div>
+                <h3 className="font-bold mb-2">Учебным центрам</h3>
+                <p className="text-gray-400">Специальные цены для оснащения учебного класса</p>
+              </div>
+            </div>
+            <Button size="lg" onClick={() => scrollToSection('purchase')} className="bg-secondary hover:bg-secondary/90">
+              <Icon name="Handshake" size={20} className="mr-2" />
+              Связаться с нами
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <section id="jobs" className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -781,42 +817,6 @@ const Index = () => {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="partnership" className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-display font-bold mb-6">Сотрудничество</h2>
-            <p className="text-xl text-gray-400 mb-12">Предлагаем выгодные условия для партнерства</p>
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div className="p-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Users" size={32} className="text-primary" />
-                </div>
-                <h3 className="font-bold mb-2">Дилерам</h3>
-                <p className="text-gray-400">Специальные цены и маркетинговая поддержка</p>
-              </div>
-              <div className="p-6">
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Building" size={32} className="text-secondary" />
-                </div>
-                <h3 className="font-bold mb-2">Клиникам</h3>
-                <p className="text-gray-400">Корпоративные скидки и проведение обучения</p>
-              </div>
-              <div className="p-6">
-                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="GraduationCap" size={32} className="text-accent" />
-                </div>
-                <h3 className="font-bold mb-2">Учебным центрам</h3>
-                <p className="text-gray-400">Специальные цены для оснащения учебного класса</p>
-              </div>
-            </div>
-            <Button size="lg" onClick={() => scrollToSection('purchase')} className="bg-secondary hover:bg-secondary/90">
-              <Icon name="Handshake" size={20} className="mr-2" />
-              Связаться с нами
-            </Button>
           </div>
         </div>
       </section>
