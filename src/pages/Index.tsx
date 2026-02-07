@@ -310,7 +310,7 @@ const Index = () => {
               />
             </div>
             <div className="hidden md:flex space-x-3">
-              {['about', 'catalog', 'testdrive', 'contacts', 'jobs', 'partnership'].map((section) => (
+              {['about', 'catalog', 'testdrive', 'contacts', 'partnership', 'jobs'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -340,7 +340,7 @@ const Index = () => {
           </div>
           {mobileMenuOpen && (
             <div className="md:hidden mt-4 flex flex-col space-y-2">
-              {['about', 'catalog', 'testdrive', 'contacts', 'jobs', 'partnership'].map((section) => (
+              {['about', 'catalog', 'testdrive', 'contacts', 'partnership', 'jobs'].map((section) => (
                 <button
                   key={section}
                   onClick={() => {
