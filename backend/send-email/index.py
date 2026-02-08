@@ -83,24 +83,25 @@ def handler(event: dict, context) -> dict:
             }
         
 
-        smtp_server = 'smtp.yandex.ru'
-        smtp_port = 587
         sender_email = os.environ.get('YANDEX_EMAIL')
         sender_password = os.environ.get('YANDEX_PASSWORD')
-        recipient_email = 'vavdental@yandex.ru'
+        
+        if not sender_email or not sender_password:
+            raise Exception('YANDEX_EMAIL or YANDEX_PASSWORD not configured')
         
         msg = MIMEMultipart('alternative')
         msg['Subject'] = subject
         msg['From'] = sender_email
-        msg['To'] = recipient_email
+        msg['To'] = 'vavdental@yandex.ru'
         
-        html_part = MIMEText(message, 'html')
+        html_part = MIMEText(message, 'html', 'utf-8')
         msg.attach(html_part)
         
-        with smtplib.SMTP(smtp_server, smtp_port) as server:
-            server.starttls()
-            server.login(sender_email, sender_password)
-            server.send_message(msg)
+        server = smtplib.SMTP('smtp.yandex.ru', 587, timeout=10)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        server.send_message(msg)
+        server.quit()
         
         return {
             'statusCode': 200,
