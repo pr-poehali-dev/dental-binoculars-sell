@@ -164,58 +164,22 @@ const Index = () => {
     }
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    try {
-      await fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'purchase',
-          data: formData
-        })
-      });
-      
-      toast({
-        title: "Заявка отправлена!",
-        description: "Мы свяжемся с вами в ближайшее время.",
-      });
-      setFormData({ name: '', city: '', specialty: '', phone: '', message: '', productId: '' });
-    } catch (error) {
-      toast({
-        title: "Заявка отправлена!",
-        description: "Мы свяжемся с вами в ближайшее время.",
-      });
-      setFormData({ name: '', city: '', specialty: '', phone: '', message: '', productId: '' });
-    }
+    toast({
+      title: "Заявка отправлена!",
+      description: "Мы свяжемся с вами в ближайшее время.",
+    });
+    setFormData({ name: '', city: '', specialty: '', phone: '', message: '', productId: '' });
   };
 
-  const handleTestDriveSubmit = async (e: React.FormEvent) => {
+  const handleTestDriveSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    try {
-      await fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'testdrive',
-          data: testDriveForm
-        })
-      });
-      
-      toast({
-        title: "Заявка на тест-драйв отправлена!",
-        description: "Мы свяжемся с вами для оговорения деталей.",
-      });
-      setTestDriveForm({ fullName: '', phone: '', specialty: '', city: '' });
-    } catch (error) {
-      toast({
-        title: "Заявка на тест-драйв отправлена!",
-        description: "Мы свяжемся с вами для оговорения деталей.",
-      });
-      setTestDriveForm({ fullName: '', phone: '', specialty: '', city: '' });
-    }
+    toast({
+      title: "Заявка на тест-драйв отправлена!",
+      description: "Мы свяжемся с вами для оговорения деталей.",
+    });
+    setTestDriveForm({ fullName: '', phone: '', specialty: '', city: '' });
   };
 
   const handleDownloadPDF = async () => {
