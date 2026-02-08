@@ -164,8 +164,22 @@ const Index = () => {
     }
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    try {
+      await fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'purchase',
+          data: formData
+        })
+      });
+    } catch (error) {
+      console.log('Email sending failed, but continuing');
+    }
+    
     toast({
       title: "Заявка отправлена!",
       description: "Мы свяжемся с вами в ближайшее время.",
@@ -173,8 +187,22 @@ const Index = () => {
     setFormData({ name: '', city: '', specialty: '', phone: '', message: '', productId: '' });
   };
 
-  const handleTestDriveSubmit = (e: React.FormEvent) => {
+  const handleTestDriveSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    try {
+      await fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'testdrive',
+          data: testDriveForm
+        })
+      });
+    } catch (error) {
+      console.log('Email sending failed, but continuing');
+    }
+    
     toast({
       title: "Заявка на тест-драйв отправлена!",
       description: "Мы свяжемся с вами для оговорения деталей.",

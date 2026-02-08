@@ -82,7 +82,7 @@ def handler(event: dict, context) -> dict:
                 'isBase64Encoded': False
             }
         
-        # Отправка email через Yandex SMTP
+
         smtp_server = 'smtp.yandex.ru'
         smtp_port = 587
         sender_email = os.environ.get('YANDEX_EMAIL')
