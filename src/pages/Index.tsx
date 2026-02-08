@@ -369,13 +369,6 @@ const Index = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank')}
-              >
-                <Icon name="Users" size={24} />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
                 className="relative"
                 onClick={() => navigate('/cart')}
               >
@@ -419,6 +412,17 @@ const Index = () => {
                   {section === 'partnership' && 'Сотрудничество'}
                 </button>
               ))}
+              <Button
+                variant="outline"
+                className="w-full text-left border-primary/50 hover:bg-primary/10"
+                onClick={() => {
+                  window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank');
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <Icon name="Users" size={20} className="mr-2" />
+                Сообщество стоматологов
+              </Button>
             </div>
           )}
         </nav>
