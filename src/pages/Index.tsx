@@ -343,6 +343,15 @@ const Index = () => {
                 </button>
               ))}
               <Button
+                variant="outline"
+                size="sm"
+                className="text-sm border-primary/50 hover:bg-primary/10"
+                onClick={() => window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank')}
+              >
+                <Icon name="Users" size={16} className="mr-2" />
+                Сообщество стоматологов
+              </Button>
+              <Button
                 variant="ghost"
                 size="icon"
                 className="relative"
@@ -357,6 +366,13 @@ const Index = () => {
               </Button>
             </div>
             <div className="md:hidden flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank')}
+              >
+                <Icon name="Users" size={24} />
+              </Button>
               <Button
                 variant="ghost"
                 size="icon"
