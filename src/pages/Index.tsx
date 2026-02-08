@@ -855,7 +855,7 @@ const Index = () => {
                   </div>
                   <div className="border-t border-gray-700 pt-4 mt-4">
                     <p className="text-sm text-gray-400 mb-2 font-semibold">Отправить резюме:</p>
-                    <p className="text-sm text-gray-300">WhatsApp, Telegram, MAX: +7 (925) 411-61-83</p>
+                    <p className="text-sm text-gray-300">WhatsApp, Telegram, MAX: +7 (925) 411-61-83, +7 (936) 229-09-59</p>
                     <p className="text-sm text-gray-300">E-mail: vavdental@yandex.ru</p>
                   </div>
                 </CardContent>
@@ -881,7 +881,7 @@ const Index = () => {
                   </div>
                   <div className="border-t border-gray-700 pt-4 mt-4">
                     <p className="text-sm text-gray-400 mb-2 font-semibold">Отправить резюме:</p>
-                    <p className="text-sm text-gray-300">WhatsApp, Telegram, MAX: +7 (925) 411-61-83</p>
+                    <p className="text-sm text-gray-300">WhatsApp, Telegram, MAX: +7 (925) 411-61-83, +7 (936) 229-09-59</p>
                     <p className="text-sm text-gray-300">E-mail: vavdental@yandex.ru</p>
                   </div>
                 </CardContent>
