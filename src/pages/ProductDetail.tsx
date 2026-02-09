@@ -372,6 +372,7 @@ export default function ProductDetail() {
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setCartCount(getCartCount(getCart()));
   }, []);
   
