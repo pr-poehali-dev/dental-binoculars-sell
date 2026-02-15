@@ -382,10 +382,10 @@ const Index = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative"
+                className="relative h-14 w-14"
                 onClick={() => navigate('/cart')}
               >
-                <Icon name="ShoppingCart" size={28} />
+                <Icon name="ShoppingCart" size={48} />
                 {cartCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {cartCount}
