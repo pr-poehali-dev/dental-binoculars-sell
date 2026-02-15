@@ -385,7 +385,7 @@ const Index = () => {
                 className="relative"
                 onClick={() => navigate('/cart')}
               >
-                <Icon name="ShoppingCart" size={24} />
+                <Icon name="ShoppingCart" size={28} />
                 {cartCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {cartCount}
