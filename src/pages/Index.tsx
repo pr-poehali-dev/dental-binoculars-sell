@@ -355,7 +355,7 @@ const Index = () => {
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`px-3 py-1.5 rounded-md font-medium transition-all border ${
+                  className={`px-2 py-0.5 text-xs rounded-md font-medium transition-all border ${
                     activeSection === section 
                       ? 'bg-primary/20 text-primary border-primary/50' 
                       : 'text-gray-400 border-gray-700 hover:text-white hover:bg-white/5 hover:border-gray-500'
@@ -373,7 +373,7 @@ const Index = () => {
               <Button
                 variant="outline"
                 size="sm"
-                className="text-sm border-primary/50 hover:bg-primary/10"
+                className="text-xs h-7 px-2 border-primary/50 hover:bg-primary/10"
                 onClick={() => window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank')}
               >
                 <Icon name="Users" size={16} className="mr-2" />
