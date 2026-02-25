@@ -64,7 +64,7 @@ const products: Product[] = [
     description: 'Быстросъемные аккумуляторы на магнитном креплении. Универсальное крепление с прищепкой для бинокуляров и очков',
     price: 39000,
     oldPrice: 45000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/snapedit_1768035650133.jpeg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/6b590a70-8d04-4924-940d-b17fe68b6dc5.jpg',
     magnification: '20 000-60 000 Люкс',
     category: 'lights'
   },
