@@ -104,7 +104,7 @@ const products: Product[] = [
     description: 'Отличный комплект для начинающих специалистов, которые хотят начать работать с увеличением',
     price: 44000,
     oldPrice: 60000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/13abc5a6-583f-4b68-a114-9fcb6ec844fa.JPG',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9e2b0577-5dfd-415f-83b9-cb288cd7bd97.jpg',
     magnification: '3.5х',
     category: 'loupes'
   }
