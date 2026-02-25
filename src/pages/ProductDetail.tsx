@@ -218,10 +218,13 @@ const productsData: ProductDetails[] = [
     price: 39000,
     oldPrice: 45000,
     images: [
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/snapedit_1768035650133.jpeg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/snapedit_1768035636428.jpeg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/snapedit_1768035616279.jpeg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/Airbrush-IMAGE-ENHANCER-1768036275554-1768036275554.jpg'
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/594d7ace-2d6f-4c28-bceb-c399b1cadc05.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/28055a27-0fa7-41ab-9b36-22ae352e6c45.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/74b71023-7bdc-4993-9cc5-6df47d251563.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/6b031220-b80a-4b2e-931e-e4639d7d18f4.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/795a1645-887c-4f9a-aa1e-56b3bf4cd4fb.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/6b590a70-8d04-4924-940d-b17fe68b6dc5.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/01fa8ad9-822f-4618-9567-682f47d4b4aa.jpg'
     ],
     magnification: '20 000-60 000 Люкс',
     weight: '42 г',
