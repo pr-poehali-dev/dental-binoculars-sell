@@ -556,7 +556,7 @@ const Index = () => {
                   </Badge>
                 )}
                 <div className="aspect-square overflow-hidden bg-gray-100" onClick={() => navigate(`/product/${product.id}`)}>
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover scale-110 hover:scale-125 transition-transform duration-300" />
                 </div>
                 <CardHeader>
                   <CardTitle className="font-display">{product.name}</CardTitle>
