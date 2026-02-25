@@ -84,7 +84,7 @@ const products: Product[] = [
     description: 'Светодиодный стоматологический осветитель с цветовой температурой 5000 К и индексом цветопередачи CRI>90%',
     price: 29000,
     oldPrice: 40000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/52f5eee2-fd60-43b8-a6e9-854b318031fb.jpeg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/525801f5-ad3a-4448-9435-7001c9163daa.jpg',
     magnification: '90 000 лк',
     category: 'lights'
   },
