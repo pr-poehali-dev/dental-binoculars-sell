@@ -33,7 +33,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
     price: 119000,
     oldPrice: 140000,
-    image: 'https://cdn.poehali.dev/files/IMG_5018.png',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e6f53627-0c1b-4e69-9a8f-fcf2235770d6.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
