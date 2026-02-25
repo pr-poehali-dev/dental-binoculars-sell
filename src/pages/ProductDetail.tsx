@@ -143,10 +143,12 @@ const productsData: ProductDetails[] = [
     price: 59000,
     oldPrice: 65000,
     images: [
-      'https://cdn.poehali.dev/files/624.JPG',
-      'https://cdn.poehali.dev/files/Снимок2.JPG',
-      'https://cdn.poehali.dev/files/255.JPG',
-      'https://cdn.poehali.dev/files/126.JPG'
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/0efe54e3-bfff-4d46-8fa9-663c0dbce656.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/227a1aad-5de6-42b1-b0ec-5ee84ac1d223.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/3448e1d7-7e27-47e5-8fa1-81d35d325e40.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/c07e5a24-e709-4407-a425-75af5115519a.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/5cd342cf-046c-4159-8b53-ce275ef11aaa.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/3a183bd7-459f-4565-bc2e-56f52bba9a55.jpg'
     ],
     magnification: '35000 ЛК',
     weight: '10,8 г (осветитель), 19,2 г (аккумулятор)',
