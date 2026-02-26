@@ -192,13 +192,13 @@ export default function Cart() {
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Имя *</Label>
+                      <Label htmlFor="name">ФИО *</Label>
                       <Input
                         id="name"
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Ваше имя"
+                        placeholder="Фамилия Имя Отчество"
                       />
                     </div>
                     <div className="space-y-2">
