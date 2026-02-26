@@ -821,7 +821,7 @@ const Index = () => {
                   <Icon name="MapPin" size={40} className="mx-auto mb-4 text-accent" />
                   <h3 className="font-bold mb-2">Адрес</h3>
                   <p className="text-gray-300">Московская область, г.Королёв, пр-т Королёва 5д</p>
-                  <p className="text-sm text-gray-500 mt-2">Офис и шоурум</p>
+
                 </CardContent>
               </Card>
             </div>
