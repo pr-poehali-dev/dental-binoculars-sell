@@ -350,58 +350,73 @@ const Index = () => {
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>
-            <div className="hidden md:flex items-center space-x-3">
-              {['about', 'catalog', 'testdrive', 'contacts', 'partnership', 'jobs'].map((section) => (
-                <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className={`px-3 py-1.5 rounded-md font-medium transition-all border ${
-                    activeSection === section 
-                      ? 'bg-primary/20 text-primary border-primary/50' 
-                      : 'text-gray-400 border-gray-700 hover:text-white hover:bg-white/5 hover:border-gray-500'
-                  }`}
+            <div className="hidden md:flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                {['about', 'catalog', 'testdrive', 'contacts'].map((section) => (
+                  <button
+                    key={section}
+                    onClick={() => scrollToSection(section)}
+                    className={`px-3 py-1.5 rounded-md font-medium transition-all border text-sm ${
+                      activeSection === section 
+                        ? 'bg-primary/20 text-primary border-primary/50' 
+                        : 'text-gray-400 border-gray-700 hover:text-white hover:bg-white/5 hover:border-gray-500'
+                    }`}
+                  >
+                    {section === 'about' && 'О нас'}
+                    {section === 'catalog' && 'Каталог'}
+                    {section === 'testdrive' && 'Тест-драйв'}
+                    {section === 'contacts' && 'Контакты'}
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-center gap-2">
+                {['partnership', 'jobs'].map((section) => (
+                  <button
+                    key={section}
+                    onClick={() => scrollToSection(section)}
+                    className={`px-3 py-1.5 rounded-md font-medium transition-all border text-sm ${
+                      activeSection === section 
+                        ? 'bg-primary/20 text-primary border-primary/50' 
+                        : 'text-gray-400 border-gray-700 hover:text-white hover:bg-white/5 hover:border-gray-500'
+                    }`}
+                  >
+                    {section === 'jobs' && 'Вакансии'}
+                    {section === 'partnership' && 'Сотрудничество'}
+                  </button>
+                ))}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="text-sm border-primary/50 hover:bg-primary/10"
+                  onClick={() => window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank')}
                 >
-                  {section === 'about' && 'О нас'}
-                  {section === 'catalog' && 'Каталог'}
-                  {section === 'testdrive' && 'Тест-драйв'}
-                  {section === 'purchase' && 'Заказать'}
-                  {section === 'contacts' && 'Контакты'}
-                  {section === 'jobs' && 'Вакансии'}
-                  {section === 'partnership' && 'Сотрудничество'}
-                </button>
-              ))}
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-sm border-primary/50 hover:bg-primary/10"
-                onClick={() => window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank')}
-              >
-                <Icon name="Users" size={16} className="mr-2" />
-                Сообщество стоматологов TELEGRAM
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-sm border-primary/50 hover:bg-primary/10"
-                onClick={() => window.open('https://max.ru/join/8oo6zLCGM2ukl4mE86pJDEC0LfXdfPuG1MDsYUe7f2s', '_blank')}
-              >
-                <Icon name="Users" size={16} className="mr-2" />
-                Сообщество стоматологов MAX
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="relative h-14 w-14"
-                onClick={() => navigate('/cart')}
-              >
-                <Icon name="ShoppingCart" size={48} />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-              </Button>
+                  <Icon name="Users" size={16} className="mr-2" />
+                  Сообщество стоматологов TELEGRAM
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="text-sm border-primary/50 hover:bg-primary/10"
+                  onClick={() => window.open('https://max.ru/join/8oo6zLCGM2ukl4mE86pJDEC0LfXdfPuG1MDsYUe7f2s', '_blank')}
+                >
+                  <Icon name="Users" size={16} className="mr-2" />
+                  Сообщество стоматологов MAX
+                </Button>
+              </div>
             </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative h-14 w-14 hidden md:flex"
+              onClick={() => navigate('/cart')}
+            >
+              <Icon name="ShoppingCart" size={48} />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Button>
             <div className="md:hidden flex items-center gap-2">
               <Button
                 variant="ghost"
