@@ -110,7 +110,7 @@ const productsData: ProductDetails[] = [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/d75322f1-ce3c-47ae-97c1-0a5e78c8c098.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/30211142-2425-4cdb-b37d-e8c1eab0f989.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/a207991d-3773-4eea-95dc-2349848dfedc.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/34c820ae-350b-4b02-ae2c-84208d4393a2.jpg',
+
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/a260e5a9-13f0-4524-ac73-026366ef2b73.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9121fe26-91b2-4f64-8d42-8733a5b0f057.jpg'
     ],
