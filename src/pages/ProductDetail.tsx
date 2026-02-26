@@ -102,7 +102,7 @@ const productsData: ProductDetails[] = [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e6f53627-0c1b-4e69-9a8f-fcf2235770d6.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/c22073b3-1a17-4de3-8196-e0b08422f849.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/46704256-c5ec-4a17-a95d-6e0902a8c071.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/1b730421-11b5-404a-8a95-5937124af9c6.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9121fe26-91b2-4f64-8d42-8733a5b0f057.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/192fcd95-cf06-47c8-b28c-20e73613227f.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/73980f65-fefc-4ccc-91ad-470faebbcf30.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/619913d6-a0af-47e9-87dc-888598025332.jpg',
