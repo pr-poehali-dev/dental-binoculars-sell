@@ -352,7 +352,7 @@ const Index = () => {
             </div>
             <div className="hidden md:flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                {['about', 'catalog', 'testdrive', 'contacts'].map((section) => (
+                {['about', 'catalog', 'testdrive', 'contacts', 'partnership', 'jobs'].map((section) => (
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
@@ -366,24 +366,12 @@ const Index = () => {
                     {section === 'catalog' && 'Каталог'}
                     {section === 'testdrive' && 'Тест-драйв'}
                     {section === 'contacts' && 'Контакты'}
+                    {section === 'partnership' && 'Сотрудничество'}
+                    {section === 'jobs' && 'Вакансии'}
                   </button>
                 ))}
               </div>
               <div className="flex items-center gap-2">
-                {['partnership', 'jobs'].map((section) => (
-                  <button
-                    key={section}
-                    onClick={() => scrollToSection(section)}
-                    className={`px-3 py-1.5 rounded-md font-medium transition-all border text-sm ${
-                      activeSection === section 
-                        ? 'bg-primary/20 text-primary border-primary/50' 
-                        : 'text-gray-400 border-gray-700 hover:text-white hover:bg-white/5 hover:border-gray-500'
-                    }`}
-                  >
-                    {section === 'jobs' && 'Вакансии'}
-                    {section === 'partnership' && 'Сотрудничество'}
-                  </button>
-                ))}
                 <Button
                   variant="outline"
                   size="sm"
@@ -402,21 +390,21 @@ const Index = () => {
                   <Icon name="Users" size={16} className="mr-2" />
                   Сообщество стоматологов MAX
                 </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="relative h-9 w-9"
+                  onClick={() => navigate('/cart')}
+                >
+                  <Icon name="ShoppingCart" size={20} />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      {cartCount}
+                    </span>
+                  )}
+                </Button>
               </div>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative h-14 w-14 hidden md:flex"
-              onClick={() => navigate('/cart')}
-            >
-              <Icon name="ShoppingCart" size={48} />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </Button>
             <div className="md:hidden flex items-center gap-2">
               <Button
                 variant="ghost"
