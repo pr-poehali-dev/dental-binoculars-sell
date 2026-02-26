@@ -213,13 +213,13 @@ export default function Cart() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
+                      <Label htmlFor="email">Город *</Label>
                       <Input
                         id="email"
-                        type="email"
+                        required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="example@mail.ru"
+                        placeholder="Ваш город"
                       />
                     </div>
                     <div className="space-y-2">
