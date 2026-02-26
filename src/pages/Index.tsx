@@ -377,7 +377,7 @@ const Index = () => {
                 onClick={() => window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank')}
               >
                 <Icon name="Users" size={16} className="mr-2" />
-                Сообщество стоматологов
+                Сообщество стоматологов TELEGRAM
               </Button>
               <Button
                 variant="ghost"
