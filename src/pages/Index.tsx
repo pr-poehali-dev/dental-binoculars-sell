@@ -324,17 +324,20 @@ const Index = () => {
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
-    const element = document.getElementById(section);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+    setMobileMenuOpen(false);
+    setTimeout(() => {
+      const element = document.getElementById(section);
+      if (element) {
+        const header = document.querySelector('header');
+        const headerOffset = header ? header.offsetHeight : 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
   };
 
   return (
@@ -433,10 +436,7 @@ const Index = () => {
               {['about', 'catalog', 'testdrive', 'contacts', 'partnership', 'jobs'].map((section) => (
                 <button
                   key={section}
-                  onClick={() => {
-                    scrollToSection(section);
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={() => scrollToSection(section)}
                   className={`px-4 py-3 rounded-md font-medium transition-all border text-left ${
                     activeSection === section 
                       ? 'bg-primary/20 text-primary border-primary/50' 
