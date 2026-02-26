@@ -461,7 +461,18 @@ const Index = () => {
                 }}
               >
                 <Icon name="Users" size={20} className="mr-2" />
-                Сообщество стоматологов
+                Сообщество стоматологов Telegram
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full text-left border-primary/50 hover:bg-primary/10"
+                onClick={() => {
+                  window.open('https://max.ru/join/8oo6zLCGM2ukl4mE86pJDEC0LfXdfPuG1MDsYUe7f2s', '_blank');
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <Icon name="Users" size={20} className="mr-2" />
+                Сообщество стоматологов Max
               </Button>
             </div>
           )}
