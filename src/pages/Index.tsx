@@ -380,6 +380,15 @@ const Index = () => {
                 Сообщество стоматологов TELEGRAM
               </Button>
               <Button
+                variant="outline"
+                size="sm"
+                className="text-sm border-primary/50 hover:bg-primary/10"
+                onClick={() => window.open('https://max.ru/join/8oo6zLCGM2ukl4mE86pJDEC0LfXdfPuG1MDsYUe7f2s', '_blank')}
+              >
+                <Icon name="Users" size={16} className="mr-2" />
+                Сообщество стоматологов MAX
+              </Button>
+              <Button
                 variant="ghost"
                 size="icon"
                 className="relative h-14 w-14"
