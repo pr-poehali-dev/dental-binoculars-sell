@@ -23,7 +23,7 @@ const ProductMarquee = ({ products }: ProductMarqueeProps) => {
   };
 
   return (
-    <div className="relative overflow-hidden w-full h-[400px] flex items-center justify-center">
+    <div className="relative w-full flex items-center justify-center">
       <video
         ref={videoRef}
         src="https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/747b74da-3e97-4614-9f8c-4fea4cac20f4.mov"
@@ -31,7 +31,7 @@ const ProductMarquee = ({ products }: ProductMarqueeProps) => {
         loop
         muted
         playsInline
-        className="w-full h-full object-cover rounded-xl shadow-2xl"
+        className="w-full rounded-xl shadow-2xl"
       />
       <button
         onClick={toggleMute}
