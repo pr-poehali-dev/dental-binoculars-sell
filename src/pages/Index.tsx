@@ -33,7 +33,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
     price: 119000,
     oldPrice: 140000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_4.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e6f53627-0c1b-4e69-9a8f-fcf2235770d6.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
@@ -43,7 +43,7 @@ const products: Product[] = [
     description: 'Беспроводной головной осветитель Pro Max обеспечивает непрерывную работу без необходимости подключения к кабелю. Высокое качество света, имеются два уровня яркости, переключаемые сенсорным нажатием',
     price: 59000,
     oldPrice: 65000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_5.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/0efe54e3-bfff-4d46-8fa9-663c0dbce656.jpg',
     magnification: '35000 ЛК',
     category: 'lights'
   },
@@ -64,7 +64,7 @@ const products: Product[] = [
     description: 'Быстросъемные аккумуляторы на магнитном креплении. Универсальное крепление с прищепкой для бинокуляров и очков',
     price: 39000,
     oldPrice: 45000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_7.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/594d7ace-2d6f-4c28-bceb-c399b1cadc05.jpg',
     magnification: '20 000-60 000 Люкс',
     category: 'lights'
   },
@@ -74,7 +74,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы из оптического стекла HOYA (Япония). Многослойное покрытие с антибликовым эффектом и защитой от запотевания и царапин',
     price: 91000,
     oldPrice: 120000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_8.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/a6756a05-fe36-4e57-acda-f11fa747f11d.jpg',
     magnification: '4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
@@ -84,7 +84,7 @@ const products: Product[] = [
     description: 'Светодиодный стоматологический осветитель с цветовой температурой 5000 К и индексом цветопередачи CRI>90%',
     price: 29000,
     oldPrice: 40000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_9.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e1b3cdb0-58c9-4b23-b68d-c95a87b74030.jpg',
     magnification: '90 000 лк',
     category: 'lights'
   },
@@ -94,7 +94,7 @@ const products: Product[] = [
     description: 'Эрго линзы из оптического стекла Glance (Корея). Конструкция бинокуляров, расположенная под углом, позволяет держать голову прямо',
     price: 64000,
     oldPrice: 80000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_10.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/531c9a46-4784-4e30-a380-973773977049.jpg',
     magnification: '5.0х',
     category: 'loupes'
   },
@@ -104,7 +104,7 @@ const products: Product[] = [
     description: 'Отличный комплект для начинающих специалистов, которые хотят начать работать с увеличением',
     price: 44000,
     oldPrice: 60000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_11.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9e2b0577-5dfd-415f-83b9-cb288cd7bd97.jpg',
     magnification: '3.5х',
     category: 'loupes'
   }
