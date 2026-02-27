@@ -33,7 +33,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
     price: 119000,
     oldPrice: 140000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/1b730421-11b5-404a-8a95-5937124af9c6.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/c22073b3-1a17-4de3-8196-e0b08422f849.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
@@ -94,7 +94,7 @@ const products: Product[] = [
     description: 'Эрго линзы из оптического стекла Glance (Корея). Конструкция бинокуляров, расположенная под углом, позволяет держать голову прямо',
     price: 64000,
     oldPrice: 80000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/b1b32cb0-0546-46b5-a3d1-f68b2184118f.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/531c9a46-4784-4e30-a380-973773977049.jpg',
     magnification: '5.0х',
     category: 'loupes'
   },
