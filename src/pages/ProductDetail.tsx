@@ -410,8 +410,9 @@ export default function ProductDetail() {
   
   const handleImageLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     const el = e.currentTarget;
-    el.style.opacity = '1';
-    el.style.filter = 'blur(0px)';
+    el.classList.add('loaded');
+    const skeleton = el.previousElementSibling as HTMLElement;
+    if (skeleton) skeleton.style.opacity = '0';
   }, []);
 
   const product = productsData.find(p => p.id === Number(id));
@@ -465,12 +466,16 @@ export default function ProductDetail() {
               className="aspect-square overflow-hidden rounded-lg bg-gray-100 relative group cursor-pointer"
               onClick={() => setIsFullscreen(true)}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200" />
+              <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 transition-opacity duration-500" />
               <img 
                 key={selectedImageIndex}
                 src={product.images[selectedImageIndex]} 
-                alt={product.name} 
-                className="w-full h-full object-cover transition-all duration-700 ease-out opacity-0 blur-sm relative z-10"
+                alt={product.name}
+                width={600}
+                height={600}
+                fetchPriority="high"
+                decoding="sync"
+                className="catalog-img w-full h-full object-cover relative z-10"
                 onLoad={handleImageLoad}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -509,13 +514,15 @@ export default function ProductDetail() {
                         : 'border-transparent hover:border-gray-300'
                     }`}
                   >
-                    <div className="absolute inset-0 bg-gray-200" />
+                    <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 transition-opacity duration-500" />
                     <img 
                       src={img} 
-                      alt={`${product.name} ${index + 1}`} 
+                      alt={`${product.name} ${index + 1}`}
+                      width={150}
+                      height={150}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover transition-all duration-500 opacity-0 blur-sm relative z-10"
+                      className="catalog-img w-full h-full object-cover relative z-10"
                       onLoad={handleImageLoad}
                     />
                   </button>
