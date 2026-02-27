@@ -359,7 +359,7 @@ const Index = () => {
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
-                    className={`px-3 py-1.5 rounded-md font-medium transition-all border text-sm ${
+                    className={`px-4 py-2 rounded-md font-medium transition-all border text-base ${
                       activeSection === section 
                         ? 'bg-primary/20 text-primary border-primary/50' 
                         : 'text-gray-400 border-gray-700 hover:text-white hover:bg-white/5 hover:border-gray-500'
@@ -377,20 +377,18 @@ const Index = () => {
               <div className="flex items-center gap-2">
                 <Button
                   variant="outline"
-                  size="sm"
-                  className="text-sm border-primary/50 hover:bg-primary/10"
+                  className="text-base border-primary/50 hover:bg-primary/10"
                   onClick={() => window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank')}
                 >
-                  <Icon name="Users" size={16} className="mr-2" />
+                  <Icon name="Users" size={18} className="mr-2" />
                   Сообщество стоматологов TELEGRAM
                 </Button>
                 <Button
                   variant="outline"
-                  size="sm"
-                  className="text-sm border-primary/50 hover:bg-primary/10"
+                  className="text-base border-primary/50 hover:bg-primary/10"
                   onClick={() => window.open('https://max.ru/join/8oo6zLCGM2ukl4mE86pJDEC0LfXdfPuG1MDsYUe7f2s', '_blank')}
                 >
-                  <Icon name="Users" size={16} className="mr-2" />
+                  <Icon name="Users" size={18} className="mr-2" />
                   Сообщество стоматологов MAX
                 </Button>
                 <Button
