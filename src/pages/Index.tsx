@@ -570,14 +570,14 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {sortedProducts.map((product, index) => (
-              <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 product-card-hover relative">
+              <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-scale-in product-card-hover relative" style={{ animationDelay: `${index * 100}ms` }}>
                 {product.oldPrice && (
                   <Badge className="absolute top-4 right-4 z-10 bg-red-500 hover:bg-red-600 text-white">
                     АКЦИЯ
                   </Badge>
                 )}
                 <div className="aspect-square overflow-hidden bg-gray-100" onClick={() => navigate(`/product/${product.id}`)}>
-                  <img src={product.image} alt={product.name} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" className={`w-full h-full object-cover transition-transform duration-300 ${product.id === 6 ? 'scale-[1.0] hover:scale-[1.15]' : product.id === 5 ? 'scale-[1.8] hover:scale-[1.95]' : product.id === 7 ? 'scale-[1.6] hover:scale-[1.75]' : product.id === 4 ? 'scale-[1.4] hover:scale-[1.55]' : product.id === 11 ? 'scale-[1.1] hover:scale-[1.2]' : 'scale-[1.3] hover:scale-[1.45]'}`} />
+                  <img src={product.image} alt={product.name} className={`w-full h-full object-cover transition-transform duration-300 ${product.id === 6 ? 'scale-[1.0] hover:scale-[1.15]' : product.id === 5 ? 'scale-[1.8] hover:scale-[1.95]' : product.id === 7 ? 'scale-[1.6] hover:scale-[1.75]' : product.id === 4 ? 'scale-[1.4] hover:scale-[1.55]' : product.id === 11 ? 'scale-[1.1] hover:scale-[1.2]' : 'scale-[1.3] hover:scale-[1.45]'}`} />
                 </div>
                 <CardHeader>
                   <CardTitle className="font-display">{product.name}</CardTitle>
