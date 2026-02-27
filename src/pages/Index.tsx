@@ -150,8 +150,9 @@ const Index = () => {
 
   const handleImageLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     const el = e.currentTarget;
-    el.style.opacity = '1';
-    el.style.filter = 'blur(0px)';
+    el.classList.add('loaded');
+    const skeleton = el.previousElementSibling as HTMLElement;
+    if (skeleton) skeleton.style.opacity = '0';
   }, []);
 
   const sortedProducts = useMemo(() => {
@@ -582,8 +583,25 @@ const Index = () => {
                   </Badge>
                 )}
                 <div className="aspect-square overflow-hidden bg-gray-100 cursor-pointer relative" onClick={() => navigate(`/product/${product.id}`)}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200" />
-                  <img src={product.image} alt={product.name} width={600} height={600} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" fetchPriority={index < 3 ? 'high' : 'low'} onLoad={handleImageLoad} className={`w-full h-full object-cover transition-all duration-700 ease-out opacity-0 blur-sm relative z-10 ${product.id === 6 ? 'scale-[1.0] hover:scale-[1.15]' : product.id === 5 ? 'scale-[1.8] hover:scale-[1.95]' : product.id === 7 ? 'scale-[1.6] hover:scale-[1.75]' : product.id === 4 ? 'scale-[1.4] hover:scale-[1.55]' : product.id === 11 ? 'scale-[1.1] hover:scale-[1.2]' : 'scale-[1.3] hover:scale-[1.45]'}`} />
+                  <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 transition-opacity duration-500" />
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    width={400}
+                    height={400}
+                    loading={index < 3 ? 'eager' : 'lazy'}
+                    decoding={index < 3 ? 'sync' : 'async'}
+                    fetchPriority={index < 3 ? 'high' : 'auto'}
+                    onLoad={handleImageLoad}
+                    className={`catalog-img w-full h-full object-cover relative z-10 ${
+                      product.id === 6 ? 'scale-[1.0] hover:scale-[1.15]' :
+                      product.id === 5 ? 'scale-[1.8] hover:scale-[1.95]' :
+                      product.id === 7 ? 'scale-[1.6] hover:scale-[1.75]' :
+                      product.id === 4 ? 'scale-[1.4] hover:scale-[1.55]' :
+                      product.id === 11 ? 'scale-[1.1] hover:scale-[1.2]' :
+                      'scale-[1.3] hover:scale-[1.45]'
+                    }`}
+                  />
                 </div>
                 <CardHeader>
                   <CardTitle className="font-display">{product.name}</CardTitle>
