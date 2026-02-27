@@ -13,7 +13,7 @@ interface ProductMarqueeProps {
 
 const ProductMarquee = ({ products }: ProductMarqueeProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -29,6 +29,7 @@ const ProductMarquee = ({ products }: ProductMarqueeProps) => {
         src="https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/747b74da-3e97-4614-9f8c-4fea4cac20f4.mov"
         autoPlay
         loop
+        muted
         playsInline
         className="w-full rounded-xl shadow-2xl"
       />
