@@ -459,10 +459,13 @@ export default function ProductDetail() {
               className="aspect-square overflow-hidden rounded-lg bg-gray-100 relative group cursor-pointer"
               onClick={() => setIsFullscreen(true)}
             >
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200" />
               <img 
+                key={selectedImageIndex}
                 src={product.images[selectedImageIndex]} 
                 alt={product.name} 
-                className="w-full h-full object-cover transition-transform duration-300"
+                className="w-full h-full object-cover transition-all duration-700 ease-out opacity-0 blur-sm relative z-10"
+                onLoad={e => { const el = e.target as HTMLImageElement; el.style.opacity = '1'; el.style.filter = 'blur(0px)'; }}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                 <Icon name="Maximize2" size={48} className="text-white opacity-0 group-hover:opacity-70 transition-opacity" />
@@ -494,16 +497,20 @@ export default function ProductDetail() {
                   <button
                     key={index}
                     onClick={() => setSelectedImageIndex(index)}
-                    className={`aspect-square overflow-hidden rounded-lg border-2 transition-all ${
+                    className={`aspect-square overflow-hidden rounded-lg border-2 transition-all relative ${
                       selectedImageIndex === index 
                         ? 'border-primary shadow-lg scale-105' 
                         : 'border-transparent hover:border-gray-300'
                     }`}
                   >
+                    <div className="absolute inset-0 bg-gray-200" />
                     <img 
                       src={img} 
                       alt={`${product.name} ${index + 1}`} 
-                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover transition-all duration-500 opacity-0 blur-sm relative z-10"
+                      onLoad={e => { const el = e.target as HTMLImageElement; el.style.opacity = '1'; el.style.filter = 'blur(0px)'; }}
                     />
                   </button>
                 ))}
