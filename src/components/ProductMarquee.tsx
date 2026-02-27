@@ -1,6 +1,3 @@
-import { useRef, useState } from 'react';
-import Icon from '@/components/ui/icon';
-
 interface Product {
   id: number;
   name: string;
@@ -12,34 +9,16 @@ interface ProductMarqueeProps {
 }
 
 const ProductMarquee = ({ products }: ProductMarqueeProps) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !muted;
-      setMuted(!muted);
-    }
-  };
-
   return (
-    <div className="relative w-full flex items-center justify-center">
+    <div className="overflow-hidden w-full h-[400px] flex items-center justify-center">
       <video
-        ref={videoRef}
-        src="https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9206d05c-e076-4eab-878c-5285c2748c40.mp4"
+        src="https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/2737c763-21d1-410f-8467-9fa446827028.mp4"
         autoPlay
         loop
         muted
         playsInline
-        preload="metadata"
-        className="w-full rounded-xl shadow-2xl"
+        className="w-full h-full object-cover rounded-xl shadow-2xl"
       />
-      <button
-        onClick={toggleMute}
-        className="absolute bottom-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 transition-all backdrop-blur-sm"
-      >
-        <Icon name={muted ? 'VolumeX' : 'Volume2'} size={20} />
-      </button>
     </div>
   );
 };

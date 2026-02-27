@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -105,8 +105,12 @@ const productsData: ProductDetails[] = [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/1b730421-11b5-404a-8a95-5937124af9c6.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/192fcd95-cf06-47c8-b28c-20e73613227f.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/73980f65-fefc-4ccc-91ad-470faebbcf30.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/619913d6-a0af-47e9-87dc-888598025332.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/1114dd0e-b787-470e-af1f-d32671dce763.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/d75322f1-ce3c-47ae-97c1-0a5e78c8c098.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/30211142-2425-4cdb-b37d-e8c1eab0f989.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/a207991d-3773-4eea-95dc-2349848dfedc.jpg',
+
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/a260e5a9-13f0-4524-ac73-026366ef2b73.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9121fe26-91b2-4f64-8d42-8733a5b0f057.jpg'
     ],
@@ -144,7 +148,8 @@ const productsData: ProductDetails[] = [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/227a1aad-5de6-42b1-b0ec-5ee84ac1d223.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/3448e1d7-7e27-47e5-8fa1-81d35d325e40.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/c07e5a24-e709-4407-a425-75af5115519a.jpg',
-
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/5cd342cf-046c-4159-8b53-ce275ef11aaa.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/3a183bd7-459f-4565-bc2e-56f52bba9a55.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/d6597e30-2dc9-4e60-9df6-b486ce1780bf.jpg'
     ],
     magnification: '35000 ЛК',
@@ -219,7 +224,8 @@ const productsData: ProductDetails[] = [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/74b71023-7bdc-4993-9cc5-6df47d251563.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/6b031220-b80a-4b2e-931e-e4639d7d18f4.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/795a1645-887c-4f9a-aa1e-56b3bf4cd4fb.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/6b590a70-8d04-4924-940d-b17fe68b6dc5.jpg'
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/6b590a70-8d04-4924-940d-b17fe68b6dc5.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/01fa8ad9-822f-4618-9567-682f47d4b4aa.jpg'
     ],
     magnification: '20 000-60 000 Люкс',
     weight: '42 г',
@@ -256,7 +262,7 @@ const productsData: ProductDetails[] = [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/adb4b625-cfd4-443f-b7cf-4bebefc0c488.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/939428d1-54c3-48a2-9630-6c83ebd6c718.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/7e704f6e-e020-4b17-98cf-c614dbb47c3a.jpg',
-
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/cc65356c-804a-43b1-a5f4-ae7b35f9c35e.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/dbffdafc-5e70-4e3d-a061-5a0b8976eda0.jpg'
     ],
     magnification: '4.0х / 5.0х / 6.0х',
@@ -327,7 +333,7 @@ const productsData: ProductDetails[] = [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/786eaf6f-8281-4f69-bfa8-e5cac7fc3a38.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/567128ce-eb88-49bf-b39e-8efc7e16698c.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9e5ef883-940a-4f57-aeeb-b8b8a33eebc2.jpg',
-
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/97274c38-c206-4c96-95c9-cb79ea6e834f.jpg'
     ],
     magnification: '5.0х',
     weight: 'Не указан',
@@ -408,13 +414,6 @@ export default function ProductDetail() {
     setCartCount(getCartCount(getCart()));
   }, []);
   
-  const handleImageLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    const el = e.currentTarget;
-    el.classList.add('loaded');
-    const skeleton = el.previousElementSibling as HTMLElement;
-    if (skeleton) skeleton.style.opacity = '0';
-  }, []);
-
   const product = productsData.find(p => p.id === Number(id));
 
   if (!product) {
@@ -466,17 +465,10 @@ export default function ProductDetail() {
               className="aspect-square overflow-hidden rounded-lg bg-gray-100 relative group cursor-pointer"
               onClick={() => setIsFullscreen(true)}
             >
-              <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 transition-opacity duration-500" />
               <img 
-                key={selectedImageIndex}
                 src={product.images[selectedImageIndex]} 
-                alt={product.name}
-                width={600}
-                height={600}
-                fetchPriority="high"
-                decoding="sync"
-                className="catalog-img w-full h-full object-cover relative z-10"
-                onLoad={handleImageLoad}
+                alt={product.name} 
+                className="w-full h-full object-cover transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                 <Icon name="Maximize2" size={48} className="text-white opacity-0 group-hover:opacity-70 transition-opacity" />
@@ -508,22 +500,16 @@ export default function ProductDetail() {
                   <button
                     key={index}
                     onClick={() => setSelectedImageIndex(index)}
-                    className={`aspect-square overflow-hidden rounded-lg border-2 transition-all relative ${
+                    className={`aspect-square overflow-hidden rounded-lg border-2 transition-all ${
                       selectedImageIndex === index 
                         ? 'border-primary shadow-lg scale-105' 
                         : 'border-transparent hover:border-gray-300'
                     }`}
                   >
-                    <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 transition-opacity duration-500" />
                     <img 
                       src={img} 
-                      alt={`${product.name} ${index + 1}`}
-                      width={150}
-                      height={150}
-                      loading="lazy"
-                      decoding="async"
-                      className="catalog-img w-full h-full object-cover relative z-10"
-                      onLoad={handleImageLoad}
+                      alt={`${product.name} ${index + 1}`} 
+                      className="w-full h-full object-cover"
                     />
                   </button>
                 ))}

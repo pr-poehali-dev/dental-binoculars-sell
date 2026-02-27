@@ -90,9 +90,7 @@ export default function Cart() {
               <img 
                 src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" 
                 alt="VAV DENTAL" 
-                className="h-20 cursor-pointer"
-                loading="eager"
-                decoding="async"
+                className="h-20 cursor-pointer" 
                 onClick={() => navigate('/')}
               />
             </div>

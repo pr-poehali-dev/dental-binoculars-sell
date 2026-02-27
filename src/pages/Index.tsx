@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -33,7 +33,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
     price: 119000,
     oldPrice: 140000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e6f53627-0c1b-4e69-9a8f-fcf2235770d6.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/1b730421-11b5-404a-8a95-5937124af9c6.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
@@ -64,7 +64,7 @@ const products: Product[] = [
     description: 'Быстросъемные аккумуляторы на магнитном креплении. Универсальное крепление с прищепкой для бинокуляров и очков',
     price: 39000,
     oldPrice: 45000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/594d7ace-2d6f-4c28-bceb-c399b1cadc05.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/6b590a70-8d04-4924-940d-b17fe68b6dc5.jpg',
     magnification: '20 000-60 000 Люкс',
     category: 'lights'
   },
@@ -74,7 +74,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы из оптического стекла HOYA (Япония). Многослойное покрытие с антибликовым эффектом и защитой от запотевания и царапин',
     price: 91000,
     oldPrice: 120000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/a6756a05-fe36-4e57-acda-f11fa747f11d.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/adb4b625-cfd4-443f-b7cf-4bebefc0c488.jpg',
     magnification: '4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
@@ -84,7 +84,7 @@ const products: Product[] = [
     description: 'Светодиодный стоматологический осветитель с цветовой температурой 5000 К и индексом цветопередачи CRI>90%',
     price: 29000,
     oldPrice: 40000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e1b3cdb0-58c9-4b23-b68d-c95a87b74030.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/525801f5-ad3a-4448-9435-7001c9163daa.jpg',
     magnification: '90 000 лк',
     category: 'lights'
   },
@@ -94,7 +94,7 @@ const products: Product[] = [
     description: 'Эрго линзы из оптического стекла Glance (Корея). Конструкция бинокуляров, расположенная под углом, позволяет держать голову прямо',
     price: 64000,
     oldPrice: 80000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/531c9a46-4784-4e30-a380-973773977049.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/b1b32cb0-0546-46b5-a3d1-f68b2184118f.jpg',
     magnification: '5.0х',
     category: 'loupes'
   },
@@ -104,7 +104,7 @@ const products: Product[] = [
     description: 'Отличный комплект для начинающих специалистов, которые хотят начать работать с увеличением',
     price: 44000,
     oldPrice: 60000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9e2b0577-5dfd-415f-83b9-cb288cd7bd97.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e00a2a60-70bc-4ec0-a50f-557eee994711.jpg',
     magnification: '3.5х',
     category: 'loupes'
   }
@@ -113,7 +113,6 @@ const products: Product[] = [
 const Index = () => {
   const [activeSection, setActiveSection] = useState('catalog');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
@@ -148,26 +147,22 @@ const Index = () => {
   const [sortBy, setSortBy] = useState<'default' | 'price-asc' | 'price-desc' | 'magnification'>('default');
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'loupes' | 'lights' | 'accessories'>('all');
 
-  const handleImageLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    const el = e.currentTarget;
-    el.classList.add('loaded');
-    const skeleton = el.previousElementSibling as HTMLElement;
-    if (skeleton) skeleton.style.opacity = '0';
-  }, []);
+  const filteredProducts = categoryFilter === 'all' 
+    ? products 
+    : products.filter(p => p.category === categoryFilter);
 
-  const sortedProducts = useMemo(() => {
-    const filtered = categoryFilter === 'all'
-      ? products
-      : products.filter(p => p.category === categoryFilter);
-    return [...filtered].sort((a, b) => {
-      switch (sortBy) {
-        case 'price-asc': return a.price - b.price;
-        case 'price-desc': return b.price - a.price;
-        case 'magnification': return parseFloat(a.magnification) - parseFloat(b.magnification);
-        default: return 0;
-      }
-    });
-  }, [categoryFilter, sortBy]);
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    switch (sortBy) {
+      case 'price-asc':
+        return a.price - b.price;
+      case 'price-desc':
+        return b.price - a.price;
+      case 'magnification':
+        return parseFloat(a.magnification) - parseFloat(b.magnification);
+      default:
+        return 0;
+    }
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -330,32 +325,31 @@ const Index = () => {
   const scrollToSection = (section: string) => {
     setActiveSection(section);
     setMobileMenuOpen(false);
-    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-    scrollTimeoutRef.current = setTimeout(() => {
+    setTimeout(() => {
       const element = document.getElementById(section);
       if (element) {
         const header = document.querySelector('header');
         const headerOffset = header ? header.offsetHeight : 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     }, 50);
   };
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-black border-b border-border">
+      <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-border">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <img 
                 src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" 
                 alt="VAV DENTAL" 
-                className="h-32 cursor-pointer"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
+                className="h-32 cursor-pointer" 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>
@@ -365,7 +359,7 @@ const Index = () => {
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
-                    className={`px-4 py-2 rounded-md font-medium transition-all border text-base ${
+                    className={`px-3 py-1.5 rounded-md font-medium transition-all border text-sm ${
                       activeSection === section 
                         ? 'bg-primary/20 text-primary border-primary/50' 
                         : 'text-gray-400 border-gray-700 hover:text-white hover:bg-white/5 hover:border-gray-500'
@@ -383,18 +377,20 @@ const Index = () => {
               <div className="flex items-center gap-2">
                 <Button
                   variant="outline"
-                  className="text-base border-primary/50 hover:bg-primary/10"
+                  size="sm"
+                  className="text-sm border-primary/50 hover:bg-primary/10"
                   onClick={() => window.open('https://t.me/+gBrcEEt31KkxNmYy', '_blank')}
                 >
-                  <Icon name="Users" size={18} className="mr-2" />
+                  <Icon name="Users" size={16} className="mr-2" />
                   Сообщество стоматологов TELEGRAM
                 </Button>
                 <Button
                   variant="outline"
-                  className="text-base border-primary/50 hover:bg-primary/10"
+                  size="sm"
+                  className="text-sm border-primary/50 hover:bg-primary/10"
                   onClick={() => window.open('https://max.ru/join/8oo6zLCGM2ukl4mE86pJDEC0LfXdfPuG1MDsYUe7f2s', '_blank')}
                 >
-                  <Icon name="Users" size={18} className="mr-2" />
+                  <Icon name="Users" size={16} className="mr-2" />
                   Сообщество стоматологов MAX
                 </Button>
                 <Button
@@ -546,7 +542,7 @@ const Index = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
               <div className="flex items-center gap-3">
                 <Label className="text-sm text-gray-400">Категория:</Label>
-                <Select value={categoryFilter} onValueChange={(value: string) => setCategoryFilter(value)}>
+                <Select value={categoryFilter} onValueChange={(value: any) => setCategoryFilter(value)}>
                   <SelectTrigger className="w-[200px]">
                     <SelectValue />
                   </SelectTrigger>
@@ -560,7 +556,7 @@ const Index = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Label className="text-sm text-gray-400">Сортировать:</Label>
-                <Select value={sortBy} onValueChange={(value: string) => setSortBy(value)}>
+                <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
                   <SelectTrigger className="w-[200px]">
                     <SelectValue />
                   </SelectTrigger>
@@ -576,32 +572,14 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {sortedProducts.map((product, index) => (
-              <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 product-card-hover relative" style={{ willChange: 'transform' }}>
+              <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-scale-in product-card-hover relative" style={{ animationDelay: `${index * 100}ms` }}>
                 {product.oldPrice && (
-                  <Badge className="absolute top-4 right-4 z-20 bg-red-500 hover:bg-red-600 text-white">
+                  <Badge className="absolute top-4 right-4 z-10 bg-red-500 hover:bg-red-600 text-white">
                     АКЦИЯ
                   </Badge>
                 )}
-                <div className="aspect-square overflow-hidden bg-gray-100 cursor-pointer relative" onClick={() => navigate(`/product/${product.id}`)}>
-                  <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 transition-opacity duration-500" />
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    width={400}
-                    height={400}
-                    loading={index < 3 ? 'eager' : 'lazy'}
-                    decoding={index < 3 ? 'sync' : 'async'}
-                    fetchPriority={index < 3 ? 'high' : 'auto'}
-                    onLoad={handleImageLoad}
-                    className={`catalog-img w-full h-full object-cover relative z-10 ${
-                      product.id === 6 ? 'scale-[1.0] hover:scale-[1.15]' :
-                      product.id === 5 ? 'scale-[1.8] hover:scale-[1.95]' :
-                      product.id === 7 ? 'scale-[1.6] hover:scale-[1.75]' :
-                      product.id === 4 ? 'scale-[1.4] hover:scale-[1.55]' :
-                      product.id === 11 ? 'scale-[1.1] hover:scale-[1.2]' :
-                      'scale-[1.3] hover:scale-[1.45]'
-                    }`}
-                  />
+                <div className="aspect-square overflow-hidden bg-gray-100" onClick={() => navigate(`/product/${product.id}`)}>
+                  <img src={product.image} alt={product.name} className={`w-full h-full object-cover transition-transform duration-300 ${product.id === 6 ? 'scale-[1.0] hover:scale-[1.15]' : product.id === 5 ? 'scale-[1.8] hover:scale-[1.95]' : product.id === 7 ? 'scale-[1.6] hover:scale-[1.75]' : product.id === 4 ? 'scale-[1.4] hover:scale-[1.55]' : product.id === 11 ? 'scale-[1.1] hover:scale-[1.2]' : 'scale-[1.3] hover:scale-[1.45]'}`} />
                 </div>
                 <CardHeader>
                   <CardTitle className="font-display">{product.name}</CardTitle>
@@ -970,7 +948,7 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-20" loading="lazy" decoding="async" />
+                <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-20" />
               </div>
 
             </div>
