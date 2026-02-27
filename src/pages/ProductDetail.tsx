@@ -318,14 +318,13 @@ const productsData: ProductDetails[] = [
     oldPrice: 80000,
     images: [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/531c9a46-4784-4e30-a380-973773977049.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/b1b32cb0-0546-46b5-a3d1-f68b2184118f.jpg',
+
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/86e2f2c6-5f63-46c7-9e9b-5348cd49af5d.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/1e6dd960-65b5-44db-b33f-43241c3cca24.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/1cf76a50-0b22-4bcf-832c-16b3ea0844d0.jpg',
+
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/786eaf6f-8281-4f69-bfa8-e5cac7fc3a38.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/567128ce-eb88-49bf-b39e-8efc7e16698c.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9e5ef883-940a-4f57-aeeb-b8b8a33eebc2.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/97274c38-c206-4c96-95c9-cb79ea6e834f.jpg'
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9e5ef883-940a-4f57-aeeb-b8b8a33eebc2.jpg'
     ],
     magnification: '5.0х',
     weight: 'Не указан',
@@ -360,11 +359,10 @@ const productsData: ProductDetails[] = [
     images: [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/9e2b0577-5dfd-415f-83b9-cb288cd7bd97.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/ea93b4af-cca9-42e2-a981-ca89543534dd.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/efcf7b88-fd47-4fb4-9052-4b8a259c962a.jpg',
+
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e00a2a60-70bc-4ec0-a50f-557eee994711.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/10a8f24a-8c20-42b3-97b8-e3597afe468c.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/ae9272c2-0678-4011-bf36-831960ce847a.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/ecb2d3c4-c80c-40a9-9b8a-18618b4cbc85.jpg'
+
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/ae9272c2-0678-4011-bf36-831960ce847a.jpg'
     ],
     magnification: '3.5х',
     weight: '~300 г',
