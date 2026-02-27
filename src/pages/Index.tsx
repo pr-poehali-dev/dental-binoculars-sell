@@ -572,7 +572,7 @@ const Index = () => {
             {sortedProducts.map((product, index) => (
               <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 product-card-hover relative" style={{ willChange: 'transform' }}>
                 {product.oldPrice && (
-                  <Badge className="absolute top-4 right-4 z-10 bg-red-500 hover:bg-red-600 text-white">
+                  <Badge className="absolute top-4 right-4 z-20 bg-red-500 hover:bg-red-600 text-white">
                     АКЦИЯ
                   </Badge>
                 )}
