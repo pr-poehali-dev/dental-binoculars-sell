@@ -33,7 +33,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
     price: 119000,
     oldPrice: 140000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/1b730421-11b5-404a-8a95-5937124af9c6.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_4.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
@@ -43,7 +43,7 @@ const products: Product[] = [
     description: 'Беспроводной головной осветитель Pro Max обеспечивает непрерывную работу без необходимости подключения к кабелю. Высокое качество света, имеются два уровня яркости, переключаемые сенсорным нажатием',
     price: 59000,
     oldPrice: 65000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/0efe54e3-bfff-4d46-8fa9-663c0dbce656.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_5.jpg',
     magnification: '35000 ЛК',
     category: 'lights'
   },
@@ -84,7 +84,7 @@ const products: Product[] = [
     description: 'Светодиодный стоматологический осветитель с цветовой температурой 5000 К и индексом цветопередачи CRI>90%',
     price: 29000,
     oldPrice: 40000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/525801f5-ad3a-4448-9435-7001c9163daa.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_9.jpg',
     magnification: '90 000 лк',
     category: 'lights'
   },
@@ -104,7 +104,7 @@ const products: Product[] = [
     description: 'Отличный комплект для начинающих специалистов, которые хотят начать работать с увеличением',
     price: 44000,
     oldPrice: 60000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e00a2a60-70bc-4ec0-a50f-557eee994711.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/compressed/product_11.jpg',
     magnification: '3.5х',
     category: 'loupes'
   }
