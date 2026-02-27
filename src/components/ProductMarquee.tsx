@@ -31,7 +31,7 @@ const ProductMarquee = ({ products }: ProductMarqueeProps) => {
         loop
         muted
         playsInline
-        preload="none"
+        preload="metadata"
         className="w-full rounded-xl shadow-2xl"
       />
       <button

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -408,6 +408,12 @@ export default function ProductDetail() {
     setCartCount(getCartCount(getCart()));
   }, []);
   
+  const handleImageLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    const el = e.currentTarget;
+    el.style.opacity = '1';
+    el.style.filter = 'blur(0px)';
+  }, []);
+
   const product = productsData.find(p => p.id === Number(id));
 
   if (!product) {
@@ -465,7 +471,7 @@ export default function ProductDetail() {
                 src={product.images[selectedImageIndex]} 
                 alt={product.name} 
                 className="w-full h-full object-cover transition-all duration-700 ease-out opacity-0 blur-sm relative z-10"
-                onLoad={e => { const el = e.target as HTMLImageElement; el.style.opacity = '1'; el.style.filter = 'blur(0px)'; }}
+                onLoad={handleImageLoad}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                 <Icon name="Maximize2" size={48} className="text-white opacity-0 group-hover:opacity-70 transition-opacity" />
@@ -510,7 +516,7 @@ export default function ProductDetail() {
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transition-all duration-500 opacity-0 blur-sm relative z-10"
-                      onLoad={e => { const el = e.target as HTMLImageElement; el.style.opacity = '1'; el.style.filter = 'blur(0px)'; }}
+                      onLoad={handleImageLoad}
                     />
                   </button>
                 ))}
