@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -113,6 +113,7 @@ const products: Product[] = [
 const Index = () => {
   const [activeSection, setActiveSection] = useState('catalog');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
@@ -328,17 +329,15 @@ const Index = () => {
   const scrollToSection = (section: string) => {
     setActiveSection(section);
     setMobileMenuOpen(false);
-    setTimeout(() => {
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
       const element = document.getElementById(section);
       if (element) {
         const header = document.querySelector('header');
         const headerOffset = header ? header.offsetHeight : 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       }
     }, 50);
   };
@@ -352,7 +351,10 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" 
                 alt="VAV DENTAL" 
-                className="h-32 cursor-pointer" 
+                className="h-32 cursor-pointer"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>
@@ -950,7 +952,7 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-20" />
+                <img src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" alt="VAV DENTAL" className="h-20" loading="lazy" decoding="async" />
               </div>
 
             </div>
