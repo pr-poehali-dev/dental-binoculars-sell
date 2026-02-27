@@ -15,13 +15,34 @@ from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
-def compress_image(url: str, max_size: int = 800, quality: int = 82) -> bytes:
+def jpeg_dimensions(data: bytes):
+    i = 2
+    while i < len(data):
+        if data[i] != 0xFF:
+            break
+        marker = data[i + 1]
+        if marker in (0xC0, 0xC1, 0xC2):
+            h = (data[i + 5] << 8) | data[i + 6]
+            w = (data[i + 7] << 8) | data[i + 8]
+            return w, h
+        length = (data[i + 2] << 8) | data[i + 3]
+        i += 2 + length
+    return None, None
+
+
+def compress_image(url: str, max_size: int = 900, quality: int = 85) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         data = resp.read()
+    # Узнаём размер JPEG через парсинг заголовка (без загрузки пикселей)
+    w, h = jpeg_dimensions(data)
     buf = BytesIO(data)
     img = Image.open(buf)
-    img.draft("RGB", (max_size, max_size))
+    if w and h:
+        factor = max(w, h) / max_size
+        if factor > 1 and img.format == "JPEG":
+            target = (int(w / factor), int(h / factor))
+            img.draft("RGB", target)
     img = img.convert("RGB")
     if img.width > max_size or img.height > max_size:
         img.thumbnail((max_size, max_size), Image.LANCZOS)
