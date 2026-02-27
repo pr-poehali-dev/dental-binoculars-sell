@@ -10,11 +10,19 @@ from io import BytesIO
 from PIL import Image
 
 
+Image.MAX_IMAGE_PIXELS = None
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
+
 def compress_image(url: str, max_size: int = 800, quality: int = 82) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=25) as resp:
+    with urllib.request.urlopen(req, timeout=30) as resp:
         data = resp.read()
-    img = Image.open(BytesIO(data)).convert("RGB")
+    buf = BytesIO(data)
+    img = Image.open(buf)
+    img.draft("RGB", (max_size, max_size))
+    img = img.convert("RGB")
     if img.width > max_size or img.height > max_size:
         img.thumbnail((max_size, max_size), Image.LANCZOS)
     out = BytesIO()
