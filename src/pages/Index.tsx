@@ -576,8 +576,9 @@ const Index = () => {
                     АКЦИЯ
                   </Badge>
                 )}
-                <div className="aspect-square overflow-hidden bg-gray-100 cursor-pointer" onClick={() => navigate(`/product/${product.id}`)}>
-                  <img src={product.image} alt={product.name} width={600} height={600} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" className={`w-full h-full object-cover transition-transform duration-300 ${product.id === 6 ? 'scale-[1.0] hover:scale-[1.15]' : product.id === 5 ? 'scale-[1.8] hover:scale-[1.95]' : product.id === 7 ? 'scale-[1.6] hover:scale-[1.75]' : product.id === 4 ? 'scale-[1.4] hover:scale-[1.55]' : product.id === 11 ? 'scale-[1.1] hover:scale-[1.2]' : 'scale-[1.3] hover:scale-[1.45]'}`} />
+                <div className="aspect-square overflow-hidden bg-gray-100 cursor-pointer relative" onClick={() => navigate(`/product/${product.id}`)}>
+                  <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                  <img src={product.image} alt={product.name} width={600} height={600} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" fetchPriority={index < 3 ? 'high' : 'low'} onLoad={e => { (e.target as HTMLImageElement).style.opacity = '1'; }} className={`w-full h-full object-cover transition-all duration-500 opacity-0 relative z-10 ${product.id === 6 ? 'scale-[1.0] hover:scale-[1.15]' : product.id === 5 ? 'scale-[1.8] hover:scale-[1.95]' : product.id === 7 ? 'scale-[1.6] hover:scale-[1.75]' : product.id === 4 ? 'scale-[1.4] hover:scale-[1.55]' : product.id === 11 ? 'scale-[1.1] hover:scale-[1.2]' : 'scale-[1.3] hover:scale-[1.45]'}`} />
                 </div>
                 <CardHeader>
                   <CardTitle className="font-display">{product.name}</CardTitle>
