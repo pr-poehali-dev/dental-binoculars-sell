@@ -448,6 +448,8 @@ export default function ProductDetail() {
               <img 
                 src={product.images[selectedImageIndex]} 
                 alt={product.name} 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -489,6 +491,8 @@ export default function ProductDetail() {
                     <img 
                       src={img} 
                       alt={`${product.name} ${index + 1}`} 
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                     />
                   </button>
