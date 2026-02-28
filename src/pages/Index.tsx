@@ -94,7 +94,7 @@ const products: Product[] = [
     description: 'Эрго линзы из оптического стекла Glance (Корея). Конструкция бинокуляров, расположенная под углом, позволяет держать голову прямо',
     price: 64000,
     oldPrice: 80000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/531c9a46-4784-4e30-a380-973773977049.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/81e572ea-b705-4e77-984a-4c56607870d9.jpg',
     magnification: '5.0х',
     category: 'loupes'
   },
