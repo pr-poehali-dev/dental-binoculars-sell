@@ -136,13 +136,11 @@ const productsData: ProductDetails[] = [
     price: 59000,
     oldPrice: 65000,
     images: [
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/0efe54e3-bfff-4d46-8fa9-663c0dbce656.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/227a1aad-5de6-42b1-b0ec-5ee84ac1d223.jpg',
-
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/c07e5a24-e709-4407-a425-75af5115519a.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/5cd342cf-046c-4159-8b53-ce275ef11aaa.jpg',
-
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/d6597e30-2dc9-4e60-9df6-b486ce1780bf.jpg'
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/703a6f7a-c7ca-44c5-b547-29adc2572176.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/3ade518b-2925-43e8-9a71-9aa9b74dd03f.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/fdfd6c4c-386b-4e62-97b4-51c81ea5b332.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/2b4990d3-7f4d-44b4-b57f-be70f4c71730.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/80e79124-5a2f-49c9-8491-3eeba6300010.jpg'
     ],
     magnification: '35000 ЛК',
     weight: '10,8 г (осветитель), 19,2 г (аккумулятор)',
