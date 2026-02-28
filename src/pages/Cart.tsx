@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,10 +9,81 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { getCart, updateQuantity, removeFromCart, clearCart, getCartTotal, getCartCount, CartItem } from '@/lib/cart';
 
+function useConfetti() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animFrameRef = useRef<number>(0);
+
+  const launch = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const ctx = canvas.getContext('2d')!;
+    const colors = ['#f43f5e', '#3b82f6', '#22c55e', '#f59e0b', '#a855f7', '#06b6d4', '#ffffff'];
+
+    type Piece = { x: number; y: number; vx: number; vy: number; angle: number; va: number; color: string; w: number; h: number; side: 'left' | 'right' };
+    const pieces: Piece[] = [];
+
+    for (let i = 0; i < 120; i++) {
+      const side = i < 60 ? 'left' : 'right';
+      const x = side === 'left' ? Math.random() * 80 : window.innerWidth - Math.random() * 80;
+      pieces.push({
+        x, y: window.innerHeight * 0.3 + Math.random() * 100,
+        vx: (side === 'left' ? 1 : -1) * (2 + Math.random() * 4),
+        vy: -(8 + Math.random() * 8),
+        angle: Math.random() * 360,
+        va: (Math.random() - 0.5) * 10,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        w: 8 + Math.random() * 8,
+        h: 4 + Math.random() * 4,
+        side,
+      });
+    }
+
+    let startTime: number | null = null;
+    const duration = 3500;
+
+    function draw(ts: number) {
+      if (!startTime) startTime = ts;
+      const elapsed = ts - startTime;
+      ctx.clearRect(0, 0, canvas!.width, canvas!.height);
+
+      for (const p of pieces) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.25;
+        p.vx *= 0.99;
+        p.angle += p.va;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.angle * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0, 1 - elapsed / duration);
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      }
+
+      if (elapsed < duration) {
+        animFrameRef.current = requestAnimationFrame(draw);
+      } else {
+        ctx.clearRect(0, 0, canvas!.width, canvas!.height);
+      }
+    }
+
+    cancelAnimationFrame(animFrameRef.current);
+    animFrameRef.current = requestAnimationFrame(draw);
+  }, []);
+
+  useEffect(() => () => cancelAnimationFrame(animFrameRef.current), []);
+
+  return { canvasRef, launch };
+}
+
 export default function Cart() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [cart, setCart] = useState<CartItem[]>([]);
+  const { canvasRef, launch } = useConfetti();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -69,6 +140,7 @@ export default function Cart() {
       description: `Мы свяжемся с вами в ближайшее время. Сумма заказа: ${total.toLocaleString('ru-RU')} ₽`,
     });
 
+    launch();
     clearCart();
     setCart([]);
     setFormData({ name: '', phone: '', email: '', comment: '' });
@@ -79,6 +151,7 @@ export default function Cart() {
 
   return (
     <div className="min-h-screen bg-background">
+      <canvas ref={canvasRef} className="fixed inset-0 z-[9999] pointer-events-none" />
       <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
