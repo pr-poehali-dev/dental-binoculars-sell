@@ -281,10 +281,9 @@ const productsData: ProductDetails[] = [
     price: 29000,
     oldPrice: 40000,
     images: [
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/e1b3cdb0-58c9-4b23-b68d-c95a87b74030.jpg',
-
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/525801f5-ad3a-4448-9435-7001c9163daa.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/7d794551-26ce-409f-9110-db7637de3197.jpg'
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/092db74a-716a-4f9c-8a1b-a5f3f372ea05.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/dfa24761-9aa5-4975-aec7-dfb9f9324097.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/53b3d756-3b34-42f7-877c-9c677c2464f5.jpg'
     ],
     magnification: '90 000 лк',
     weight: 'Не указан',
