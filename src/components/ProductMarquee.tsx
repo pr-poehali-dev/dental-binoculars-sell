@@ -26,7 +26,7 @@ const ProductMarquee = ({ products }: ProductMarqueeProps) => {
     <div className="relative w-full flex items-center justify-center">
       <video
         ref={videoRef}
-        src="https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/8a722526-2f14-49f2-98e4-4a710ccd74b8.mp4"
+        src="https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/f70db5bf-e109-43fa-8ac4-eff0e752d0e5.mp4"
         autoPlay
         loop
         muted
