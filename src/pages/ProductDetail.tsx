@@ -448,11 +448,11 @@ export default function ProductDetail() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 mb-12">
-          <div className="space-y-4">
+      <div className="container mx-auto px-4 py-6 md:py-12">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12">
+          <div className="space-y-3">
             <div 
-              className="aspect-square overflow-hidden rounded-lg bg-gray-100 relative group cursor-pointer"
+              className="aspect-[4/3] md:aspect-square overflow-hidden rounded-lg bg-gray-100 relative group cursor-pointer"
               onClick={() => setIsFullscreen(true)}
             >
               <img 
@@ -485,14 +485,14 @@ export default function ProductDetail() {
               )}
             </div>
             {product.images.length > 1 && (
-              <div className="grid grid-cols-3 gap-4">
+              <div className="flex gap-2 overflow-x-auto pb-1 md:grid md:grid-cols-4 md:gap-3">
                 {product.images.map((img, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImageIndex(index)}
-                    className={`aspect-square overflow-hidden rounded-lg border-2 transition-all ${
+                    className={`flex-shrink-0 w-16 h-16 md:w-auto md:h-auto md:aspect-square overflow-hidden rounded-lg border-2 transition-all ${
                       selectedImageIndex === index 
-                        ? 'border-primary shadow-lg scale-105' 
+                        ? 'border-primary shadow-lg' 
                         : 'border-transparent hover:border-gray-300'
                     }`}
                   >
