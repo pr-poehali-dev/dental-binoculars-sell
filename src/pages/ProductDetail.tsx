@@ -246,12 +246,11 @@ const productsData: ProductDetails[] = [
     price: 91000,
     oldPrice: 120000,
     images: [
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/a6756a05-fe36-4e57-acda-f11fa747f11d.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/adb4b625-cfd4-443f-b7cf-4bebefc0c488.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/939428d1-54c3-48a2-9630-6c83ebd6c718.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/7e704f6e-e020-4b17-98cf-c614dbb47c3a.jpg',
-
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/dbffdafc-5e70-4e3d-a061-5a0b8976eda0.jpg'
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/b04850ec-e298-4ab6-b105-a0dff8fafd12.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/5f7c42a3-77b2-4992-a9b1-845de077a326.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/7ed2c9b5-10e2-4b14-b729-5b9755a3e3d5.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/3cc5a160-0372-4fb4-86d1-26494f93cccd.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/7d4e301e-ed86-414a-9467-055515eff483.jpg'
     ],
     magnification: '4.0х / 5.0х / 6.0х',
     weight: 'Зависит от конфигурации',

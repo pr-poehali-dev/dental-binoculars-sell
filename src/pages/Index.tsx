@@ -74,7 +74,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы из оптического стекла HOYA (Япония). Многослойное покрытие с антибликовым эффектом и защитой от запотевания и царапин',
     price: 91000,
     oldPrice: 120000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/adb4b625-cfd4-443f-b7cf-4bebefc0c488.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/7ed2c9b5-10e2-4b14-b729-5b9755a3e3d5.jpg',
     magnification: '4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
