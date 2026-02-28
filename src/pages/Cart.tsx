@@ -83,6 +83,7 @@ export default function Cart() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [orderSuccess, setOrderSuccess] = useState(false);
   const { canvasRef, launch } = useConfetti();
   const [formData, setFormData] = useState({
     name: '',
@@ -143,6 +144,7 @@ export default function Cart() {
     launch();
     clearCart();
     setCart([]);
+    setOrderSuccess(true);
     setFormData({ name: '', phone: '', email: '', comment: '' });
   };
 
@@ -174,7 +176,23 @@ export default function Cart() {
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold mb-8">Корзина</h1>
 
-        {cart.length === 0 ? (
+        {orderSuccess ? (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <div className="text-8xl mb-6">🎉</div>
+            <h2 className="text-4xl font-bold mb-4">Спасибо за заказ!</h2>
+            <p className="text-gray-400 text-lg mb-2">Ваш заказ успешно оформлен.</p>
+            <p className="text-gray-400 text-lg mb-10">Мы свяжемся с вами в ближайшее время.</p>
+            <div className="flex gap-4">
+              <Button size="lg" onClick={() => navigate('/', { state: { scrollTo: 'catalog' } })}>
+                <Icon name="ShoppingBag" size={18} className="mr-2" />
+                Продолжить покупки
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => navigate('/')}>
+                На главную
+              </Button>
+            </div>
+          </div>
+        ) : cart.length === 0 ? (
           <Card className="text-center py-12">
             <CardContent>
               <Icon name="ShoppingCart" size={64} className="mx-auto mb-4 text-gray-400" />
