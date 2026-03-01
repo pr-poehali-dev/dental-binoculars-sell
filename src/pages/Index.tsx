@@ -54,7 +54,7 @@ const products: Product[] = [
     price: 120000,
     pricePrefix: 'от',
     forcePrimaryColor: true,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/5eac23a4-9e73-4313-a57a-b080493760a5.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/0d0fca71-5b7a-4bd8-aa46-c5f2590eed59.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
