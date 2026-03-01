@@ -126,6 +126,9 @@ const Index = () => {
     };
     
     window.addEventListener('storage', handleStorageChange);
+
+    fetch('https://functions.poehali.dev/5735af54-42af-414c-b535-3db85b8ca128', { method: 'POST' }).catch(() => {});
+
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
   const [formData, setFormData] = useState({
