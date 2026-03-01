@@ -458,8 +458,8 @@ export default function ProductDetail() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-6 md:py-12">
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12">
+      <div className="container mx-auto px-3 md:px-4 py-4 md:py-12">
+        <div className="grid lg:grid-cols-2 gap-4 md:gap-12 mb-8 md:mb-12">
           <div className="space-y-3">
             <div 
               className="aspect-[4/3] md:aspect-square overflow-hidden rounded-lg bg-gray-100 relative group cursor-pointer"
@@ -521,20 +521,20 @@ export default function ProductDetail() {
             )}
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             <div>
-              <div className="flex gap-2 mb-4">
+              <div className="flex gap-2 mb-3 md:mb-4">
                 <Badge className="bg-primary text-white">В наличии</Badge>
                 {product.oldPrice && <Badge className="bg-red-500 text-white">АКЦИЯ</Badge>}
               </div>
-              <h1 className="text-4xl font-display font-bold mb-4">{product.name}</h1>
-              <div className="flex items-center gap-4 mb-6">
-                <div className={`text-4xl font-bold ${product.oldPrice ? 'text-red-600' : 'text-primary'}`}>
-                  {product.pricePrefix && <span className="text-2xl mr-2">{product.pricePrefix}</span>}
+              <h1 className="text-2xl md:text-4xl font-display font-bold mb-3">{product.name}</h1>
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`text-2xl md:text-4xl font-bold ${product.oldPrice ? 'text-red-600' : 'text-primary'}`}>
+                  {product.pricePrefix && <span className="text-xl md:text-2xl mr-2">{product.pricePrefix}</span>}
                   {product.price.toLocaleString('ru-RU')} ₽
                 </div>
                 {product.oldPrice && (
-                  <div className="text-2xl text-gray-400 line-through">
+                  <div className="text-lg md:text-2xl text-gray-400 line-through">
                     {product.oldPrice.toLocaleString('ru-RU')} ₽
                   </div>
                 )}
@@ -550,7 +550,7 @@ export default function ProductDetail() {
               </div>
             </div>
 
-            <div className="space-y-3 pt-6">
+            <div className="space-y-3 pt-4 md:pt-6">
               <Button 
                 size="lg" 
                 className="w-full bg-primary hover:bg-primary/90"
@@ -582,7 +582,7 @@ export default function ProductDetail() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 pt-6 border-t">
+            <div className="grid grid-cols-3 gap-2 md:gap-4 pt-4 md:pt-6 border-t">
               <div className="text-center">
                 <Icon name="Shield" size={24} className="mx-auto mb-2 text-primary" />
                 <p className="text-sm text-gray-400">Гарантия качества</p>
