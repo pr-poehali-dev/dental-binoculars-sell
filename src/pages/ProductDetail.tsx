@@ -388,10 +388,19 @@ export default function ProductDetail() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [showScrollArrow, setShowScrollArrow] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setCartCount(getCartCount(getCart()));
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollArrow(window.scrollY < 80);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   const product = productsData.find(p => p.id === Number(id));
@@ -413,6 +422,17 @@ export default function ProductDetail() {
 
   return (
     <>
+    {showScrollArrow && (
+      <div
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-1 cursor-pointer select-none"
+        onClick={() => window.scrollBy({ top: 300, behavior: 'smooth' })}
+      >
+        <span className="text-xs text-white/60 tracking-widest uppercase">листай вниз</span>
+        <div className="animate-bounce">
+          <Icon name="ChevronDown" size={32} className="text-primary drop-shadow-lg" />
+        </div>
+      </div>
+    )}
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-4">
