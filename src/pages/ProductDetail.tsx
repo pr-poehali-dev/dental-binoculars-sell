@@ -429,7 +429,7 @@ export default function ProductDetail() {
       >
         <span className="text-sm text-primary tracking-widest uppercase">листай вниз</span>
         <div className="animate-bounce">
-          <Icon name="ChevronDown" size={64} className="text-primary drop-shadow-lg" />
+          <Icon name="ChevronDown" size={128} className="text-primary drop-shadow-lg" />
         </div>
       </div>
     )}
