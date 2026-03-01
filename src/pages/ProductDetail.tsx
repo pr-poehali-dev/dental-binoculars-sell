@@ -427,7 +427,7 @@ export default function ProductDetail() {
         className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-1 cursor-pointer select-none"
         onClick={() => window.scrollBy({ top: 300, behavior: 'smooth' })}
       >
-        <span className="text-xs text-primary tracking-widest uppercase">листай вниз</span>
+        <span className="text-sm text-primary tracking-widest uppercase">листай вниз</span>
         <div className="animate-bounce">
           <Icon name="ChevronDown" size={64} className="text-primary drop-shadow-lg" />
         </div>
