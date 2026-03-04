@@ -15,8 +15,7 @@ def handler(event: dict, context) -> dict:
     cur = conn.cursor()
 
     cur.execute(
-        "INSERT INTO visits (ip_hash, date) VALUES (%s, CURRENT_DATE) ON CONFLICT (ip_hash, date) DO NOTHING",
-        (ip_hash,)
+        f"INSERT INTO visits (ip_hash, date) VALUES ('{ip_hash}', CURRENT_DATE) ON CONFLICT (ip_hash, date) DO NOTHING"
     )
     conn.commit()
     cur.close()
