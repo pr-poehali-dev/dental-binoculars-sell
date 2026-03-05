@@ -8,7 +8,11 @@ def handler(event: dict, context) -> dict:
     if event.get('httpMethod') == 'OPTIONS':
         return {'statusCode': 200, 'headers': {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '86400'}, 'body': ''}
 
-    ip = event.get('requestContext', {}).get('identity', {}).get('sourceIp', 'unknown')
+    ip = (
+        event.get('headers', {}).get('x-forwarded-for', '') or
+        event.get('requestContext', {}).get('identity', {}).get('sourceIp', 'unknown')
+    ).split(',')[0].strip()
+    print(f"[track-visit] IP={ip}, headers={list(event.get('headers', {}).keys())}")
     ip_hash = hashlib.sha256(ip.encode()).hexdigest()
 
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
