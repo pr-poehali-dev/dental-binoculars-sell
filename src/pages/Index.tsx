@@ -107,6 +107,16 @@ const products: Product[] = [
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/5a3c934a-3d76-44d3-ab37-8fbd0fa349dd.jpg',
     magnification: '3.5х',
     category: 'loupes'
+  },
+  {
+    id: 12,
+    name: 'Бинокулярные лупы Titanium Ergo Pro Max',
+    description: 'Апохроматические линзы Schott. Оправа из титанового сплава. Угловая конструкция для прямой посадки головы',
+    price: 139000,
+    oldPrice: 160000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/8c764786-55fd-4183-8882-8e8977c53595.jpg',
+    magnification: '3.0х / 4.0х / 5.0х / 6.0х',
+    category: 'loupes'
   }
 ];
 
