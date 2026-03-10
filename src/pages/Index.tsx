@@ -28,6 +28,16 @@ interface Product {
 
 const products: Product[] = [
   {
+    id: 12,
+    name: 'Бинокулярные лупы Titanium Ergo Pro Max',
+    description: 'Апохроматические линзы Schott. Оправа из титанового сплава. Угловая конструкция для прямой посадки головы',
+    price: 139000,
+    oldPrice: 160000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/8c764786-55fd-4183-8882-8e8977c53595.jpg',
+    magnification: '3.0х / 4.0х / 5.0х / 6.0х',
+    category: 'loupes'
+  },
+  {
     id: 4,
     name: 'Бинокулярные лупы Ergo Pro Max',
     description: 'Апохроматические линзы из оптического стекла. Немецкая оптика Schott',
@@ -36,16 +46,6 @@ const products: Product[] = [
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/8c764786-55fd-4183-8882-8e8977c53595.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
-  },
-  {
-    id: 5,
-    name: 'Беспроводной головной осветитель Pro Max',
-    description: 'Беспроводной головной осветитель Pro Max обеспечивает непрерывную работу без необходимости подключения к кабелю. Высокое качество света, имеются два уровня яркости, переключаемые сенсорным нажатием',
-    price: 59000,
-    oldPrice: 65000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/703a6f7a-c7ca-44c5-b547-29adc2572176.jpg',
-    magnification: '35000 ЛК',
-    category: 'lights'
   },
   {
     id: 6,
@@ -59,13 +59,13 @@ const products: Product[] = [
     category: 'loupes'
   },
   {
-    id: 7,
-    name: 'Универсальный Осветитель Беспроводной',
-    description: 'Быстросъемные аккумуляторы на магнитном креплении. Универсальное крепление с прищепкой для бинокуляров и очков',
-    price: 39000,
-    oldPrice: 45000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/87cdae99-d4e3-4196-8cfd-c57f4e3a2ae6.jpg',
-    magnification: '20 000-60 000 Люкс',
+    id: 5,
+    name: 'Беспроводной головной осветитель Pro Max',
+    description: 'Беспроводной головной осветитель Pro Max обеспечивает непрерывную работу без необходимости подключения к кабелю. Высокое качество света, имеются два уровня яркости, переключаемые сенсорным нажатием',
+    price: 59000,
+    oldPrice: 65000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/703a6f7a-c7ca-44c5-b547-29adc2572176.jpg',
+    magnification: '35000 ЛК',
     category: 'lights'
   },
   {
