@@ -109,6 +109,16 @@ const products: Product[] = [
     category: 'loupes'
   },
   {
+    id: 7,
+    name: 'Универсальный Осветитель Беспроводной',
+    description: 'Быстросъемные аккумуляторы на магнитном креплении. Универсальное крепление с прищепкой для бинокуляров и очков',
+    price: 39000,
+    oldPrice: 45000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/87cdae99-d4e3-4196-8cfd-c57f4e3a2ae6.jpg',
+    magnification: '20 000-60 000 Люкс',
+    category: 'lights'
+  },
+  {
     id: 12,
     name: 'Бинокулярные лупы Titanium Ergo Pro Max',
     description: 'Апохроматические линзы Schott. Оправа из титанового сплава. Угловая конструкция для прямой посадки головы',
