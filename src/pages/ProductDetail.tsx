@@ -103,8 +103,7 @@ const productsData: ProductDetails[] = [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/12174e7b-0e1f-494d-bf25-440d69141745.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/8c764786-55fd-4183-8882-8e8977c53595.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/27c8a966-c43a-4f62-a3df-a75be58344d7.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/93b3bd79-2836-4b7b-b6ed-777fe44001e3.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/c8d91b54-a68d-47b7-b308-ff51cb26fafd.jpg'
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/93b3bd79-2836-4b7b-b6ed-777fe44001e3.jpg'
     ],
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     weight: 'Зависит от конфигурации',
