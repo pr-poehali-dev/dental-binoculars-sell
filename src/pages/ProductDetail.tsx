@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -426,6 +426,24 @@ export default function ProductDetail() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [showScrollArrow, setShowScrollArrow] = useState(true);
+  const touchStartX = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent, imagesLength: number) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        setSelectedImageIndex(prev => prev === imagesLength - 1 ? 0 : prev + 1);
+      } else {
+        setSelectedImageIndex(prev => prev === 0 ? imagesLength - 1 : prev - 1);
+      }
+    }
+    touchStartX.current = null;
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -501,6 +519,8 @@ export default function ProductDetail() {
             <div 
               className="aspect-[4/3] md:aspect-square overflow-hidden rounded-lg bg-gray-100 relative group cursor-pointer"
               onClick={() => setIsFullscreen(true)}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={(e) => handleTouchEnd(e, product.images.length)}
             >
               <img 
                 src={product.images[selectedImageIndex]} 
@@ -518,7 +538,7 @@ export default function ProductDetail() {
                     variant="outline"
                     size="icon"
                     className="absolute left-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-background/80 backdrop-blur-sm"
-                    onClick={() => setSelectedImageIndex(prev => prev === 0 ? product.images.length - 1 : prev - 1)}
+                    onClick={(e) => { e.stopPropagation(); setSelectedImageIndex(prev => prev === 0 ? product.images.length - 1 : prev - 1); }}
                   >
                     <Icon name="ChevronLeft" size={24} />
                   </Button>
@@ -526,10 +546,18 @@ export default function ProductDetail() {
                     variant="outline"
                     size="icon"
                     className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-background/80 backdrop-blur-sm"
-                    onClick={() => setSelectedImageIndex(prev => prev === product.images.length - 1 ? 0 : prev + 1)}
+                    onClick={(e) => { e.stopPropagation(); setSelectedImageIndex(prev => prev === product.images.length - 1 ? 0 : prev + 1); }}
                   >
                     <Icon name="ChevronRight" size={24} />
                   </Button>
+                  <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 md:hidden">
+                    {product.images.map((_, i) => (
+                      <span
+                        key={i}
+                        className={`block w-2 h-2 rounded-full transition-all ${i === selectedImageIndex ? 'bg-white scale-125' : 'bg-white/50'}`}
+                      />
+                    ))}
+                  </div>
                 </>
               )}
             </div>
