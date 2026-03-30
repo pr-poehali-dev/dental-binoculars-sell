@@ -257,8 +257,8 @@ const Dealer = () => {
                   },
                 ].map((product, i) => (
                   <div key={i} className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-[hsl(var(--primary)/0.4)] transition-colors">
-                    <div className="h-44 overflow-hidden">
-                      <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                    <div className="h-44 bg-white/5 flex items-center justify-center">
+                      <img src={product.image} alt={product.name} className="w-full h-full object-contain p-2" />
                     </div>
                     <div className="p-5">
                       <div className="flex items-start justify-between mb-3">
@@ -320,8 +320,8 @@ const Dealer = () => {
                   },
                 ].map((product, i) => (
                   <div key={i} className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-[hsl(var(--accent)/0.4)] transition-colors">
-                    <div className="h-44 overflow-hidden">
-                      <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                    <div className="h-44 bg-white/5 flex items-center justify-center">
+                      <img src={product.image} alt={product.name} className="w-full h-full object-contain p-2" />
                     </div>
                     <div className="p-5">
                       <div className="font-semibold text-white mb-1">{product.name}</div>
