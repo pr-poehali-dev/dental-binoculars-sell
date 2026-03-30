@@ -9,6 +9,8 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Privacy from "./pages/Privacy";
 import Admin from "./pages/Admin";
+import Dealer from "./pages/Dealer";
+import DealerEdit from "./pages/DealerEdit";
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
 
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/cart" element={<Cart />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/dealer" element={<Dealer />} />
+          <Route path="/dealer/edit" element={<DealerEdit />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

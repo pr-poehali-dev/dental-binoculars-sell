@@ -1,27 +1,43 @@
 {
   "tests": [
     {
-      "name": "Generate PDF with vacancies",
+      "name": "Generate dealer PDF",
       "method": "POST",
       "path": "/",
       "body": {
-        "vacancies": [
-          {
-            "title": "Frontend Developer",
-            "salary": "От 100 000 ₽",
-            "location": "Москва",
-            "type": "Полная занятость",
-            "description": "Разработка интерфейсов",
-            "requirements": ["React", "TypeScript"],
-            "benefits": ["ДМС", "Обучение"]
-          }
+        "type": "dealer",
+        "config": {
+          "company_name": "VAV DENTAL",
+          "hero_title": "Коммерческое предложение для дилеров",
+          "hero_subtitle": "Партнёрская программа",
+          "company_description": "Российская компания с 15-летним опытом",
+          "phone": "+7 (495) 000-00-00",
+          "email": "dealer@vavdental.ru",
+          "address": "г. Королёв, Московская область",
+          "margin_info": "Маржинальность 25-40%",
+          "min_order": "От 1 единицы",
+          "delivery_info": "1-3 дня по России"
+        },
+        "products_lupes": [
+          {"name": "Ergo Pro Max", "price": "119 000 ₽", "tag": "Хит", "specs": ["Оптика Schott"]}
+        ],
+        "products_lights": [
+          {"name": "Беспроводной Pro Max", "price": "59 000 ₽", "specs": ["35 000 ЛК"]}
         ]
       },
       "expectedStatus": 200,
-      "expectedBody": {
-        "pdf": "string",
-        "filename": "string"
+      "expectedBody": {"pdf": "string", "filename": "string"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Generate vacancies PDF",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "vacancies": [{"title": "Frontend Developer", "salary": "От 100 000 ₽", "location": "Москва", "type": "Полная занятость", "description": "Разработка интерфейсов", "requirements": ["React"], "benefits": ["ДМС"]}]
       },
+      "expectedStatus": 200,
+      "expectedBody": {"pdf": "string", "filename": "string"},
       "bodyMatcher": "partial"
     }
   ]
