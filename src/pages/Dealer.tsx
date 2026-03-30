@@ -68,13 +68,24 @@ const Dealer = () => {
         }),
       });
       const data = await res.json();
-      const blob = new Blob([Uint8Array.from(atob(data.pdf), (c) => c.charCodeAt(0))], { type: "application/pdf" });
+      const base64 = data.pdf;
+      const byteCharacters = atob(base64);
+      const byteArrays: Uint8Array[] = [];
+      for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+        const slice = byteCharacters.slice(offset, offset + 512);
+        const byteNumbers = new Array(slice.length);
+        for (let i = 0; i < slice.length; i++) byteNumbers[i] = slice.charCodeAt(i);
+        byteArrays.push(new Uint8Array(byteNumbers));
+      }
+      const blob = new Blob(byteArrays, { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
       a.download = data.filename || "VAV_DENTAL_КП.pdf";
+      document.body.appendChild(a);
       a.click();
-      URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch {
       alert("Не удалось сгенерировать PDF, попробуйте ещё раз");
     } finally {
