@@ -448,11 +448,6 @@ const Dealer = () => {
                 ))}
               </ul>
 
-              <div className="mt-6 p-4 bg-[hsl(var(--primary)/0.08)] border border-[hsl(var(--primary)/0.2)] rounded-xl">
-                <p className="text-sm text-white/80">
-                  <strong className="text-[hsl(var(--primary))]">Расчёт выгоды:</strong> при продаже 5 единиц Ergo Pro Max (119 000 ₽) в месяц с дилерской скидкой 25% — маржа составит <strong className="text-white">~148 750 ₽/мес.</strong>
-                </p>
-              </div>
             </div>
           </div>
         </div>
