@@ -100,6 +100,7 @@ const Dealer = () => {
                     oldPrice: "160 000 ₽",
                     tag: "Флагман",
                     tagColor: "bg-[hsl(var(--accent)/0.2)] text-[hsl(var(--accent))]",
+                    image: "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/df669c6d-77e0-4f86-a642-433ca1cd77b1.jpeg",
                     specs: ["Оптика Schott (Германия)", "Оправа из титанового сплава", "Увеличение: 3.0x — 6.0x", "Поле обзора: 50–105 мм"],
                   },
                   {
@@ -108,6 +109,7 @@ const Dealer = () => {
                     oldPrice: "140 000 ₽",
                     tag: "Хит продаж",
                     tagColor: "bg-[hsl(var(--primary)/0.2)] text-[hsl(var(--primary))]",
+                    image: "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/8c764786-55fd-4183-8882-8e8977c53595.jpg",
                     specs: ["Оптика Schott (Германия)", "Алюминиевый сплав аэрокосм. класса", "Увеличение: 3.0x — 6.0x", "Антибликовое покрытие"],
                   },
                   {
@@ -115,6 +117,7 @@ const Dealer = () => {
                     price: "от 120 000 ₽",
                     tag: "Индивидуальный",
                     tagColor: "bg-[hsl(var(--secondary)/0.2)] text-[hsl(var(--secondary))]",
+                    image: "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/0d0fca71-5b7a-4bd8-aa46-c5f2590eed59.jpg",
                     specs: ["5 цветов оправы на выбор", "Оптика Schott (Германия)", "Настройка под диоптрии", "Увеличение: 3.0x — 6.0x"],
                   },
                   {
@@ -123,6 +126,7 @@ const Dealer = () => {
                     oldPrice: "120 000 ₽",
                     tag: "Оптимальный",
                     tagColor: "bg-white/10 text-white/70",
+                    image: "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/7ed2c9b5-10e2-4b14-b729-5b9755a3e3d5.jpg",
                     specs: ["Оптика HOYA (Япония)", "Алюминиевый сплав", "Увеличение: 4.0x — 6.0x", "Поле обзора: 50 мм"],
                   },
                   {
@@ -131,6 +135,7 @@ const Dealer = () => {
                     oldPrice: "80 000 ₽",
                     tag: "Комплект",
                     tagColor: "bg-white/10 text-white/70",
+                    image: "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/81e572ea-b705-4e77-984a-4c56607870d9.jpg",
                     specs: ["Оптика Glance (Корея)", "Увеличение: 5.0x", "Осветитель в комплекте", "Угловая конструкция"],
                   },
                   {
@@ -139,32 +144,38 @@ const Dealer = () => {
                     oldPrice: "60 000 ₽",
                     tag: "Стартовый",
                     tagColor: "bg-white/10 text-white/70",
+                    image: "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/5a3c934a-3d76-44d3-ab37-8fbd0fa349dd.jpg",
                     specs: ["Увеличение: 3.5x", "Осветитель в комплекте", "Идеально для начинающих", "Доступная цена входа"],
                   },
                 ].map((product, i) => (
-                  <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:border-[hsl(var(--primary)/0.4)] transition-colors">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <div className="font-semibold text-white">{product.name}</div>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="text-[hsl(var(--primary))] font-bold">{product.price}</span>
-                          {product.oldPrice && (
-                            <span className="text-white/40 text-sm line-through">{product.oldPrice}</span>
-                          )}
-                        </div>
-                      </div>
-                      <span className={`text-xs px-2 py-1 rounded-full font-medium ${product.tagColor}`}>
-                        {product.tag}
-                      </span>
+                  <div key={i} className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-[hsl(var(--primary)/0.4)] transition-colors">
+                    <div className="h-44 overflow-hidden">
+                      <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
                     </div>
-                    <ul className="space-y-1">
-                      {product.specs.map((spec, j) => (
-                        <li key={j} className="text-white/55 text-sm flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-[hsl(var(--primary))] flex-shrink-0" />
-                          {spec}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="p-5">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <div className="font-semibold text-white">{product.name}</div>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="text-[hsl(var(--primary))] font-bold">{product.price}</span>
+                            {product.oldPrice && (
+                              <span className="text-white/40 text-sm line-through">{product.oldPrice}</span>
+                            )}
+                          </div>
+                        </div>
+                        <span className={`text-xs px-2 py-1 rounded-full font-medium ${product.tagColor}`}>
+                          {product.tag}
+                        </span>
+                      </div>
+                      <ul className="space-y-1">
+                        {product.specs.map((spec, j) => (
+                          <li key={j} className="text-white/55 text-sm flex items-center gap-2">
+                            <span className="w-1 h-1 rounded-full bg-[hsl(var(--primary))] flex-shrink-0" />
+                            {spec}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -182,37 +193,45 @@ const Dealer = () => {
                     name: "Беспроводной Pro Max",
                     price: "59 000 ₽",
                     oldPrice: "65 000 ₽",
+                    image: "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/703a6f7a-c7ca-44c5-b547-29adc2572176.jpg",
                     specs: ["35 000 ЛК", "3 аккумулятора", "Вес 10,8 г", "Срок службы 10 000 ч"],
                   },
                   {
                     name: "Универсальный беспроводной",
                     price: "39 000 ₽",
                     oldPrice: "45 000 ₽",
+                    image: "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/87cdae99-d4e3-4196-8cfd-c57f4e3a2ae6.jpg",
                     specs: ["20 000–60 000 ЛК", "Магнитные аккумуляторы", "Крепление-прищепка", "Оранжевый фильтр"],
                   },
                   {
                     name: "Осветитель Pro",
                     price: "29 000 ₽",
                     oldPrice: "40 000 ₽",
+                    image: "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/092db74a-716a-4f9c-8a1b-a5f3f372ea05.jpg",
                     specs: ["90 000 ЛК", "CRI > 90%", "5000 К", "Плавная яркость"],
                   },
                 ].map((product, i) => (
-                  <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:border-[hsl(var(--accent)/0.4)] transition-colors">
-                    <div className="font-semibold text-white mb-1">{product.name}</div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-[hsl(var(--accent))] font-bold">{product.price}</span>
-                      {product.oldPrice && (
-                        <span className="text-white/40 text-sm line-through">{product.oldPrice}</span>
-                      )}
+                  <div key={i} className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-[hsl(var(--accent)/0.4)] transition-colors">
+                    <div className="h-44 overflow-hidden">
+                      <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
                     </div>
-                    <ul className="space-y-1">
-                      {product.specs.map((spec, j) => (
-                        <li key={j} className="text-white/55 text-sm flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-[hsl(var(--accent))] flex-shrink-0" />
-                          {spec}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="p-5">
+                      <div className="font-semibold text-white mb-1">{product.name}</div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-[hsl(var(--accent))] font-bold">{product.price}</span>
+                        {product.oldPrice && (
+                          <span className="text-white/40 text-sm line-through">{product.oldPrice}</span>
+                        )}
+                      </div>
+                      <ul className="space-y-1">
+                        {product.specs.map((spec, j) => (
+                          <li key={j} className="text-white/55 text-sm flex items-center gap-2">
+                            <span className="w-1 h-1 rounded-full bg-[hsl(var(--accent))] flex-shrink-0" />
+                            {spec}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 ))}
               </div>
