@@ -355,6 +355,50 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "VAV DENTAL",
+            "url": "https://vavdental.ru",
+            "logo": "https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/55b9cf8b-aa81-4f0f-bbb0-008f20debeab.jpg",
+            "description": "Бинокулярные лупы и осветители для стоматологии. Более 15 лет опыта.",
+            "telephone": ["+7-925-411-61-83", "+7-936-229-09-59"],
+            "email": "vavdental@yandex.ru",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "пр-т Королёва 5д",
+              "addressLocality": "Королёв",
+              "addressRegion": "Московская область",
+              "addressCountry": "RU"
+            },
+            "openingHours": "Mo-Fr 10:00-19:00",
+            "sameAs": [
+              "https://t.me/+gBrcEEt31KkxNmYy"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Стоматологическая оптика",
+              "itemListElement": [
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Бинокулярные лупы"
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Осветители"
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Аксессуары"
+                }
+              ]
+            }
+          })
+        }}
+      />
       <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-border">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
