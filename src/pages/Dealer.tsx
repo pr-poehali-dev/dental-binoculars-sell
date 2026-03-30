@@ -29,7 +29,7 @@ const Dealer = () => {
     comment: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [printing, setPrinting] = useState(false);
+  const [downloading, setDownloading] = useState(false);
 
   useEffect(() => {
     fetch(API_URL)
@@ -43,12 +43,43 @@ const Dealer = () => {
     setSubmitted(true);
   };
 
-  const handlePrint = () => {
-    setPrinting(true);
-    setTimeout(() => {
-      window.print();
-      setPrinting(false);
-    }, 100);
+  const handleDownload = async () => {
+    setDownloading(true);
+    try {
+      const res = await fetch("https://functions.poehali.dev/2efd5107-2c66-4402-b6a9-d48ca9098bfd", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "dealer",
+          config,
+          products_lupes: [
+            { name: "Titanium Ergo Pro Max", price: "139 000 ₽", oldPrice: "160 000 ₽", tag: "Флагман", specs: ["Оптика Schott (Германия)", "Оправа из титанового сплава", "Увеличение: 3.0x — 6.0x", "Поле обзора: 50–105 мм"] },
+            { name: "Ergo Pro Max", price: "119 000 ₽", oldPrice: "140 000 ₽", tag: "Хит продаж", specs: ["Оптика Schott (Германия)", "Алюминиевый сплав аэрокосм. класса", "Увеличение: 3.0x — 6.0x", "Антибликовое покрытие"] },
+            { name: "Individual Ergo Pro Max", price: "от 120 000 ₽", tag: "Индивидуальный", specs: ["5 цветов оправы на выбор", "Оптика Schott (Германия)", "Настройка под диоптрии", "Увеличение: 3.0x — 6.0x"] },
+            { name: "Ergo Pro", price: "91 000 ₽", oldPrice: "120 000 ₽", tag: "Оптимальный", specs: ["Оптика HOYA (Япония)", "Алюминиевый сплав", "Увеличение: 4.0x — 6.0x", "Поле обзора: 50 мм"] },
+            { name: "Комплект Ergo + Осветитель", price: "64 000 ₽", oldPrice: "80 000 ₽", tag: "Комплект", specs: ["Оптика Glance (Корея)", "Увеличение: 5.0x", "Осветитель в комплекте", "Угловая конструкция"] },
+            { name: "Комплект Basic + Осветитель", price: "44 000 ₽", oldPrice: "60 000 ₽", tag: "Стартовый", specs: ["Увеличение: 3.5x", "Осветитель в комплекте", "Идеально для начинающих", "Доступная цена входа"] },
+          ],
+          products_lights: [
+            { name: "Беспроводной Pro Max", price: "59 000 ₽", oldPrice: "65 000 ₽", specs: ["35 000 ЛК", "3 аккумулятора", "Вес 10,8 г", "Срок службы 10 000 ч"] },
+            { name: "Универсальный беспроводной", price: "39 000 ₽", oldPrice: "45 000 ₽", specs: ["20 000–60 000 ЛК", "Магнитные аккумуляторы", "Крепление-прищепка", "Оранжевый фильтр"] },
+            { name: "Осветитель Pro", price: "29 000 ₽", oldPrice: "40 000 ₽", specs: ["90 000 ЛК", "CRI > 90%", "5000 К", "Плавная яркость"] },
+          ],
+        }),
+      });
+      const data = await res.json();
+      const blob = new Blob([Uint8Array.from(atob(data.pdf), (c) => c.charCodeAt(0))], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = data.filename || "VAV_DENTAL_КП.pdf";
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      alert("Не удалось сгенерировать PDF, попробуйте ещё раз");
+    } finally {
+      setDownloading(false);
+    }
   };
 
   const c = config;
@@ -84,12 +115,12 @@ const Dealer = () => {
               Редактировать
             </button>
             <button
-              onClick={handlePrint}
-              disabled={printing}
-              className="flex items-center gap-2 bg-[hsl(var(--primary))] text-black font-semibold text-sm px-4 py-2 rounded-xl hover:opacity-90 transition-opacity"
+              onClick={handleDownload}
+              disabled={downloading}
+              className="flex items-center gap-2 bg-[hsl(var(--primary))] text-black font-semibold text-sm px-4 py-2 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-60"
             >
-              <Icon name="Download" size={15} />
-              Скачать КП
+              <Icon name={downloading ? "Loader" : "Download"} size={15} />
+              {downloading ? "Генерирую..." : "Скачать КП"}
             </button>
           </div>
         </div>
@@ -593,12 +624,7 @@ const Dealer = () => {
         </div>
       </footer>
 
-      <style>{`
-        @media print {
-          body { background: white !important; color: black !important; }
-          .print\\:hidden { display: none !important; }
-        }
-      `}</style>
+
     </div>
   );
 };
