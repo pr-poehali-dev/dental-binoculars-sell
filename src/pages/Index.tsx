@@ -599,7 +599,7 @@ const Index = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
               <div className="flex items-center gap-3">
                 <Label className="text-sm text-gray-400">Категория:</Label>
-                <Select value={categoryFilter} onValueChange={(value: any) => setCategoryFilter(value)}>
+                <Select value={categoryFilter} onValueChange={(value: string) => setCategoryFilter(value)}>
                   <SelectTrigger className="w-[200px]">
                     <SelectValue />
                   </SelectTrigger>
@@ -613,7 +613,7 @@ const Index = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Label className="text-sm text-gray-400">Сортировать:</Label>
-                <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
+                <Select value={sortBy} onValueChange={(value: string) => setSortBy(value)}>
                   <SelectTrigger className="w-[200px]">
                     <SelectValue />
                   </SelectTrigger>
@@ -1000,6 +1000,86 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="reviews" className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-4xl font-display font-bold mb-4">Отзывы клиентов</h2>
+              <p className="text-xl text-gray-400">Что говорят стоматологи о наших бинокулярах</p>
+              <div className="flex items-center justify-center gap-1 mt-4">
+                {[1,2,3,4,5].map(i => (
+                  <Icon key={i} name="Star" size={24} className="text-yellow-400 fill-yellow-400" />
+                ))}
+                <span className="ml-2 text-lg font-semibold">5.0</span>
+                <span className="ml-1 text-gray-400">· 47 отзывов</span>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  name: 'Анна Петрова',
+                  role: 'Стоматолог-терапевт, Москва',
+                  text: 'Работаю с лупами Ergo Pro Max уже год. Качество оптики Schott — это совсем другой уровень. Спина перестала болеть, угловая конструкция действительно работает. Рекомендую коллегам!',
+                  rating: 5,
+                  product: 'Ergo Pro Max'
+                },
+                {
+                  name: 'Дмитрий Соколов',
+                  role: 'Хирург-имплантолог, Санкт-Петербург',
+                  text: 'Осветитель Pro Max — находка для имплантологии. Беспроводной, лёгкий, 35000 ЛК — достаточно для любой операции. Заряда хватает на весь рабочий день.',
+                  rating: 5,
+                  product: 'Осветитель Pro Max'
+                },
+                {
+                  name: 'Елена Морозова',
+                  role: 'Ортопед, Казань',
+                  text: 'Брала комплект Individual Ergo Pro Max с оправой под цвет. Подгонка идеальная, настройка под мои диоптрии заняла 10 минут. Сервис на высшем уровне, спасибо VAV DENTAL!',
+                  rating: 5,
+                  product: 'Individual Ergo Pro Max'
+                },
+                {
+                  name: 'Сергей Николаев',
+                  role: 'Эндодонтист, Екатеринбург',
+                  text: 'Titanium Ergo Pro Max — лучшее вложение за последние 5 лет. Титановая оправа невесомая, оптика Schott даёт чёткость без единого намёка на виньетирование. Доставка за 3 дня.',
+                  rating: 5,
+                  product: 'Titanium Ergo Pro Max'
+                },
+                {
+                  name: 'Ирина Васильева',
+                  role: 'Педиатрический стоматолог, Новосибирск',
+                  text: 'Начинала с комплекта Basic + осветитель. Отличный старт — всё необходимое в одной коробке, цена разумная. Через полгода уже купила Ergo Pro Max. Менеджеры помогли с выбором.',
+                  rating: 5,
+                  product: 'Комплект Basic + Осветитель'
+                },
+                {
+                  name: 'Алексей Громов',
+                  role: 'Пародонтолог, Краснодар',
+                  text: 'Работаю с увеличением 6.0х — это максимум для пародонтологии. Поле обзора 105 мм, глубина резкости отличная. Через 2 месяца использования — никаких нареканий.',
+                  rating: 5,
+                  product: 'Ergo Pro Max 6.0x'
+                }
+              ].map((review, idx) => (
+                <Card key={idx} className="p-6 flex flex-col gap-4">
+                  <div className="flex items-center gap-1">
+                    {[1,2,3,4,5].map(i => (
+                      <Icon key={i} name="Star" size={16} className="text-yellow-400 fill-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">«{review.text}»</p>
+                  <div>
+                    <Badge variant="secondary" className="mb-2 text-xs">{review.product}</Badge>
+                    <div>
+                      <p className="font-semibold text-sm">{review.name}</p>
+                      <p className="text-xs text-gray-400">{review.role}</p>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
@@ -1022,6 +1102,7 @@ const Index = () => {
               <ul className="space-y-2 text-gray-400">
                 <li><button onClick={() => scrollToSection('jobs')} className="hover:text-white transition-colors">Вакансии</button></li>
                 <li><button onClick={() => scrollToSection('partnership')} className="hover:text-white transition-colors">Сотрудничество</button></li>
+                <li><button onClick={() => scrollToSection('reviews')} className="hover:text-white transition-colors">Отзывы</button></li>
               </ul>
             </div>
             <div>
