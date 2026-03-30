@@ -1,7 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
+const API_URL = "https://functions.poehali.dev/6baa0592-59d1-4656-a16c-50daa08feb3f";
+
+interface DealerConfig {
+  company_name?: string;
+  company_description?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  hero_title?: string;
+  hero_subtitle?: string;
+  margin_info?: string;
+  min_order?: string;
+  delivery_info?: string;
+}
+
 const Dealer = () => {
+  const navigate = useNavigate();
+  const [config, setConfig] = useState<DealerConfig>({});
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -11,16 +29,44 @@ const Dealer = () => {
     comment: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [printing, setPrinting] = useState(false);
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then((r) => r.json())
+      .then((data) => setConfig(data))
+      .catch(() => {});
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
   };
 
+  const handlePrint = () => {
+    setPrinting(true);
+    setTimeout(() => {
+      window.print();
+      setPrinting(false);
+    }, 100);
+  };
+
+  const c = config;
+  const companyName = c.company_name || "VAV DENTAL";
+  const heroTitle = c.hero_title || "Коммерческое предложение для дилеров";
+  const heroSubtitle = c.hero_subtitle || "Приглашаем региональных партнёров к сотрудничеству в сфере профессиональной стоматологической оптики";
+  const companyDesc = c.company_description || "VAV DENTAL — российская компания с более чем 15-летним опытом в разработке и поставке профессиональной оптики для стоматологов.";
+  const phone = c.phone || "+7 (495) 000-00-00";
+  const email = c.email || "dealer@vavdental.ru";
+  const address = c.address || "пр-т Королёва 5д, г.Королёв, Московская область";
+  const marginInfo = c.margin_info || "Маржинальность 25–40%";
+  const minOrder = c.min_order || "Первый заказ от 1 единицы";
+  const deliveryInfo = c.delivery_info || "Доставка за 1–3 дня по всей России";
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <header className="border-b border-white/10 py-4 px-6">
+      <header className="border-b border-white/10 py-4 px-6 print:hidden">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <a href="/" className="flex items-center gap-2 text-white hover:text-[hsl(var(--primary))] transition-colors">
             <Icon name="ChevronLeft" size={20} />
@@ -29,7 +75,23 @@ const Dealer = () => {
           <div className="text-xl font-bold tracking-widest">
             VAV<span className="text-[hsl(var(--primary))]">DENTAL</span>
           </div>
-          <div className="w-24" />
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => navigate("/dealer/edit")}
+              className="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-sm px-3 py-2 rounded-lg hover:bg-white/5"
+            >
+              <Icon name="Pencil" size={15} />
+              Редактировать
+            </button>
+            <button
+              onClick={handlePrint}
+              disabled={printing}
+              className="flex items-center gap-2 bg-[hsl(var(--primary))] text-black font-semibold text-sm px-4 py-2 rounded-xl hover:opacity-90 transition-opacity"
+            >
+              <Icon name="Download" size={15} />
+              Скачать КП
+            </button>
+          </div>
         </div>
       </header>
 
@@ -39,15 +101,19 @@ const Dealer = () => {
         <div className="max-w-4xl mx-auto relative">
           <div className="inline-flex items-center gap-2 bg-[hsl(var(--primary)/0.15)] border border-[hsl(var(--primary)/0.3)] rounded-full px-4 py-1.5 text-sm text-[hsl(var(--primary))] mb-6">
             <Icon name="Handshake" size={14} />
-            Партнёрская программа VAV DENTAL
+            Партнёрская программа {companyName}
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Коммерческое предложение<br />
-            <span className="text-[hsl(var(--primary))]">для дилеров</span>
+            {heroTitle.includes("для дилеров") ? (
+              <>
+                {heroTitle.replace(" для дилеров", "")}<br />
+                <span className="text-[hsl(var(--primary))]">для дилеров</span>
+              </>
+            ) : (
+              <span>{heroTitle}</span>
+            )}
           </h1>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Приглашаем региональных партнёров к сотрудничеству в сфере профессиональной стоматологической оптики
-          </p>
+          <p className="text-lg text-white/60 max-w-2xl mx-auto">{heroSubtitle}</p>
         </div>
       </section>
 
@@ -73,7 +139,7 @@ const Dealer = () => {
 
           <div className="mt-10 bg-white/5 border border-white/10 rounded-2xl p-8">
             <p className="text-white/80 leading-relaxed text-lg">
-              <strong className="text-white">VAV DENTAL</strong> — российская компания с более чем 15-летним опытом в разработке и поставке профессиональной оптики для стоматологов. Мы работаем напрямую с клиниками, обеспечивая оборудование немецкой (Schott), японской (HOYA) и корейской оптикой. Наши продукты используют врачи по всей России — хирурги-имплантологи, ортопеды, эндодонтисты, пародонтологи.
+              <strong className="text-white">{companyName}</strong> — {companyDesc.replace(companyName + " — ", "").replace(companyName + "— ", "")}
             </p>
           </div>
         </div>
@@ -513,19 +579,26 @@ const Dealer = () => {
           <div className="font-bold text-white/60">
             VAV<span className="text-[hsl(var(--primary))]">DENTAL</span>
           </div>
-          <div>пр-т Королёва 5д, г.Королёв, Московская область</div>
+          <div>{address}</div>
           <div className="flex items-center gap-4">
-            <a href="tel:+74950000000" className="hover:text-white/70 transition-colors flex items-center gap-1">
+            <a href={`tel:${phone.replace(/\D/g, "")}`} className="hover:text-white/70 transition-colors flex items-center gap-1">
               <Icon name="Phone" size={14} />
-              +7 (495) 000-00-00
+              {phone}
             </a>
-            <a href="mailto:dealer@vavdental.ru" className="hover:text-white/70 transition-colors flex items-center gap-1">
+            <a href={`mailto:${email}`} className="hover:text-white/70 transition-colors flex items-center gap-1">
               <Icon name="Mail" size={14} />
-              dealer@vavdental.ru
+              {email}
             </a>
           </div>
         </div>
       </footer>
+
+      <style>{`
+        @media print {
+          body { background: white !important; color: black !important; }
+          .print\\:hidden { display: none !important; }
+        }
+      `}</style>
     </div>
   );
 };
