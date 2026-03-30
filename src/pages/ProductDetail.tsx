@@ -458,6 +458,48 @@ export default function ProductDetail() {
   
   const product = productsData.find(p => p.id === Number(id));
 
+  useEffect(() => {
+    if (!product) return;
+    const schema = {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": product.name,
+      "description": product.fullDescription,
+      "image": product.images,
+      "brand": {
+        "@type": "Brand",
+        "name": "VAV DENTAL"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": `https://vavdental.ru/product/${product.id}`,
+        "priceCurrency": "RUB",
+        "price": product.price,
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "VAV DENTAL"
+        }
+      }
+    };
+    let script = document.getElementById('schema-product') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'schema-product';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(schema);
+    document.title = `${product.name} — купить в VAV DENTAL | Бинокулярные лупы`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', `${product.name} — ${product.description}. Цена: ${product.price.toLocaleString('ru-RU')} ₽. Доставка по России. VAV DENTAL.`);
+    return () => {
+      const s = document.getElementById('schema-product');
+      if (s) s.remove();
+    };
+  }, [product]);
+
   if (!product) {
     return (
       <div className="min-h-screen flex items-center justify-center">
