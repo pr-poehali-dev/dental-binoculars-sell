@@ -26,6 +26,7 @@ export default function Admin() {
   const [error, setError] = useState(false);
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(false);
 
   const login = () => {
     if (password === ADMIN_PASSWORD) {
@@ -45,6 +46,7 @@ export default function Admin() {
         const parsed = typeof data === 'string' ? JSON.parse(data) : data;
         setStats(parsed);
       })
+      .catch(() => setFetchError(true))
       .finally(() => setLoading(false));
   }, [authed]);
 
@@ -82,6 +84,10 @@ export default function Admin() {
         </div>
 
         {loading && <p className="text-muted-foreground">Загрузка...</p>}
+
+        {fetchError && (
+          <p className="text-destructive">Не удалось загрузить статистику. Попробуйте обновить страницу.</p>
+        )}
 
         {stats && (
           <>
