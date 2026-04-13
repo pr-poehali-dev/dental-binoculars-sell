@@ -235,6 +235,7 @@ const Index = () => {
       console.log('Email sending failed, but continuing');
     }
     
+    launch();
     toast({
       title: "Заявка отправлена!",
       description: "Мы свяжемся с вами в ближайшее время.",
