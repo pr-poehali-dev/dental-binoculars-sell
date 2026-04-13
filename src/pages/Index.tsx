@@ -156,6 +156,8 @@ const Index = () => {
     specialty: '',
     city: ''
   });
+  const [testDriveSubmitted, setTestDriveSubmitted] = useState(false);
+  const [purchaseSubmitted, setPurchaseSubmitted] = useState(false);
 
   const [sortBy, setSortBy] = useState<'default' | 'price-asc' | 'price-desc' | 'magnification'>('default');
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'loupes' | 'lights' | 'accessories'>('all');
@@ -193,10 +195,7 @@ const Index = () => {
       console.log('Email sending failed, but continuing');
     }
     
-    toast({
-      title: "Заявка отправлена!",
-      description: "Мы свяжемся с вами в ближайшее время.",
-    });
+    setPurchaseSubmitted(true);
     setFormData({ name: '', city: '', specialty: '', phone: '', message: '', productId: '' });
   };
 
@@ -216,10 +215,7 @@ const Index = () => {
       console.log('Email sending failed, but continuing');
     }
     
-    toast({
-      title: "Заявка на тест-драйв отправлена!",
-      description: "Мы свяжемся с вами для оговорения деталей.",
-    });
+    setTestDriveSubmitted(true);
     setTestDriveForm({ fullName: '', phone: '', specialty: '', city: '' });
   };
 
@@ -735,53 +731,63 @@ const Index = () => {
                 <CardDescription>Заполните форму, и мы свяжемся с вами для согласования даты и времени</CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleTestDriveSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="fullName">ФИО *</Label>
-                    <Input
-                      id="fullName"
-                      required
-                      value={testDriveForm.fullName}
-                      onChange={(e) => setTestDriveForm({...testDriveForm, fullName: e.target.value})}
-                      placeholder="Иванов Иван Иванович"
-                    />
+                {testDriveSubmitted ? (
+                  <div className="bg-[hsl(var(--primary)/0.1)] border border-[hsl(var(--primary)/0.3)] rounded-2xl p-10 text-center animate-fade-in">
+                    <div className="w-16 h-16 rounded-full bg-[hsl(var(--primary)/0.2)] flex items-center justify-center mx-auto mb-4">
+                      <Icon name="CheckCircle" size={32} className="text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">Заявка отправлена!</h3>
+                    <p className="text-muted-foreground">Наш менеджер свяжется с вами для согласования даты и времени тест-драйва.</p>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="testDrivePhone">Номер телефона *</Label>
-                    <Input
-                      id="testDrivePhone"
-                      type="tel"
-                      required
-                      value={testDriveForm.phone}
-                      onChange={(e) => setTestDriveForm({...testDriveForm, phone: e.target.value})}
-                      placeholder="+7 (999) 123-45-67"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="specialty">Специальность *</Label>
-                    <Input
-                      id="specialty"
-                      required
-                      value={testDriveForm.specialty}
-                      onChange={(e) => setTestDriveForm({...testDriveForm, specialty: e.target.value})}
-                      placeholder="Стоматолог-терапевт"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="city">Город *</Label>
-                    <Input
-                      id="city"
-                      required
-                      value={testDriveForm.city}
-                      onChange={(e) => setTestDriveForm({...testDriveForm, city: e.target.value})}
-                      placeholder="Москва"
-                    />
-                  </div>
-                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
-                    <Icon name="Calendar" size={20} className="mr-2" />
-                    Отправить заявку
-                  </Button>
-                </form>
+                ) : (
+                  <form onSubmit={handleTestDriveSubmit} className="space-y-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="fullName">ФИО *</Label>
+                      <Input
+                        id="fullName"
+                        required
+                        value={testDriveForm.fullName}
+                        onChange={(e) => setTestDriveForm({...testDriveForm, fullName: e.target.value})}
+                        placeholder="Иванов Иван Иванович"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="testDrivePhone">Номер телефона *</Label>
+                      <Input
+                        id="testDrivePhone"
+                        type="tel"
+                        required
+                        value={testDriveForm.phone}
+                        onChange={(e) => setTestDriveForm({...testDriveForm, phone: e.target.value})}
+                        placeholder="+7 (999) 123-45-67"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="specialty">Специальность *</Label>
+                      <Input
+                        id="specialty"
+                        required
+                        value={testDriveForm.specialty}
+                        onChange={(e) => setTestDriveForm({...testDriveForm, specialty: e.target.value})}
+                        placeholder="Стоматолог-терапевт"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="city">Город *</Label>
+                      <Input
+                        id="city"
+                        required
+                        value={testDriveForm.city}
+                        onChange={(e) => setTestDriveForm({...testDriveForm, city: e.target.value})}
+                        placeholder="Москва"
+                      />
+                    </div>
+                    <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
+                      <Icon name="Calendar" size={20} className="mr-2" />
+                      Отправить заявку
+                    </Button>
+                  </form>
+                )}
               </CardContent>
             </Card>
           </div>
@@ -797,65 +803,75 @@ const Index = () => {
                 <CardDescription>Заполните форму, и наш менеджер свяжется с вами </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">ФИО *</Label>
-                    <Input
-                      id="name"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      placeholder="Иван Иванов"
-                    />
+                {purchaseSubmitted ? (
+                  <div className="bg-[hsl(var(--primary)/0.1)] border border-[hsl(var(--primary)/0.3)] rounded-2xl p-10 text-center animate-fade-in">
+                    <div className="w-16 h-16 rounded-full bg-[hsl(var(--primary)/0.2)] flex items-center justify-center mx-auto mb-4">
+                      <Icon name="CheckCircle" size={32} className="text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">Заявка отправлена!</h3>
+                    <p className="text-muted-foreground">Мы свяжемся с вами в ближайшее время.</p>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="city">Город *</Label>
-                    <Input
-                      id="city"
-                      type="text"
-                      required
-                      value={formData.city}
-                      onChange={(e) => setFormData({...formData, city: e.target.value})}
-                      placeholder="Москва"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="specialty">Специальность *</Label>
-                    <Input
-                      id="specialty"
-                      type="text"
-                      required
-                      value={formData.specialty}
-                      onChange={(e) => setFormData({...formData, specialty: e.target.value})}
-                      placeholder="Стоматолог-терапевт"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Телефон *</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      placeholder="+7 (999) 123-45-67"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Комментарий</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      placeholder="Укажите интересующую модель или задайте вопрос"
-                      rows={4}
-                    />
-                  </div>
-                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
-                    <Icon name="Send" size={20} className="mr-2" />
-                    Отправить заявку
-                  </Button>
-                </form>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">ФИО *</Label>
+                      <Input
+                        id="name"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        placeholder="Иван Иванов"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="city">Город *</Label>
+                      <Input
+                        id="city"
+                        type="text"
+                        required
+                        value={formData.city}
+                        onChange={(e) => setFormData({...formData, city: e.target.value})}
+                        placeholder="Москва"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="specialty">Специальность *</Label>
+                      <Input
+                        id="specialty"
+                        type="text"
+                        required
+                        value={formData.specialty}
+                        onChange={(e) => setFormData({...formData, specialty: e.target.value})}
+                        placeholder="Стоматолог-терапевт"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Телефон *</Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        placeholder="+7 (999) 123-45-67"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Комментарий</Label>
+                      <Textarea
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        placeholder="Укажите интересующую модель или задайте вопрос"
+                        rows={4}
+                      />
+                    </div>
+                    <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
+                      <Icon name="Send" size={20} className="mr-2" />
+                      Отправить заявку
+                    </Button>
+                  </form>
+                )}
               </CardContent>
             </Card>
           </div>
