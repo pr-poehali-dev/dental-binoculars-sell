@@ -451,7 +451,7 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" 
                 alt="VAV DENTAL" 
-                className="h-32 cursor-pointer" 
+                className="h-16 md:h-32 w-auto cursor-pointer" 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>
