@@ -447,7 +447,7 @@ const Index = () => {
       <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-border">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 flex-shrink-0">
               <img 
                 src="https://cdn.poehali.dev/files/b241c320-0fc6-4325-861e-db45258a83a7.jpg" 
                 alt="VAV DENTAL" 
