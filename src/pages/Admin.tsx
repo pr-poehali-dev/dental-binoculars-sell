@@ -126,21 +126,23 @@ export default function Admin() {
                 {stats.by_day.length === 0 ? (
                   <p className="text-muted-foreground text-center py-8">Данных пока нет</p>
                 ) : (
-                  <div className="flex items-end gap-1 h-48 overflow-x-auto pb-2">
-                    {stats.by_day.map(day => (
-                      <div key={day.date} className="flex flex-col items-center gap-1 flex-1 min-w-[20px] group relative">
-                        <div
-                          className="w-full bg-primary rounded-t transition-all group-hover:bg-primary/80"
-                          style={{ height: `${(day.count / maxCount) * 100}%`, minHeight: '4px' }}
-                        />
-                        <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-card border text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
-                          {day.count}
+                  <div className="overflow-x-auto pb-2">
+                    <div className="flex items-end gap-1 h-48 min-w-max px-1">
+                      {stats.by_day.map(day => (
+                        <div key={day.date} className="flex flex-col items-center gap-1 w-7 group relative">
+                          <span className="text-[10px] font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                            {day.count}
+                          </span>
+                          <div
+                            className="w-full bg-primary rounded-t transition-all group-hover:bg-primary/80"
+                            style={{ height: `${(day.count / maxCount) * 160}px`, minHeight: '4px' }}
+                          />
+                          <span className="text-[9px] text-muted-foreground whitespace-nowrap rotate-45 origin-left mt-1 w-6 block">
+                            {day.date.slice(5)}
+                          </span>
                         </div>
-                        <span className="text-[9px] text-muted-foreground rotate-45 origin-left mt-1 hidden md:block">
-                          {day.date.slice(5)}
-                        </span>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 )}
               </CardContent>
