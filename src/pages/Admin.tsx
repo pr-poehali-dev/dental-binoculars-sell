@@ -130,13 +130,14 @@ export default function Admin() {
                     <div className="flex items-end gap-1 h-48 min-w-max px-1">
                       {stats.by_day.map(day => (
                         <div key={day.date} className="flex flex-col items-center gap-1 w-7 group relative">
-                          <span className="text-[10px] font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
-                            {day.count}
-                          </span>
                           <div
-                            className="w-full bg-primary rounded-t transition-all group-hover:bg-primary/80"
+                            className="w-full bg-primary rounded-t transition-all group-hover:bg-primary/80 flex items-start justify-center pt-1 relative"
                             style={{ height: `${(day.count / maxCount) * 160}px`, minHeight: '4px' }}
-                          />
+                          >
+                            <span className="text-[9px] font-medium text-primary-foreground leading-none">
+                              {day.count}
+                            </span>
+                          </div>
                           <span className="text-[9px] text-muted-foreground whitespace-nowrap rotate-45 origin-left mt-1 w-6 block">
                             {day.date.slice(5)}
                           </span>
