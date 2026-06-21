@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
-const ADMIN_PASSWORD = 'vavdental2024';
 const STATS_URL = 'https://functions.poehali.dev/ef4e5847-3d83-401b-a3d9-076f1f535206';
 
 interface DayStats {
@@ -21,24 +19,11 @@ interface Stats {
 }
 
 export default function Admin() {
-  const [password, setPassword] = useState('');
-  const [authed, setAuthed] = useState(false);
-  const [error, setError] = useState(false);
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(false);
 
-  const login = () => {
-    if (password === ADMIN_PASSWORD) {
-      setAuthed(true);
-      setError(false);
-    } else {
-      setError(true);
-    }
-  };
-
   useEffect(() => {
-    if (!authed) return;
     setLoading(true);
     fetch(STATS_URL)
       .then(r => r.json())
@@ -48,30 +33,7 @@ export default function Admin() {
       })
       .catch(() => setFetchError(true))
       .finally(() => setLoading(false));
-  }, [authed]);
-
-  if (!authed) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <Card className="w-full max-w-sm">
-          <CardHeader>
-            <CardTitle className="text-center">Админ-панель</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Input
-              type="password"
-              placeholder="Пароль"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && login()}
-            />
-            {error && <p className="text-destructive text-sm text-center">Неверный пароль</p>}
-            <Button className="w-full" onClick={login}>Войти</Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
+  }, []);
 
   const maxCount = stats ? Math.max(...stats.by_day.map(d => d.count), 1) : 1;
 
