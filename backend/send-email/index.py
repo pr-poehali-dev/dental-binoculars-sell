@@ -2,15 +2,23 @@ import json
 import os
 import urllib.request
 
-def send_telegram(text: str):
+def send_telegram(text: str) -> bool:
     token = os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_CHAT_ID')
     if not token or not chat_id:
-        return
+        return False
     url = f'https://api.telegram.org/bot{token}/sendMessage'
     payload = json.dumps({'chat_id': chat_id, 'text': text, 'parse_mode': 'HTML'}).encode('utf-8')
     req = urllib.request.Request(url, data=payload, headers={'Content-Type': 'application/json'}, method='POST')
-    urllib.request.urlopen(req, timeout=10)
+    last_error = None
+    for attempt in range(2):
+        try:
+            urllib.request.urlopen(req, timeout=4)
+            return True
+        except Exception as e:
+            last_error = e
+    print(f'Telegram send failed: {last_error}')
+    return False
 
 def handler(event: dict, context) -> dict:
     '''Отправка заявок в Telegram'''
@@ -84,7 +92,7 @@ def handler(event: dict, context) -> dict:
             'isBase64Encoded': False
         }
     
-    send_telegram(tg_text)
+    sent = send_telegram(tg_text)
     
     return {
         'statusCode': 200,
@@ -92,6 +100,6 @@ def handler(event: dict, context) -> dict:
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
         },
-        'body': json.dumps({'success': True}),
+        'body': json.dumps({'success': True, 'telegram_sent': sent}),
         'isBase64Encoded': False
     }
