@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
 const STATS_URL = 'https://functions.poehali.dev/ef4e5847-3d83-401b-a3d9-076f1f535206';
@@ -40,6 +41,20 @@ export default function Admin() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [leadsLoading, setLeadsLoading] = useState(false);
   const [leadsError, setLeadsError] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
+
+  const deleteLead = async (id: number) => {
+    if (!confirm('Удалить эту заявку?')) return;
+    setDeletingId(id);
+    try {
+      await fetch(`${LEADS_URL}?id=${id}`, { method: 'DELETE' });
+      setLeads(prev => prev.filter(l => l.id !== id));
+    } catch {
+      alert('Не удалось удалить заявку. Попробуйте ещё раз.');
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -167,9 +182,20 @@ export default function Admin() {
                       <Badge variant="destructive">Telegram не доставлен</Badge>
                     )}
                   </div>
-                  <span className="text-xs text-muted-foreground">
-                    {new Date(lead.created_at).toLocaleString('ru-RU')}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(lead.created_at).toLocaleString('ru-RU')}
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7 text-muted-foreground hover:text-destructive"
+                      disabled={deletingId === lead.id}
+                      onClick={() => deleteLead(lead.id)}
+                    >
+                      <Icon name={deletingId === lead.id ? 'Loader2' : 'Trash2'} size={16} className={deletingId === lead.id ? 'animate-spin' : ''} />
+                    </Button>
+                  </div>
                 </div>
                 <div className="text-sm space-y-1">
                   {Object.entries(lead.data).map(([key, value]) => (

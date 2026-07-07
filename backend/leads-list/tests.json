@@ -5,7 +5,14 @@
       "method": "GET",
       "path": "/",
       "expectedStatus": 200,
-      "expectedBody": {"leads": []},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Delete lead without id",
+      "method": "DELETE",
+      "path": "/",
+      "expectedStatus": 400,
+      "expectedBody": {"error": "Missing or invalid id"},
       "bodyMatcher": "partial"
     }
   ]

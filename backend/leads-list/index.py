@@ -5,18 +5,53 @@ from psycopg2.extras import RealDictCursor
 
 
 def handler(event: dict, context) -> dict:
-    '''Возвращает список заявок (покупка, тест-драйв, заказ) из базы данных'''
+    '''Возвращает список заявок (GET) или удаляет заявку по id (DELETE)'''
 
-    if event.get('httpMethod') == 'OPTIONS':
+    method = event.get('httpMethod', 'GET')
+
+    if method == 'OPTIONS':
         return {
             'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, OPTIONS',
+                'Access-Control-Allow-Methods': 'GET, DELETE, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type',
                 'Access-Control-Max-Age': '86400'
             },
             'body': ''
+        }
+
+    if method == 'DELETE':
+        params = event.get('queryStringParameters') or {}
+        lead_id = params.get('id')
+
+        if not lead_id or not str(lead_id).isdigit():
+            return {
+                'statusCode': 400,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                'body': json.dumps({'error': 'Missing or invalid id'}),
+                'isBase64Encoded': False
+            }
+
+        conn = psycopg2.connect(os.environ['DATABASE_URL'])
+        cur = conn.cursor()
+        cur.execute("DELETE FROM leads WHERE id = %s", (int(lead_id),))
+        deleted = cur.rowcount
+        conn.commit()
+        cur.close()
+        conn.close()
+
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({'success': True, 'deleted': deleted}),
+            'isBase64Encoded': False
         }
 
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
