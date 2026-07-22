@@ -13,30 +13,38 @@ def send_telegram(text: str) -> bool:
     url = f'https://api.telegram.org/bot{token}/sendMessage'
     payload = json.dumps({'chat_id': chat_id, 'text': text, 'parse_mode': 'HTML'}).encode('utf-8')
     req = urllib.request.Request(url, data=payload, headers={'Content-Type': 'application/json'}, method='POST')
-    last_error = None
-    for attempt in range(2):
-        try:
-            urllib.request.urlopen(req, timeout=4)
-            return True
-        except Exception as e:
-            last_error = e
-    print(f'Telegram send failed: {last_error}')
-    return False
-
-
-def save_lead(lead_type: str, data: dict, telegram_sent: bool):
     try:
-        conn = psycopg2.connect(os.environ['DATABASE_URL'])
+        urllib.request.urlopen(req, timeout=3)
+        return True
+    except Exception as e:
+        print(f'Telegram send failed: {e}')
+        return False
+
+
+def save_lead(lead_type: str, data: dict) -> int:
+    conn = psycopg2.connect(os.environ['DATABASE_URL'], connect_timeout=5)
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO leads (lead_type, data, telegram_sent) VALUES (%s, %s, FALSE) RETURNING id",
+        (lead_type, Json(data))
+    )
+    lead_id = cur.fetchone()[0]
+    conn.commit()
+    cur.close()
+    conn.close()
+    return lead_id
+
+
+def mark_telegram_sent(lead_id: int):
+    try:
+        conn = psycopg2.connect(os.environ['DATABASE_URL'], connect_timeout=5)
         cur = conn.cursor()
-        cur.execute(
-            "INSERT INTO leads (lead_type, data, telegram_sent) VALUES (%s, %s, %s)",
-            (lead_type, Json(data), telegram_sent)
-        )
+        cur.execute("UPDATE leads SET telegram_sent = TRUE WHERE id = %s", (lead_id,))
         conn.commit()
         cur.close()
         conn.close()
     except Exception as e:
-        print(f'Failed to save lead to DB: {e}')
+        print(f'Failed to update telegram_sent flag: {e}')
 
 
 def handler(event: dict, context) -> dict:
@@ -111,8 +119,15 @@ def handler(event: dict, context) -> dict:
             'isBase64Encoded': False
         }
 
+    lead_id = None
+    try:
+        lead_id = save_lead(email_type, data)
+    except Exception as e:
+        print(f'Failed to save lead to DB: {e}')
+
     sent = send_telegram(tg_text)
-    save_lead(email_type, data, sent)
+    if sent and lead_id is not None:
+        mark_telegram_sent(lead_id)
 
     return {
         'statusCode': 200,
@@ -120,6 +135,6 @@ def handler(event: dict, context) -> dict:
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
         },
-        'body': json.dumps({'success': True, 'telegram_sent': sent}),
+        'body': json.dumps({'success': True, 'telegram_sent': sent, 'saved': lead_id is not None}),
         'isBase64Encoded': False
     }
