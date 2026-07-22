@@ -5,7 +5,7 @@ from psycopg2.extras import RealDictCursor
 
 
 def handler(event: dict, context) -> dict:
-    '''Возвращает список заявок (GET) или архивирует заявку по id (DELETE — мягкое удаление, данные не стираются)'''
+    '''Возвращает список заявок (GET) или безвозвратно удаляет заявку по id (DELETE)'''
 
     method = event.get('httpMethod', 'GET')
 
@@ -38,8 +38,8 @@ def handler(event: dict, context) -> dict:
 
         conn = psycopg2.connect(os.environ['DATABASE_URL'])
         cur = conn.cursor()
-        cur.execute("UPDATE leads SET archived = TRUE WHERE id = %s", (int(lead_id),))
-        archived = cur.rowcount
+        cur.execute("DELETE FROM leads WHERE id = %s", (int(lead_id),))
+        deleted = cur.rowcount
         conn.commit()
         cur.close()
         conn.close()
@@ -50,7 +50,7 @@ def handler(event: dict, context) -> dict:
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
-            'body': json.dumps({'success': True, 'archived': archived}),
+            'body': json.dumps({'success': True, 'deleted': deleted}),
             'isBase64Encoded': False
         }
 
