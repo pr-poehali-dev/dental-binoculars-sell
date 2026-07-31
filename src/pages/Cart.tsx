@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { getCart, updateQuantity, removeFromCart, clearCart, getCartTotal, getCartCount, CartItem } from '@/lib/cart';
@@ -91,6 +92,7 @@ export default function Cart() {
     email: '',
     comment: ''
   });
+  const [consent, setConsent] = useState(false);
 
   useEffect(() => {
     setCart(getCart());
@@ -112,6 +114,15 @@ export default function Cart() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!consent) {
+      toast({
+        title: "Требуется согласие",
+        description: "Подтвердите согласие на обработку персональных данных",
+        variant: "destructive",
+      });
+      return;
+    }
     
     const total = getCartTotal(cart);
     
@@ -146,6 +157,7 @@ export default function Cart() {
     setCart([]);
     setOrderSuccess(true);
     setFormData({ name: '', phone: '', email: '', comment: '' });
+    setConsent(false);
   };
 
   const total = getCartTotal(cart);
@@ -322,6 +334,19 @@ export default function Cart() {
                         placeholder="Укажите дополнительную информацию"
                         rows={3}
                       />
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Checkbox
+                        id="cartConsent"
+                        checked={consent}
+                        onCheckedChange={(checked) => setConsent(checked === true)}
+                      />
+                      <Label htmlFor="cartConsent" className="text-sm font-normal text-muted-foreground leading-snug cursor-pointer">
+                        Я согласен на{' '}
+                        <a href="/privacy" target="_blank" className="underline hover:text-foreground">
+                          обработку персональных данных
+                        </a>
+                      </Label>
                     </div>
                     <Button type="submit" className="w-full" size="lg">
                       <Icon name="Send" size={20} className="mr-2" />

@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
@@ -191,6 +192,7 @@ const Index = () => {
     message: '',
     productId: ''
   });
+  const [purchaseConsent, setPurchaseConsent] = useState(false);
 
   const [testDriveForm, setTestDriveForm] = useState({
     fullName: '',
@@ -198,6 +200,7 @@ const Index = () => {
     specialty: '',
     city: ''
   });
+  const [testDriveConsent, setTestDriveConsent] = useState(false);
 
   const [sortBy, setSortBy] = useState<'default' | 'price-asc' | 'price-desc' | 'magnification'>('default');
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'loupes' | 'lights' | 'accessories'>('all');
@@ -221,6 +224,15 @@ const Index = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!purchaseConsent) {
+      toast({
+        title: "Требуется согласие",
+        description: "Подтвердите согласие на обработку персональных данных",
+        variant: "destructive",
+      });
+      return;
+    }
     
     try {
       await fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
@@ -241,10 +253,20 @@ const Index = () => {
       description: "Мы свяжемся с вами в ближайшее время.",
     });
     setFormData({ name: '', city: '', specialty: '', phone: '', message: '', productId: '' });
+    setPurchaseConsent(false);
   };
 
   const handleTestDriveSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!testDriveConsent) {
+      toast({
+        title: "Требуется согласие",
+        description: "Подтвердите согласие на обработку персональных данных",
+        variant: "destructive",
+      });
+      return;
+    }
     
     try {
       await fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
@@ -265,6 +287,7 @@ const Index = () => {
       description: "Мы свяжемся с вами для оговорения деталей.",
     });
     setTestDriveForm({ fullName: '', phone: '', specialty: '', city: '' });
+    setTestDriveConsent(false);
   };
 
   const handleDownloadPDF = async () => {
@@ -822,6 +845,19 @@ const Index = () => {
                       placeholder="Москва"
                     />
                   </div>
+                  <div className="flex items-start gap-2">
+                    <Checkbox
+                      id="testDriveConsent"
+                      checked={testDriveConsent}
+                      onCheckedChange={(checked) => setTestDriveConsent(checked === true)}
+                    />
+                    <Label htmlFor="testDriveConsent" className="text-sm font-normal text-gray-400 leading-snug cursor-pointer">
+                      Я согласен на{' '}
+                      <a href="/privacy" target="_blank" className="underline hover:text-white">
+                        обработку персональных данных
+                      </a>
+                    </Label>
+                  </div>
                   <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
                     <Icon name="Calendar" size={20} className="mr-2" />
                     Отправить заявку
@@ -895,6 +931,19 @@ const Index = () => {
                       placeholder="Укажите интересующую модель или задайте вопрос"
                       rows={4}
                     />
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Checkbox
+                      id="purchaseConsent"
+                      checked={purchaseConsent}
+                      onCheckedChange={(checked) => setPurchaseConsent(checked === true)}
+                    />
+                    <Label htmlFor="purchaseConsent" className="text-sm font-normal text-muted-foreground leading-snug cursor-pointer">
+                      Я согласен на{' '}
+                      <a href="/privacy" target="_blank" className="underline hover:text-foreground">
+                        обработку персональных данных
+                      </a>
+                    </Label>
                   </div>
                   <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
                     <Icon name="Send" size={20} className="mr-2" />
@@ -1157,8 +1206,16 @@ const Index = () => {
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 VAV DENTAL. Все права защищены.</p>
+          <div className="border-t border-gray-800 mt-8 pt-8">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-400 mb-4">
+              <a href="/privacy" className="hover:text-white transition-colors">Политика конфиденциальности</a>
+              <a href="/offer" className="hover:text-white transition-colors">Публичная оферта</a>
+            </div>
+            <div className="text-center text-gray-500 text-xs space-y-1">
+              <p>ИП Вердян Аршак Вагифович · ИНН 693700761112 · ОГРНИП 325508100461863</p>
+              <p>пр-т Королёва 5д, г. Королёв, Московская область</p>
+            </div>
+            <p className="text-center text-gray-400 mt-4">&copy; 2024 VAV DENTAL. Все права защищены.</p>
           </div>
         </div>
       </footer>
