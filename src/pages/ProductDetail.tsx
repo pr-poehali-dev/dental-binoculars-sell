@@ -276,7 +276,7 @@ const productsData: ProductDetails[] = [
     id: 7,
     name: 'Универсальный Осветитель Беспроводной',
     description: 'Быстросъемные аккумуляторы на магнитном креплении. Универсальное крепление с прищепкой для бинокуляров и очков',
-    price: 39000,
+    price: 34000,
     oldPrice: 45000,
     images: [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/77ad6c44-8add-474d-af5f-5e8f0d5edaf1.jpg',
