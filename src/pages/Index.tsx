@@ -29,6 +29,16 @@ interface Product {
 
 const products: Product[] = [
   {
+    id: 13,
+    name: 'Бинокулярные лупы Carbon Ergo',
+    description: 'Апохроматические линзы Schott. Карбоновая оправа из углеродного волокна. Угловая конструкция для прямой посадки головы',
+    price: 119000,
+    oldPrice: 140000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/32d2019d-5033-4447-895d-1c9ada33223c.jpg',
+    magnification: '3.0х / 4.0х / 5.0х / 6.0х',
+    category: 'loupes'
+  },
+  {
     id: 12,
     name: 'Бинокулярные лупы Titanium Ergo Pro Max',
     description: 'Апохроматические линзы Schott. Оправа из титанового сплава. Угловая конструкция для прямой посадки головы',
