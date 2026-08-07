@@ -138,8 +138,7 @@ const productsData: ProductDetails[] = [
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/703a6f7a-c7ca-44c5-b547-29adc2572176.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/3ade518b-2925-43e8-9a71-9aa9b74dd03f.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/fdfd6c4c-386b-4e62-97b4-51c81ea5b332.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/2b4990d3-7f4d-44b4-b57f-be70f4c71730.jpg',
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/80e79124-5a2f-49c9-8491-3eeba6300010.jpg'
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/2b4990d3-7f4d-44b4-b57f-be70f4c71730.jpg'
     ],
     magnification: '35000 ЛК',
     weight: '10,8 г (осветитель), 19,2 г (аккумулятор)',
