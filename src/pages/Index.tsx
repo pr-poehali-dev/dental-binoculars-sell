@@ -29,6 +29,16 @@ interface Product {
 
 const products: Product[] = [
   {
+    id: 14,
+    name: 'Бинокулярные лупы Carbon 3.5x',
+    description: 'Апохроматические линзы Schott. Карбоновая оправа из углеродного волокна. Увеличение 3.5х',
+    price: 57000,
+    oldPrice: 70000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/ca458567-caf0-4914-91b5-2253df5242ac.jpg',
+    magnification: '3.5х',
+    category: 'loupes'
+  },
+  {
     id: 13,
     name: 'Бинокулярные лупы Carbon Ergo',
     description: 'Апохроматические линзы Schott. Карбоновая оправа из углеродного волокна. Угловая конструкция для прямой посадки головы',
