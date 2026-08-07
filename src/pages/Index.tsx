@@ -34,7 +34,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы Schott. Карбоновая оправа из углеродного волокна. Угловая конструкция для прямой посадки головы',
     price: 119000,
     oldPrice: 140000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/32d2019d-5033-4447-895d-1c9ada33223c.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/b5682740-e081-45a5-84df-52816b49852b.jpg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
     category: 'loupes'
   },
