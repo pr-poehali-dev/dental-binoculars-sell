@@ -103,7 +103,7 @@ const products: Product[] = [
     id: 9,
     name: 'Осветитель Pro',
     description: 'Светодиодный стоматологический осветитель с цветовой температурой 5000 К и индексом цветопередачи CRI>90%',
-    price: 29000,
+    price: 24000,
     oldPrice: 40000,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/092db74a-716a-4f9c-8a1b-a5f3f372ea05.jpg',
     magnification: '90 000 лк',
