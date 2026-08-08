@@ -34,7 +34,7 @@ const products: Product[] = [
     description: 'Апохроматические линзы Schott. Карбоновая оправа из углеродного волокна. Увеличение 3.5х',
     price: 57000,
     oldPrice: 70000,
-    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/ca458567-caf0-4914-91b5-2253df5242ac.jpg',
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/4d8dcb8a-7940-428d-b3dc-e5e3e7b8ee1b.jpg',
     magnification: '3.5х',
     category: 'loupes'
   },
