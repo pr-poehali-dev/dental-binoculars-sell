@@ -124,7 +124,7 @@ export const productsData: ProductDetails[] = [
     price: 119000,
     oldPrice: 140000,
     images: [
-      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/b5682740-e081-45a5-84df-52816b49852b.jpg',
+      'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/d42af292-859d-4434-a32d-0b309c023fdd.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/32d2019d-5033-4447-895d-1c9ada33223c.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/2f4bc652-20ac-4f55-a1c9-9cecdbe7e830.jpg',
       'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/c81b27be-fc09-4151-be0f-88bd7005a27f.jpg',
