@@ -52,7 +52,7 @@ const products: Product[] = [
     id: 12,
     name: 'Бинокулярные лупы Titanium Ergo Pro Max',
     description: 'Апохроматические линзы Schott. Оправа из титанового сплава. Угловая конструкция для прямой посадки головы',
-    price: 139000,
+    price: 129000,
     oldPrice: 160000,
     image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/df669c6d-77e0-4f86-a642-433ca1cd77b1.jpeg',
     magnification: '3.0х / 4.0х / 5.0х / 6.0х',
