@@ -29,6 +29,16 @@ interface Product {
 
 const products: Product[] = [
   {
+    id: 15,
+    name: 'Бинокулярные лупы Pro 5.0х',
+    description: 'Апохроматические линзы HOYA (Япония). Асинхронная настройка межзрачкового расстояния',
+    price: 71000,
+    oldPrice: 87000,
+    image: 'https://cdn.poehali.dev/projects/37487b42-26a7-4ea4-bd44-c9a83bc78370/bucket/d1dd7531-125e-42fe-9942-d42967edefac.jpg',
+    magnification: '5.0х',
+    category: 'loupes'
+  },
+  {
     id: 14,
     name: 'Бинокулярные лупы Carbon 3.5x',
     description: 'Апохроматические линзы Schott. Карбоновая оправа из углеродного волокна. Увеличение 3.5х',
