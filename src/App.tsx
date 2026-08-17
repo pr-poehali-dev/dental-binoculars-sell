@@ -12,6 +12,7 @@ import Offer from "./pages/Offer";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
+import VpnNotice from "./components/VpnNotice";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <VpnNotice />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/product/:id" element={<ProductDetail />} />
