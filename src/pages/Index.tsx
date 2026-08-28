@@ -264,18 +264,16 @@ const Index = () => {
       return;
     }
     
-    try {
-      await fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'purchase',
-          data: formData
-        })
-      });
-    } catch (error) {
+    fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'purchase',
+        data: formData
+      })
+    }).catch((error) => {
       console.log('Email sending failed, but continuing');
-    }
+    });
     
     launch();
     toast({
@@ -298,18 +296,16 @@ const Index = () => {
       return;
     }
     
-    try {
-      await fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'testdrive',
-          data: testDriveForm
-        })
-      });
-    } catch (error) {
+    fetch('https://functions.poehali.dev/f00b9184-0bbf-492a-b44b-275c00b80abc', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'testdrive',
+        data: testDriveForm
+      })
+    }).catch((error) => {
       console.log('Email sending failed, but continuing');
-    }
+    });
     
     launch();
     toast({
