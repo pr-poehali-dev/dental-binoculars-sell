@@ -1237,10 +1237,6 @@ const Index = () => {
               <a href="/privacy" className="hover:text-white transition-colors">Политика конфиденциальности</a>
               <a href="/offer" className="hover:text-white transition-colors">Публичная оферта</a>
             </div>
-            <div className="text-center text-gray-500 text-xs space-y-1">
-              <p>ИП Вердян Аршак Вагифович · ИНН 693700761112 · ОГРНИП 325508100461863</p>
-              <p>пр-т Королёва 5д, г. Королёв, Московская область</p>
-            </div>
             <p className="text-center text-gray-400 mt-4">&copy; 2024 VAV DENTAL. Все права защищены.</p>
           </div>
         </div>
