@@ -184,7 +184,7 @@ export default function Admin() {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-muted-foreground">
-                      {new Date(lead.created_at).toLocaleString('ru-RU')}
+                      {new Date(lead.created_at + 'Z').toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}
                     </span>
                     <Button
                       variant="ghost"
