@@ -659,7 +659,7 @@ const Index = () => {
                   <Icon name="Shield" size={32} className="text-secondary" />
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Гарантия качества</h3>
-                <p className="text-gray-400">Все наши бинокуляры сертифицированы и имеют расширенную гарантию. Полная техническая поддержка и сервисное обслуживание по всей России.</p>
+                <p className="text-gray-400">Все наши бинокуляры имеют расширенную гарантию. Полная техническая поддержка и сервисное обслуживание по всей России.</p>
               </Card>
               <Card className="p-6">
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4">
