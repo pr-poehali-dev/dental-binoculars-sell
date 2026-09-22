@@ -300,6 +300,7 @@ export default function Cart() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="Фамилия Имя Отчество"
+                        className="placeholder:text-muted-foreground/40"
                       />
                     </div>
                     <div className="space-y-2">
@@ -311,6 +312,7 @@ export default function Cart() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+7 (999) 123-45-67"
+                        className="placeholder:text-muted-foreground/40"
                       />
                     </div>
                     <div className="space-y-2">
@@ -321,6 +323,7 @@ export default function Cart() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="Ваш город"
+                        className="placeholder:text-muted-foreground/40"
                       />
                     </div>
                     <div className="space-y-2">
@@ -331,6 +334,7 @@ export default function Cart() {
                         onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
                         placeholder="Укажите дополнительную информацию"
                         rows={3}
+                        className="placeholder:text-muted-foreground/40"
                       />
                     </div>
                     <div className="flex items-start gap-2">
