@@ -838,6 +838,7 @@ const Index = () => {
                       value={testDriveForm.fullName}
                       onChange={(e) => setTestDriveForm({...testDriveForm, fullName: e.target.value})}
                       placeholder="Иванов Иван Иванович"
+                      className="placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div className="space-y-2">
@@ -849,6 +850,7 @@ const Index = () => {
                       value={testDriveForm.phone}
                       onChange={(e) => setTestDriveForm({...testDriveForm, phone: e.target.value})}
                       placeholder="+7 (999) 123-45-67"
+                      className="placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div className="space-y-2">
@@ -859,6 +861,7 @@ const Index = () => {
                       value={testDriveForm.specialty}
                       onChange={(e) => setTestDriveForm({...testDriveForm, specialty: e.target.value})}
                       placeholder="Стоматолог-терапевт"
+                      className="placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div className="space-y-2">
@@ -869,6 +872,7 @@ const Index = () => {
                       value={testDriveForm.city}
                       onChange={(e) => setTestDriveForm({...testDriveForm, city: e.target.value})}
                       placeholder="Москва"
+                      className="placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div className="flex items-start gap-2">
@@ -913,6 +917,7 @@ const Index = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       placeholder="Иван Иванов"
+                      className="placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div className="space-y-2">
@@ -924,6 +929,7 @@ const Index = () => {
                       value={formData.city}
                       onChange={(e) => setFormData({...formData, city: e.target.value})}
                       placeholder="Москва"
+                      className="placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div className="space-y-2">
@@ -935,6 +941,7 @@ const Index = () => {
                       value={formData.specialty}
                       onChange={(e) => setFormData({...formData, specialty: e.target.value})}
                       placeholder="Стоматолог-терапевт"
+                      className="placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div className="space-y-2">
@@ -946,6 +953,7 @@ const Index = () => {
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       placeholder="+7 (999) 123-45-67"
+                      className="placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div className="space-y-2">
@@ -956,6 +964,7 @@ const Index = () => {
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                       placeholder="Укажите интересующую модель или задайте вопрос"
                       rows={4}
+                      className="placeholder:text-muted-foreground/40"
                     />
                   </div>
                   <div className="flex items-start gap-2">
