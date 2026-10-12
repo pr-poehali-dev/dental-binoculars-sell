@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import Icon from '@/components/ui/icon';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { productsData } from '@/pages/product-detail/productsData';
 
 export interface SelectedItem {
   id: number;
@@ -12,17 +11,23 @@ export interface SelectedItem {
   quantity: number;
 }
 
+export interface PickerProduct {
+  id: number;
+  name: string;
+  price: number;
+  pricePrefix?: string;
+  image: string;
+}
+
 interface ProductPickerProps {
+  products: PickerProduct[];
   value: SelectedItem[];
   onChange: (items: SelectedItem[]) => void;
 }
 
-const EXCLUDED_IDS = [1, 2];
-const pickerProducts = productsData.filter(p => !EXCLUDED_IDS.includes(p.id));
-
 const formatPrice = (price: number) => `${price.toLocaleString('ru-RU')} ₽`;
 
-const ProductPicker = ({ value, onChange }: ProductPickerProps) => {
+const ProductPicker = ({ products, value, onChange }: ProductPickerProps) => {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<SelectedItem[]>(value);
 
@@ -31,7 +36,7 @@ const ProductPicker = ({ value, onChange }: ProductPickerProps) => {
     setOpen(next);
   };
 
-  const toggle = (product: (typeof productsData)[number]) => {
+  const toggle = (product: PickerProduct) => {
     setDraft(prev =>
       prev.some(i => i.id === product.id)
         ? prev.filter(i => i.id !== product.id)
@@ -69,7 +74,7 @@ const ProductPicker = ({ value, onChange }: ProductPickerProps) => {
             <DialogDescription>Отметьте позиции, которые хотите купить</DialogDescription>
           </DialogHeader>
           <div className="flex-1 overflow-y-auto space-y-2 pr-1">
-            {pickerProducts.map(product => {
+            {products.map(product => {
               const selected = draft.find(i => i.id === product.id);
               return (
                 <div
@@ -83,7 +88,7 @@ const ProductPicker = ({ value, onChange }: ProductPickerProps) => {
                   />
                   <label htmlFor={`pick-${product.id}`} className="flex flex-1 items-center gap-3 cursor-pointer min-w-0">
                     <img
-                      src={product.images[0]}
+                      src={product.image}
                       alt={product.name}
                       className="h-12 w-12 rounded object-cover shrink-0"
                     />

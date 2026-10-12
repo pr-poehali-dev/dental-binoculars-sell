@@ -965,7 +965,7 @@ const Index = () => {
                   </div>
                   <div className="space-y-2">
                     <Label>Что хотите купить</Label>
-                    <ProductPicker value={selectedItems} onChange={setSelectedItems} />
+                    <ProductPicker products={products} value={selectedItems} onChange={setSelectedItems} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Комментарий</Label>
