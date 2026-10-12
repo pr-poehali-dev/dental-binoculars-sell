@@ -12,6 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import CatalogQRCode from '@/components/CatalogQRCode';
 import ProductMarquee from '@/components/ProductMarquee';
+import ProductPicker, { SelectedItem } from '@/components/ProductPicker';
 import { addToCart, getCartCount, getCart } from '@/lib/cart';
 
 interface Product {
@@ -223,6 +224,7 @@ const Index = () => {
     productId: ''
   });
   const [purchaseConsent, setPurchaseConsent] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<SelectedItem[]>([]);
 
   const [testDriveForm, setTestDriveForm] = useState({
     fullName: '',
@@ -269,7 +271,11 @@ const Index = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         type: 'purchase',
-        data: formData
+        data: {
+          ...formData,
+          items: selectedItems,
+          total: selectedItems.reduce((sum, i) => sum + i.price * i.quantity, 0)
+        }
       })
     }).catch((error) => {
       console.log('Email sending failed, but continuing');
@@ -281,6 +287,7 @@ const Index = () => {
       description: "Мы свяжемся с вами в ближайшее время.",
     });
     setFormData({ name: '', city: '', specialty: '', phone: '', message: '', productId: '' });
+    setSelectedItems([]);
     setPurchaseConsent(false);
   };
 
@@ -955,6 +962,10 @@ const Index = () => {
                       placeholder="+7 (999) 123-45-67"
                       className="placeholder:text-muted-foreground/40"
                     />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Что хотите купить</Label>
+                    <ProductPicker value={selectedItems} onChange={setSelectedItems} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Комментарий</Label>

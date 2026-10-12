@@ -110,12 +110,19 @@ def handler(event: dict, context) -> dict:
 
     try:
         if email_type == 'purchase':
+            p_items = data.get('items') or []
+            p_items_tg = '\n'.join(
+                f"  • {item.get('name')} x{item.get('quantity')} — {item.get('price')} ₽"
+                for item in p_items if isinstance(item, dict)
+            ) or '  Не выбраны'
             tg_text = (
                 "🦷 <b>Заявка на покупку — VAV DENTAL</b>\n\n"
                 f"👤 <b>ФИО:</b> {data.get('name')}\n"
                 f"🏙 <b>Город:</b> {data.get('city')}\n"
                 f"🩺 <b>Специальность:</b> {data.get('specialty')}\n"
                 f"📞 <b>Телефон:</b> {data.get('phone')}\n"
+                f"📦 <b>Выбранные товары:</b>\n{p_items_tg}\n"
+                f"💰 <b>Сумма:</b> {data.get('total', 0)} ₽\n\n"
                 f"💬 <b>Комментарий:</b> {data.get('message', 'Не указан')}"
             )
         elif email_type == 'testdrive':

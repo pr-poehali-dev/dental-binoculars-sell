@@ -201,7 +201,15 @@ export default function Admin() {
                   {Object.entries(lead.data).map(([key, value]) => (
                     <div key={key}>
                       <span className="text-muted-foreground">{key}: </span>
-                      <span>{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>
+                      {key === 'items' && Array.isArray(value) ? (
+                        <span>
+                          {value.map((item: { name?: string; quantity?: number; price?: number }) =>
+                            `${item.name} × ${item.quantity} (${item.price} ₽)`
+                          ).join('; ')}
+                        </span>
+                      ) : (
+                        <span>{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>
+                      )}
                     </div>
                   ))}
                 </div>
