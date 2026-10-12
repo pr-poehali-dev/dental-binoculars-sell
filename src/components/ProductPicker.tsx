@@ -17,6 +17,9 @@ interface ProductPickerProps {
   onChange: (items: SelectedItem[]) => void;
 }
 
+const EXCLUDED_IDS = [1, 2];
+const pickerProducts = productsData.filter(p => !EXCLUDED_IDS.includes(p.id));
+
 const formatPrice = (price: number) => `${price.toLocaleString('ru-RU')} ₽`;
 
 const ProductPicker = ({ value, onChange }: ProductPickerProps) => {
@@ -66,7 +69,7 @@ const ProductPicker = ({ value, onChange }: ProductPickerProps) => {
             <DialogDescription>Отметьте позиции, которые хотите купить</DialogDescription>
           </DialogHeader>
           <div className="flex-1 overflow-y-auto space-y-2 pr-1">
-            {productsData.map(product => {
+            {pickerProducts.map(product => {
               const selected = draft.find(i => i.id === product.id);
               return (
                 <div
