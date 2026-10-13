@@ -34,6 +34,19 @@ const LEAD_TYPE_LABELS: Record<string, string> = {
   cart: 'Заказ',
 };
 
+const FIELD_LABELS: Record<string, string> = {
+  name: 'ФИО',
+  fullName: 'ФИО',
+  city: 'Город',
+  specialty: 'Специальность',
+  phone: 'Телефон',
+  email: 'Email',
+  items: 'Товары',
+  total: 'Сумма',
+  message: 'Комментарий',
+  comment: 'Комментарий',
+};
+
 export default function Admin() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(false);
@@ -198,15 +211,17 @@ export default function Admin() {
                   </div>
                 </div>
                 <div className="text-sm space-y-1">
-                  {Object.entries(lead.data).map(([key, value]) => (
+                  {Object.entries(lead.data).filter(([key, value]) => key !== 'productId' && value !== '' && value !== null && value !== undefined).map(([key, value]) => (
                     <div key={key}>
-                      <span className="text-muted-foreground">{key}: </span>
+                      <span className="text-muted-foreground">{FIELD_LABELS[key] || key}: </span>
                       {key === 'items' && Array.isArray(value) ? (
                         <span>
                           {value.map((item: { name?: string; quantity?: number; price?: number }) =>
                             `${item.name} × ${item.quantity} (${item.price} ₽)`
                           ).join('; ')}
                         </span>
+                      ) : key === 'total' ? (
+                        <span>{Number(value).toLocaleString('ru-RU')} ₽</span>
                       ) : (
                         <span>{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>
                       )}
